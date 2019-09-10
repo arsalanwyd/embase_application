@@ -16,6 +16,7 @@ export const ROUTES: RouteInfo[] = [
    // { path: '/students', title: 'Students',  icon: 'group', class: '' },
     { path: '/attendance', title: 'Attendance',  icon: 'spellcheck', class: '' },
     { path: '/attendance-report', title: 'Attendance Report',  icon: 'report', class: '' },
+    { path: '/certificates', title: 'Certificates',  icon: 'copyright', class: '' },
     { path: '/leave', title: 'Leave',  icon: 'work_off', class: '' },
     // { path: '/test', title: 'Test',  icon: 'content_paste', class: '' },
     // { path: '/userProfile', title: 'user Profile',  icon: 'post_add', class: '' },

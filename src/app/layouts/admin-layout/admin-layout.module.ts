@@ -32,6 +32,7 @@ import {
   MatProgressBarModule,
   MatChipsModule,
   MatButtonToggleModule,
+  MatTabsModule,
 } from '@angular/material';
 import { TokenInterceptor } from 'app/auth/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -49,6 +50,7 @@ import { AttendanceComponent } from 'app/attendance/attendance.component';
 import { AttendanceReportComponent } from 'app/attendance-report/attendance-report.component';
 import { StudentsComponent } from 'app/students/students.component';
 import { LeaveComponent } from 'app/leave/leave.component';
+import { CertificatesComponent } from 'app/certificates/certificates.component';
 
 @NgModule({
   imports: [
@@ -75,6 +77,7 @@ import { LeaveComponent } from 'app/leave/leave.component';
     MatProgressBarModule,
     MatChipsModule,
     MatButtonToggleModule,
+    MatTabsModule,
 
   ],
   providers: [
@@ -107,6 +110,7 @@ import { LeaveComponent } from 'app/leave/leave.component';
     StudentsComponent,
     AttendanceComponent,
     AttendanceReportComponent,
+    CertificatesComponent,
     LeaveComponent
     
   ]
