@@ -33,6 +33,7 @@ import {
   MatChipsModule,
   MatButtonToggleModule,
   MatTabsModule,
+  MatExpansionModule,
 } from '@angular/material';
 import { TokenInterceptor } from 'app/auth/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -78,6 +79,7 @@ import { CertificatesComponent } from 'app/certificates/certificates.component';
     MatChipsModule,
     MatButtonToggleModule,
     MatTabsModule,
+    MatExpansionModule,
 
   ],
   providers: [

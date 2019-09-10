@@ -1,12 +1,215 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-6">
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food" value="Sushi">
+            <input matInput placeholder="Enter Admission No." value="">
           </mat-form-field>
         </form>
+      </div>
+      <div class="col-6">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="text-center">
+                FEE DETAILS
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center" colspan="6">INVOICE</th>
+                    </tr>
+                    <tr>
+                      <th class="text-center">Sl No.</th>
+                      <th class="text-center">Ledger Name</th>
+                      <th class="text-center">Receivable Amount</th>
+                      <th class="text-center">Paid Amount</th>
+                      <th class="text-center">Due Date</th>
+                      <th class="text-center">Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td class="text-center">Tution fee Fifth Semester</td>
+                      <td class="text-center">5000</td>
+                      <td class="text-center">3000</td>
+                      <td class="text-center">10/05/2019</td>
+                      <td class="text-center">2000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center" colspan="6">PAID HISTORY</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center">Sl No.</td>
+                      <td class="text-center">Challan No</td>
+                      <td class="text-center">Ledger Name</td>
+                      <td class="text-center">Receivable Amount</td>
+                      <td class="text-center">Paid Amount</td>
+                      <td class="text-center">Paid Date</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td class="text-center">5236</td>
+                      <td class="text-center">Course Fee 5th Semester</td>
+                      <td class="text-center">5000</td>
+                      <td class="text-center">3000</td>
+                      <td class="text-center">10/05/2019</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="text-center">
+                CERTIFICATES
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center" colspan="6">CERTIFICATE PENDING</th>
+                    </tr>
+                    <tr>
+                      <th class="text-center">Sl No.</th>
+                      <th class="text-center">Certificate</th>
+                      <th class="text-center">Issued On</th>
+                      <th class="text-center">Permitted For</th>
+                      <th class="text-center">Delayed By</th>
+                      <th class="text-center">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td class="text-center">HSS</td>
+                      <td class="text-center">10/03/2019</td>
+                      <td class="text-center">Passport</td>
+                      <td class="text-center">14 day(s)</td>
+                      <td class="text-center">Pending</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center" colspan="6">CERTIFICATE CLEARED</th>
+                    </tr>
+                    <tr>
+                      <th class="text-center">Sl No.</th>
+                      <th class="text-center">Certificate</th>
+                      <th class="text-center">Issued On</th>
+                      <th class="text-center">Permitted For</th>
+                      <th class="text-center">Delayed By</th>
+                      <th class="text-center">Status</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td class="text-center">SSLC</td>
+                      <td class="text-center">10/03/2019</td>
+                      <td class="text-center">28 day(s)</td>
+                      <td class="text-center">14 day(s)</td>
+                      <td class="text-center">Cleared</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="text-center">
+                LIBRARY
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center" colspan="6">ISSUED BOOKS</th>
+                    </tr>
+                    <tr>
+                      <th class="text-center">Sl No.</th>
+                      <th class="text-center">Book No</th>
+                      <th class="text-center">Book Name</th>
+                      <th class="text-center">Issued Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td class="text-center">4522</td>
+                      <td class="text-center">Financial Management</td>
+                      <td class="text-center">09/07/2019</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center" colspan="6">RECEIVED BOOKS</th>
+                    </tr>
+                    <tr>
+                    <tr>
+                      <th class="text-center">Sl No.</th>
+                      <th class="text-center">Book No</th>
+                      <th class="text-center">Book Name</th>
+                      <th class="text-center">Issued Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td class="text-center">4522</td>
+                      <td class="text-center">Principles of Management</td>
+                      <td class="text-center">06/05/2019(28 Days)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="text-center">
+                ATTENDANCE
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            SAME AS STUDENT ATTENDANCE
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+
       </div>
     </div>
   </div>
