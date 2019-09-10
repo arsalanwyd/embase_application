@@ -1,0 +1,119 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <h4>Admission year</h4>
+        <mat-form-field>
+          <mat-label>Select Year</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let year of years" [value]="year.value">
+              {{year.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <h4>Programme Course</h4>
+        <mat-form-field>
+          <mat-label>Select Course</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let course of courses" [value]="course.value">
+              {{course.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <h4>Course (Paper)</h4>
+        <mat-form-field>
+          <mat-label>Select Paper</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let paper of papers" [value]="paper.value">
+              {{paper.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <button class="btn btn-primary btn-round">
+          <i class="material-icons">send</i> GO
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Search by Admsn No">
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card text-center">
+          <div class="card-header">
+              <h4 class="card-title">Student Data</h4>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">Roll No </th>
+                  <th>Admsn No </th>
+                  <th>Name </th>
+                  <th>Mobile No.</th>
+                  <th>Action </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">1</td>
+                  <td>754</td>
+                  <td>Saheer</td>
+                  <td>7865231425</td>
+                  <td>
+                    <button type="button" rel="tooltip" class="btn btn-success">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-danger">
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">2</td>
+                  <td>314</td>
+                  <td>Sam</td>
+                  <td>9536251478</td>
+                  <td>
+                    <button type="button" rel="tooltip" class="btn btn-success">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-danger">
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">3</td>
+                  <td>659</td>
+                  <td>Shajahan</td>
+                  <td>8563124568</td>
+                  <td>
+                    <button type="button" rel="tooltip" class="btn btn-success">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-danger">
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

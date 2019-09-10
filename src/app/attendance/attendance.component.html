@@ -1,0 +1,146 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4">
+        <button class="btn btn-primary classButton">Class</button>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-primary classButton">Engage</button>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-primary classButton">Event</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <button type="button" class="btn btn-primary btn-round numberButton">1st</button>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary btn-round numberButton">2nd</button>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary btn-round numberButton">3rd</button>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary btn-round numberButton">4th</button>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary btn-round numberButton">5th</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h4>Admission year</h4>
+        <mat-form-field>
+          <mat-label>Select Year</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let year of years" [value]="year.value">
+              {{year.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h4>Programme Course</h4>
+        <mat-form-field>
+          <mat-label>Select Course</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let course of courses" [value]="course.value">
+              {{course.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h4>Course (Paper)</h4>
+        <mat-form-field>
+          <mat-label>Select Paper</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let paper of papers" [value]="paper.value">
+              {{paper.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h4>Date</h4>
+        <input type="date">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+          <button class="btn btn-fab btn-fab-mini btn-round btn-danger btn-lg">
+              <i class="material-icons">add</i>
+            </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <button type="button" class="btn btn-success statusButton">0</button>
+      </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-warning statusButton">0</button>
+      </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-info statusButton">0</button>
+      </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-danger statusButton">0</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center">Roll No </th>
+              <th>Admsn No </th>
+              <th>Name </th>
+              <th>Photo </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="text-center">1</td>
+              <td>754</td>
+              <td>Saheer</td>
+              <td>
+                <div class="img-container">
+                  <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
+                </div>
+              </td>
+
+            </tr>
+            <tr>
+              <td class="text-center">2</td>
+              <td>314</td>
+              <td>Sam</td>
+              <td>
+                <div class="img-container">
+                  <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center">3</td>
+              <td>659</td>
+              <td>Shajahan</td>
+              <td>
+                <div class="img-container">
+                  <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

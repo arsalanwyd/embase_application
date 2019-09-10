@@ -1,0 +1,135 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <!--  -->
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li class="nav-item">
+                    <a mat-button class="nav-link active" href="#leave" data-toggle="tab">
+                      <i class="material-icons">work_off</i>Leave
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a mat-button class="nav-link" href="#report" data-toggle="tab">
+                      <i class="material-icons">info</i> Report
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="leave">
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#leaveModal">
+                  Apply for Leave
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="leaveModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="leaveLabel">Leave Application Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" class="form-control" id="date">
+                          </div>
+                          <div class="form-group">
+                            <label for="leaveType">Select Leave Type</label>
+                            <select class="form-control selectpicker" data-style="btn btn-link" id="leaveType">
+                              <option>Casual Leave</option>
+                              <option>Sick Leave or Medical Leave</option>
+                              <option>Earned Leave or Privileged Leave</option>
+                              <option>Paid Leave or Loss of Pay</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="leaveType">Select day</label>
+                            <select class="form-control selectpicker" data-style="btn btn-link" id="leaveType">
+                              <option>Full Day</option>
+                              <option>FN</option>
+                              <option>AN</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="leaveReason">Leave Reason</label>
+                            <textarea class="form-control" id="leaveReason" rows="3"></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center"><b>Leave Date </b></th>
+                      <th class="text-center"><b>Leave Type </b></th>
+                      <th class="text-center"><b>Day(s) </b></th>
+                      <th class="text-center"><b>Leave Reason </b></th>
+                      <th class="text-center"><b>Status </b></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">09/09/2019</td>
+                      <td class="text-center">Sick Leave</td>
+                      <td class="text-center">Full Day</td>
+                      <td class="text-center">fever</td>
+                      <td class="text-center">Applied</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tab-pane" id="report">
+                From
+                <input type="date">
+                To
+                <input type="date">
+                <button type="button" class="btn btn-info">Submit</button>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center"><b>Casual Leave </b></th>
+                      <th class="text-center"><b>Sick Leave </b></th>
+                      <th class="text-center"><b>Earned Leave</b></th>
+                      <th class="text-center"><b>Paid Leave</b></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">2</td>
+                      <td class="text-center">3</td>
+                      <td class="text-center">1</td>
+                      <td class="text-center">4</td>
+                    </tr>
+                  </tbody>
+                </table>>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

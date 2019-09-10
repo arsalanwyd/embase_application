@@ -1,0 +1,318 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <!--  -->
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li class="nav-item">
+                    <a mat-button class="nav-link active" href="#hour" data-toggle="tab">
+                      <i class="material-icons">schedule</i>Hourly View
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a mat-button class="nav-link" href="#month" data-toggle="tab">
+                      <i class="material-icons">today</i>Monthly View
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a mat-button class="nav-link" href="#semester" data-toggle="tab">
+                      <i class="material-icons">all_inclusive</i>Semester View
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="hour">
+                <div class="row">
+                  <div class="col-sm-6 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="admsn"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="admsn">
+                          <option>Select Admsn Year</option>
+                          <option>2018-19</option>
+                          <option>2019-20</option>
+                          <option>2020-21</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="course"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="course">
+                          <option>Select Course</option>
+                          <option>B.Com</option>
+                          <option>BA Eng</option>
+                          <option>BA Economics</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="month1"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="month1">
+                          <option>Select Month</option>
+                          <option>Jan</option>
+                          <option>Feb</option>
+                          <option>Mar</option>
+                        </select>
+                      </div>
+                    </form>
+
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="year1"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="year1">
+                          <option>2018</option>
+                          <option>2019</option>
+                          <option>2020</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-center"><b>Sl No.</b></th>
+                          <th class="text-center"><b>Admsn No.</b></th>
+                          <th class="text-center"><b>Uni. Reg No.</b></th>
+                          <th class="text-center"><b>Name </b></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-center">1</td>
+                          <td class="text-center">845</td>
+                          <td class="text-center">WYD15</td>
+                          <td class="text-center">Shaheer</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td class="text-center"><b>Sl No.</b></td>
+                          <td class="text-center"><b>Admsn No.</b></td>
+                          <td class="text-center"><b>Uni. Reg No.</b></td>
+                          <td class="text-center"><b>Name </b></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="month">
+                <div class="row">
+                  <div class="col-sm-6 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="course"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="course">
+                          <option>Select Course</option>
+                          <option>B.Com</option>
+                          <option>BA Eng</option>
+                          <option>BA Economics</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="admsn"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="admsn">
+                          <option>Select Admsn Year</option>
+                          <option>2018-19</option>
+                          <option>2019-20</option>
+                          <option>2020-21</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="month"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="month">
+                          <option>Select Month</option>
+                          <option>Jan</option>
+                          <option>Feb</option>
+                          <option>Mar</option>
+                        </select>
+                      </div>
+                    </form>
+
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="year1"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="year1">
+                          <option>2018</option>
+                          <option>2019</option>
+                          <option>2020</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-center"><b>Sl No.</b></th>
+                          <th class="text-center"><b>Admsn No.</b></th>
+                          <th class="text-center"><b>Uni. Reg No.</b></th>
+                          <th class="text-center"><b>Name </b></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-center">1</td>
+                          <td class="text-center">845</td>
+                          <td class="text-center">WYD15</td>
+                          <td class="text-center">Shaheer</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td class="text-center"><b>Sl No.</b></td>
+                          <td class="text-center"><b>Admsn No.</b></td>
+                          <td class="text-center"><b>Uni. Reg No.</b></td>
+                          <td class="text-center"><b>Name </b></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4>P : Present</h4>
+                    <h4>H: Half Day</h4>
+                    <h4>A: Absent</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="semester">
+                <div class="row">
+                  <div class="col-sm-4 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="admsn"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="admsn">
+                          <option>Select Admsn Year</option>
+                          <option>2018-19</option>
+                          <option>2019-20</option>
+                          <option>2020-21</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-sm-4 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="course"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="course">
+                          <option>Select Course</option>
+                          <option>B.Com</option>
+                          <option>BA Eng</option>
+                          <option>BA Economics</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-sm-4 col-md-3">
+                    <form>
+                      <div class="form-group">
+                        <label for="year1"></label>
+                        <select class="form-control selectpicker" data-style="btn btn-link" id="year1">
+                          <option>2018</option>
+                          <option>2019</option>
+                          <option>2020</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-button-toggle-group name="semester" aria-label="semester">
+                      <mat-button-toggle value="odd" id="odd">ODD SEM</mat-button-toggle>
+                      <mat-button-toggle value="even" id="even">EVEN SEM</mat-button-toggle>
+                    </mat-button-toggle-group>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th class="text-center"><b>Sl No.</b></th>
+                            <th class="text-center"><b>Admsn No.</b></th>
+                            <th class="text-center"><b>Name </b></th>
+                            <th class="text-center"><b>Status</b></th>
+                            <th class="text-center"><b>June</b></th>
+                            <th class="text-center"><b>July</b></th>
+                            <th class="text-center"><b>August</b></th>
+                            <th class="text-center"><b>September</b></th>
+                            <th class="text-center"><b>October</b></th>
+                            <th class="text-center"><b>Percentage</b></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center">1</td>
+                            <td class="text-center">845</td>
+                            <td class="text-center">Shajahan</td>
+                            <td class="text-center">Status</td>
+                            <td class="text-center">25</td>
+                            <td class="text-center">35</td>
+                            <td class="text-center">55</td>
+                            <td class="text-center">45</td>
+                            <td class="text-center">65</td>
+                            <td class="text-center">100</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="text-center"><b>Sl No.</b></td>
+                            <td class="text-center"><b>Admsn No.</b></td>
+                            <td class="text-center"><b>Name </b></td>
+                            <td class="text-center"><b>Status</b></td>
+                            <td class="text-center"><b>June</b></td>
+                            <td class="text-center"><b>July</b></td>
+                            <td class="text-center"><b>August</b></td>
+                            <td class="text-center"><b>September</b></td>
+                            <td class="text-center"><b>October</b></td>
+                            <td class="text-center"><b>Percentage</b></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
