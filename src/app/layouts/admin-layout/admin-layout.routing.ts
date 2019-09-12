@@ -20,6 +20,8 @@ import { StudentsComponent } from 'app/students/students.component';
 import { LeaveComponent } from 'app/leave/leave.component';
 import { AttendanceReportComponent } from 'app/attendance-report/attendance-report.component';
 import { CertificatesComponent } from 'app/certificates/certificates.component';
+import { QuizComponent } from 'app/quiz/quiz.component';
+import { ClubComponent } from 'app/club/club.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -82,4 +84,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'attendance-report',       component: AttendanceReportComponent },
     { path: 'certificates',       component: CertificatesComponent },   
     { path: 'leave',       component: LeaveComponent },
+    { path: 'quiz',       component: QuizComponent },
+    { path: 'club',       component: ClubComponent },
 ];

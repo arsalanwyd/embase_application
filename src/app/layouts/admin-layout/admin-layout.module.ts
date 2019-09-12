@@ -34,6 +34,7 @@ import {
   MatButtonToggleModule,
   MatTabsModule,
   MatExpansionModule,
+  MatCheckboxModule,
 } from '@angular/material';
 import { TokenInterceptor } from 'app/auth/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -52,6 +53,8 @@ import { AttendanceReportComponent } from 'app/attendance-report/attendance-repo
 import { StudentsComponent } from 'app/students/students.component';
 import { LeaveComponent } from 'app/leave/leave.component';
 import { CertificatesComponent } from 'app/certificates/certificates.component';
+import { QuizComponent } from 'app/quiz/quiz.component';
+import { ClubComponent } from 'app/club/club.component';
 
 @NgModule({
   imports: [
@@ -80,6 +83,7 @@ import { CertificatesComponent } from 'app/certificates/certificates.component';
     MatButtonToggleModule,
     MatTabsModule,
     MatExpansionModule,
+    MatCheckboxModule,
 
   ],
   providers: [
@@ -113,7 +117,9 @@ import { CertificatesComponent } from 'app/certificates/certificates.component';
     AttendanceComponent,
     AttendanceReportComponent,
     CertificatesComponent,
-    LeaveComponent
+    LeaveComponent,
+    QuizComponent,
+    ClubComponent,
     
   ]
 })
