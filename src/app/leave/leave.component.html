@@ -21,6 +21,12 @@
                       <div class="ripple-container"></div>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a mat-button class="nav-link" href="#apply" data-toggle="tab">
+                      <i class="material-icons">control_point</i> Apply For Leave
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -28,103 +34,108 @@
           <div class="card-body">
             <div class="tab-content">
               <div class="tab-pane active" id="leave">
-
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#leaveModal">
-                  Apply for Leave
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="leaveModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="leaveLabel">Leave Application Form</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form>
-                          <div class="form-group">
-                            <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date">
-                          </div>
-                          <div class="form-group">
-                            <label for="leaveType">Select Leave Type</label>
-                            <select class="form-control selectpicker" data-style="btn btn-link" id="leaveType">
-                              <option>Casual Leave</option>
-                              <option>Sick Leave or Medical Leave</option>
-                              <option>Earned Leave or Privileged Leave</option>
-                              <option>Paid Leave or Loss of Pay</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="leaveType">Select day</label>
-                            <select class="form-control selectpicker" data-style="btn btn-link" id="leaveType">
-                              <option>Full Day</option>
-                              <option>FN</option>
-                              <option>AN</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="leaveReason">Leave Reason</label>
-                            <textarea class="form-control" id="leaveReason" rows="3"></textarea>
-                          </div>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
-                      </div>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="text-center">Leave Date </th>
+                        <th class="text-center">Leave Type </th>
+                        <th class="text-center">Day(s) </th>
+                        <th class="text-center">Leave Reason </th>
+                        <th class="text-center">Status </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">09/09/2019</td>
+                        <td class="text-center">Sick Leave</td>
+                        <td class="text-center">Full Day</td>
+                        <td class="text-center">fever</td>
+                        <td class="text-center">Applied</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td class="text-center">Leave Date </td>
+                        <td class="text-center">Leave Type </td>
+                        <td class="text-center">Day(s) </td>
+                        <td class="text-center">Leave Reason </td>
+                        <td class="text-center">Status </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane" id="report">
+                <div class="row">
+                  <div class="col-sm-6 col-md-4">From <input type="date">
+                  </div>
+                  <div class="col-sm-6 col-md-4">To   <input type="date">
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <button type="button" class="btn btn-info">Submit</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th class="text-center"><b>Casual Leave </b></th>
+                            <th class="text-center"><b>Sick Leave </b></th>
+                            <th class="text-center"><b>Earned Leave</b></th>
+                            <th class="text-center"><b>Paid Leave</b></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center">2</td>
+                            <td class="text-center">3</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">4</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="text-center"><b>Casual Leave </b></td>
+                            <td class="text-center"><b>Sick Leave </b></td>
+                            <td class="text-center"><b>Earned Leave</b></td>
+                            <td class="text-center"><b>Paid Leave</b></td>
+                          </tr>
+                        </tfoot>
+                      </table>
                     </div>
                   </div>
                 </div>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th class="text-center"><b>Leave Date </b></th>
-                      <th class="text-center"><b>Leave Type </b></th>
-                      <th class="text-center"><b>Day(s) </b></th>
-                      <th class="text-center"><b>Leave Reason </b></th>
-                      <th class="text-center"><b>Status </b></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="text-center">09/09/2019</td>
-                      <td class="text-center">Sick Leave</td>
-                      <td class="text-center">Full Day</td>
-                      <td class="text-center">fever</td>
-                      <td class="text-center">Applied</td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
-              <div class="tab-pane" id="report">
-                From
-                <input type="date">
-                To
-                <input type="date">
-                <button type="button" class="btn btn-info">Submit</button>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th class="text-center"><b>Casual Leave </b></th>
-                      <th class="text-center"><b>Sick Leave </b></th>
-                      <th class="text-center"><b>Earned Leave</b></th>
-                      <th class="text-center"><b>Paid Leave</b></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="text-center">2</td>
-                      <td class="text-center">3</td>
-                      <td class="text-center">1</td>
-                      <td class="text-center">4</td>
-                    </tr>
-                  </tbody>
-                </table>>
+              <div class="tab-pane" id="apply">
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="date" class="form-control" id="date">
+                    <mat-form-field>
+                      <mat-select placeholder="Leave Type">
+                        <mat-option value="Casual Leave">Casual Leave</mat-option>
+                        <mat-option value="Sick Leave or Medical Leave">Sick Leave or Medical Leave</mat-option>
+                        <mat-option value="Earned Leave or Privileged Leave">Earned Leave or Privileged Leave
+                        </mat-option>
+                        <mat-option value="Paid Leave or Loss of Pay">Paid Leave or Loss of Pay</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-select placeholder="Day">
+                        <mat-option value="Full Day">Full Day</mat-option>
+                        <mat-option value="FN">FN</mat-option>
+                        <mat-option value="AN">AN</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <textarea matInput placeholder="Leave Reason"></textarea>
+                    </mat-form-field>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

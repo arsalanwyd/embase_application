@@ -16,7 +16,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a mat-button class="nav-link" href="#quiz" data-toggle="tab">
+                    <a mat-button class="nav-link" href="#test" data-toggle="tab">
                       <i class="material-icons">description</i>Test
                       <div class="ripple-container"></div>
                     </a>
@@ -24,6 +24,18 @@
                   <li class="nav-item">
                     <a mat-button class="nav-link" href="#result" data-toggle="tab">
                       <i class="material-icons">grade</i>Result
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a mat-button class="nav-link" href="#quiz" data-toggle="tab">
+                      <i class="material-icons">edit</i>Quiz
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a mat-button class="nav-link" href="#report" data-toggle="tab">
+                      <i class="material-icons">report</i>Report
                       <div class="ripple-container"></div>
                     </a>
                   </li>
@@ -219,7 +231,7 @@
               </div>
 
 
-              <div class="tab-pane" id="quiz">
+              <div class="tab-pane" id="test">
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
                     <div class="table-responsive">
@@ -555,6 +567,165 @@
                       </table>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="quiz">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                      <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup">
+                          <ng-template matStepLabel>Enter Test Key</ng-template>
+                          <div class="col-md-6">
+                            <mat-form-field>
+                              <input matInput placeholder="Test Key">
+                            </mat-form-field>
+                          </div>
+                          <div>
+                            <button mat-button matStepperNext>OK</button>
+                          </div>
+                        </form>
+                      </mat-step>
+                      <mat-step [stepControl]="secondFormGroup">
+                        <form [formGroup]="secondFormGroup">
+                          <ng-template matStepLabel>Start Quiz</ng-template>
+                          <h4 class="text-center">
+                            EXAMPLE (Test Name)
+                          </h4>
+                          <h5>Test description</h5>                          
+                          <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button class="btn btn-success" matStepperNext>SUBMIT</button>
+                          </div>
+                        </form>
+                      </mat-step>
+                      <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        <h4 class="text-center">
+                          EXAMPLE (Test Name)
+                        </h4>
+                        <label id="questions-radio-group-label">1.Largest</label>
+                        <mat-radio-group aria-labelledby="questions-radio-group-label" class="questions-radio-group"
+                          [(ngModel)]="selectedOption">
+                          <mat-radio-button class="questions-radio-button" *ngFor="let option of options"
+                            [value]="option">
+                            {{option}}
+                          </mat-radio-button>
+                        </mat-radio-group>
+                        <div>
+                          <button mat-button matStepperPrevious>Back</button>
+                          <button mat-button (click)="stepper.reset()">Reset</button>
+                        </div>
+                      </mat-step>
+                    </mat-horizontal-stepper>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="tab-pane" id="report">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="text-center">Sl No</th>
+                        <th class="text-center">Test Name</th>
+                        <th class="text-center">Questions</th>
+                        <th class="text-center">Attended</th>
+                        <th class="text-center">Correct</th>
+                        <th class="text-center">Wrong</th>
+                        <th class="text-center">Point</th>
+                        <th class="text-center">%</th>
+                        <th class="text-center">View</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center">Exa357</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">1/1</td>
+                        <td class="text-center">100.00</td>
+                        <td class="text-center"><button type="button" rel="tooltip" class="btn btn-success"
+                            data-toggle="modal" data-target="#reportviewModal">
+                            <i class="material-icons">remove_red_eye</i>
+                          </button>
+                          <div class="modal fade" id="reportviewModal" tabindex="-1" role="dialog"
+                            aria-labelledby="reportviewModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Example (Test Name)</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="table-responsive">
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th class="text-center">Sl No</th>
+                                          <th class="text-center">Question</th>
+                                          <th class="text-center">Answer</th>
+                                          <th class="text-center">Selected</th>
+                                          <th class="text-center">?</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td class="text-center">1</td>
+                                          <td class="text-center">largest</td>
+                                          <td class="text-center">4</td>
+                                          <td class="text-center">3</td>
+                                          <td class="text-center"><i class="material-icons">close</i></td>
+                                        </tr>
+                                        <tr>
+                                          <td class="text-center">2</td>
+                                          <td class="text-center">smallest</td>
+                                          <td class="text-center">1</td>
+                                          <td class="text-center">3</td>
+                                          <td class="text-center"><i class="material-icons">close</i></td>
+                                        </tr>
+                                      </tbody>
+                                      <tfoot>
+                                        <tr>
+                                          <td class="text-center">Sl No</td>
+                                          <td class="text-center">Question</td>
+                                          <td class="text-center">Answer</td>
+                                          <td class="text-center">Selected</td>
+                                          <td class="text-center">?</td>
+                                        </tr>
+                                      </tfoot>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td class="text-center">Sl No</td>
+                        <td class="text-center">Test Name</td>
+                        <td class="text-center">Questions</td>
+                        <td class="text-center">Attended</td>
+                        <td class="text-center">Correct</td>
+                        <td class="text-center">Wrong</td>
+                        <td class="text-center">Point</td>
+                        <td class="text-center">%</td>
+                        <td class="text-center">View</td>
+                      </tr>
+                    </tfoot>
+                  </table>
                 </div>
               </div>
             </div>
