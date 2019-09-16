@@ -6,21 +6,69 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendance.component.scss']
 })
 export class AttendanceComponent implements OnInit {
-  public years: any[]=[
-    {value: '2019-20', viewValue: '2019-20'},
-    {value: '2020-21', viewValue: '2020-21'},
-    {value: '2021-22', viewValue: '2021-22'}
+
+  year: any;
+  course: any;
+  paper: any;
+  public years =
+    [
+      {
+        id: '2019-20',
+        name: '2019-20'
+      },
+      {
+        id: '2018-19',
+        name: '2018-19'
+      },
+      {
+        id: '2017-18',
+        name: '2017-18'
+      },
+    ];
+  courses = [
+    {
+      course_id: '11',
+      course_name: 'B.A English',
+      course_programme: 'U.G',
+      dep_id: '113',
+      nick: 'B.A Eng'
+    },
+    {
+      course_id: '14',
+      course_name: 'B.C.A',
+      course_programme: 'U.G',
+      dep_id: '112',
+      nick: 'B.C.A'
+    },
+    {
+      course_id: '17',
+      course_name: 'B.Sc Computer Science',
+      course_programme: 'U.G',
+      dep_id: '112',
+      nick: 'B.Sc CS'
+    },
   ];
-  public courses: any[]=[
-    {value: 'BCA', viewValue: 'BCA'},
-    {value: 'B.Com', viewValue: 'B.com'},
-    {value: 'BA Economics', viewValue: 'BA Economics'}
+  papers = [
+    {
+      paper_code: 'BCA3B04',
+      paper_id: '26',
+      paper_name: 'Data Structures Using C',
+      status: '1'
+    },
+    {
+      paper_code: 'MAL1A07',
+      paper_id: '125',
+      paper_name: 'Malayala Sahithyam',
+      status: '9'
+    },
+    {
+      paper_code: 'BCA2B02',
+      paper_id: '179',
+      paper_name: 'Problem solving using C',
+      status: '1'
+    },
   ];
-  public papers: any[]=[
-    {value: 'Object Oriented Programming', viewValue: 'Object Oriented ProgrammingObject Oriented Programming'},
-    {value: 'Marketting Management', viewValue: 'Marketting Management'},
-    {value: 'Bussiness Economics', viewValue: 'Bussiness Economics'}
-  ];
+
   constructor() { }
 
   ngOnInit() {

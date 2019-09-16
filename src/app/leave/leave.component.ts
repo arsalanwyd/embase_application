@@ -6,19 +6,68 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leave.component.scss']
 })
 export class LeaveComponent implements OnInit {
-
-  public ntypes: any[] = [
-    { value: 'Casual Leave', viewValue: 'Casual Leave' },
-    { value: 'Sick Leave or Medical Leave', viewValue: 'Sick Leave or Medical Leave' },
-    { value: 'Earned Leave or Privileged Leave', viewValue: 'Earned Leave or Privileged Leave' },
-    { value: 'Paid Leave or Loss of Pay', viewValue: 'Paid Leave or Loss of Pay' }
-  ];
-
-  public days: any[] = [
-    { value: 'Full Day', viewValue: 'Full Day' },
-    { value: 'FN', viewValue: 'FN' },
-    { value: 'AN', viewValue: 'AN' }
-  ];
+  leave: any;
+  leave_details=[
+  {
+    'id': 52,
+    'faculty_id': 1001,
+    'date': '2019-01-10',
+    'type': 'CL',
+    'days': 1,
+    'reason': 'gyhuj',
+    'timestamp': '2019-01-25 08:27:25',
+    'approved_id': null,
+    'approved_date': '2019-01-25 08:27:25',
+    'status': 1,
+    'daysv': 'Full Day',
+    'statusv': 'Applied',
+    'leave_date': '10/01/2019'
+},
+{
+    'id': 46,
+    'faculty_id': 1001,
+    'date': '2019-01-23',
+    'type': 'CL',
+    'days': 1,
+    'reason': '24-1-19 sports',
+    'timestamp': '2019-01-24 15:32:22',
+    'approved_id': null,
+    'approved_date': '2019-01-24 15:32:22',
+    'status': 1,
+    'daysv': 'Full Day',
+    'statusv': 'Applied',
+    'leave_date': '23/01/2019'
+},
+{
+    'id': 44,
+    'faculty_id': 1001,
+    'date': '2019-01-24',
+    'type': 'CL',
+    'days': 1,
+    'reason': 'test 24-1-19',
+    'timestamp': '2019-01-24 15:29:41',
+    'approved_id': null,
+    'approved_date': '2019-01-24 15:29:41',
+    'status': 1,
+    'daysv': 'Full Day',
+    'statusv': 'Applied',
+    'leave_date': '24/01/2019'
+},
+{
+    'id': 51,
+    'faculty_id': 1001,
+    'date': '2019-01-25',
+    'type': 'CL',
+    'days': 1,
+    'reason': 'yu',
+    'timestamp': '2019-01-25 08:26:02',
+    'approved_id': null,
+    'approved_date': '2019-01-25 08:26:02',
+    'status': 1,
+    'daysv': 'Full Day',
+    'statusv': 'Applied',
+    'leave_date': '25/01/2019'
+}];
 
   constructor() { }
 

@@ -1,145 +1,204 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-4">
-        <button class="btn btn-primary classButton">Class</button>
-      </div>
-      <div class="col-4">
-        <button class="btn btn-primary classButton">Engage</button>
-      </div>
-      <div class="col-4">
-        <button class="btn btn-primary classButton">Event</button>
+      <div class="col-md-12">
+        <ul class="nav nav-pills nav-justified" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" href="#pill1" data-toggle="tab">CLASS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pill2" data-toggle="tab">ENGAGE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pill3" data-toggle="tab">EVENT</a>
+          </li>
+        </ul>
+        <div class="tab-content tab-space">
+
+          <div class="tab-pane active" id="pill1">
+            CLASS SELECTED
+          </div>
+          <div class="tab-pane" id="pill2">
+            ENGAGE SELECTED
+          </div>
+          <div class="tab-pane" id="pill3">
+            EVENT SELECTED
+          </div>
+
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-2">
-        <button type="button" class="btn btn-primary btn-round numberButton">1st</button>
-      </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-primary btn-round numberButton">2nd</button>
-      </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-primary btn-round numberButton">3rd</button>
-      </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-primary btn-round numberButton">4th</button>
-      </div>
-      <div class="col-2">
-        <button type="button" class="btn btn-primary btn-round numberButton">5th</button>
+      <div class="col-md-12">
+        <ul class="nav nav-pills nav-justified" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" href="#p1" data-toggle="tab">1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#p2" data-toggle="tab">2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#p3" data-toggle="tab">3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#p4" data-toggle="tab">4</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#p5" data-toggle="tab">5</a>
+          </li>
+        </ul>
+        <div class="tab-content tab-space">
+
+          <div class="tab-pane active" id="p1">
+            1
+          </div>
+          <div class="tab-pane" id="p2">
+            2
+          </div>
+          <div class="tab-pane" id="p3">
+            3
+          </div>
+          <div class="tab-pane" id="p4">
+            4
+          </div>
+          <div class="tab-pane" id="p5">
+            5
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-sm-12 col-md-6">
         <h4>Admission year</h4>
         <mat-form-field>
           <mat-label>Select Year</mat-label>
           <mat-select>
-            <mat-option *ngFor="let year of years" [value]="year.value">
-              {{year.viewValue}}
+            <mat-option *ngFor="let year of years" value="{{year.id}}">
+              {{year.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
+      <div class="col-sm-12 col-md-6">
         <h4>Programme Course</h4>
         <mat-form-field>
           <mat-label>Select Course</mat-label>
           <mat-select>
-            <mat-option *ngFor="let course of courses" [value]="course.value">
-              {{course.viewValue}}
+            <mat-option *ngFor="let course of courses" value="{{course.id}}">
+              {{course.course_name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-sm-12 col-md-6">
         <h4>Course (Paper)</h4>
         <mat-form-field>
           <mat-label>Select Paper</mat-label>
           <mat-select>
-            <mat-option *ngFor="let paper of papers" [value]="paper.value">
-              {{paper.viewValue}}
+            <mat-option *ngFor="let paper of papers" value="{{paper.paper_id}}">
+              {{paper.paper_name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
+      <div class="col-sm-12 col-md-6">
         <h4>Date</h4>
         <input type="date">
       </div>
     </div>
     <div class="row">
       <div class="col-3">
-          <button class="btn btn-fab btn-fab-mini btn-round btn-danger btn-lg">
-              <i class="material-icons">add</i>
-            </button>
+        <button class="btn btn-fab btn-fab-mini btn-round btn-danger btn-lg">
+          <i class="material-icons">add</i>
+        </button>
       </div>
     </div>
     <div class="row">
-      <div class="col-3">
-        <button type="button" class="btn btn-success statusButton">0</button>
-      </div>
-      <div class="col-3">
-        <button type="button" class="btn btn-warning statusButton">0</button>
-      </div>
-      <div class="col-3">
-        <button type="button" class="btn btn-info statusButton">0</button>
-      </div>
-      <div class="col-3">
-        <button type="button" class="btn btn-danger statusButton">0</button>
+      <div class="col-md-12">
+          <ul class="nav nav-pills nav-justified" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active text-center text-white bg-success" href="" data-toggle="pill">0</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active text-center text-white bg-warning" href="" data-toggle="pill">0</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active text-center text-white bg-info" href="" data-toggle="pill">0</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active text-center text-white bg-danger" href="" data-toggle="pill">0</a>
+              </li>
+            </ul>
+            <div class="tab-content tab-space">
+    
+              <div class="tab-pane active" id="p1"></div>
+              <div class="tab-pane active" id="p2"></div>
+              <div class="tab-pane active" id="p3"></div>
+              <div class="tab-pane active" id="p4"></div>
+            </div>
+
+
+
+
+
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="text-center">Roll No </th>
-              <th>Admsn No </th>
-              <th>Name </th>
-              <th>Photo </th>
-            </tr>
-          </thead>
+    <div class="card">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center">Roll No </th>
+                    <th>Admsn No </th>
+                    <th>Name </th>
+                    <th>Photo </th>
+                  </tr>
+                </thead>
 
-          <tbody>
-            <tr>
-              <td class="text-center">1</td>
-              <td>754</td>
-              <td>Saheer</td>
-              <td>
-                <div class="img-container">
-                  <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
-                </div>
-              </td>
+                <tbody>
+                  <tr>
+                    <td class="text-center">1</td>
+                    <td>754</td>
+                    <td>Saheer</td>
+                    <td>
+                      <div class="img-container">
+                        <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
+                      </div>
+                    </td>
 
-            </tr>
-            <tr>
-              <td class="text-center">2</td>
-              <td>314</td>
-              <td>Sam</td>
-              <td>
-                <div class="img-container">
-                  <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">3</td>
-              <td>659</td>
-              <td>Shajahan</td>
-              <td>
-                <div class="img-container">
-                  <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                  </tr>
+                  <tr>
+                    <td class="text-center">2</td>
+                    <td>314</td>
+                    <td>Sam</td>
+                    <td>
+                      <div class="img-container">
+                        <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">3</td>
+                    <td>659</td>
+                    <td>Shajahan</td>
+                    <td>
+                      <div class="img-container">
+                        <img src="https://www.shareicon.net/data/128x128/2016/10/18/844016_man_512x512.png" alt="...">
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

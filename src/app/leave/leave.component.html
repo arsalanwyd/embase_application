@@ -46,12 +46,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="text-center">09/09/2019</td>
-                        <td class="text-center">Sick Leave</td>
-                        <td class="text-center">Full Day</td>
-                        <td class="text-center">fever</td>
-                        <td class="text-center">Applied</td>
+                      <tr *ngFor="let leave of leave_details">
+                        <td class="text-center">{{leave?.date}}</td>
+                        <td class="text-center">{{leave?.type}}</td>
+                        <td class="text-center">{{leave?.daysv}}</td>
+                        <td class="text-center">{{leave?.reason}}</td>
+                        <td class="text-center">{{leave?.statusv}}</td>
                       </tr>
                     </tbody>
                     <tfoot>

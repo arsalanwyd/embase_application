@@ -55,9 +55,8 @@
                             <th class="text-center" colspan="4">
                               <mat-form-field>
                                 <mat-select placeholder="Select">
-                                  <mat-option value="English">English</mat-option>
-                                  <mat-option value="General">General</mat-option>
-                                  <mat-option value="Malayalam">Malayalam</mat-option>
+                                  <mat-option *ngFor="let subject of subjects" value="{{subject.subject_id}}">
+                                    {{subject.subject}}</mat-option>
                                 </mat-select>
                               </mat-form-field>
                             </th>
@@ -82,9 +81,8 @@
                                         Select Subject
                                       </button>
                                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">English</a>
-                                        <a class="dropdown-item" href="#">General</a>
-                                        <a class="dropdown-item" href="#">Malayalam</a>
+                                        <button class="dropdown-item"
+                                          *ngFor="let subject of subjects">{{subject.subject}}</button>
                                       </div>
                                       <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal"
                                         data-target="#subselectModal">
@@ -169,16 +167,10 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        Select Subject
-                                      </button>
-                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">English</a>
-                                        <a class="dropdown-item" href="#">General</a>
-                                        <a class="dropdown-item" href="#">Malayalam</a>
-                                      </div>
+                                      <mat-select placeholder="Select">
+                                        <mat-option *ngFor="let subject of subjects" value="{{subject.subject_id}}">
+                                          {{subject.subject}}</mat-option>
+                                      </mat-select>
                                       <mat-form-field>
                                         <textarea matInput placeholder="Question"></textarea>
                                       </mat-form-field>
@@ -226,6 +218,9 @@
                         </tfoot>
                       </table>
                     </div>
+                    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                    </mat-paginator>
+
                   </div>
                 </div>
               </div>
@@ -356,8 +351,6 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-
-
                                       <mat-form-field>
                                         <input matInput placeholder="Test Name">
                                       </mat-form-field>
@@ -529,7 +522,7 @@
                                               <td class="text-center">1</td>
                                               <td class="text-center">1</td>
                                               <td class="text-center">3</td>
-                                              <td class="text-center">X</td>
+                                              <td class="text-center"><i class="material-icons">check</i></td>
                                             </tr>
                                           </tbody>
                                           <tfoot>
@@ -566,6 +559,8 @@
                         </tfoot>
                       </table>
                     </div>
+                    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                    </mat-paginator>
                   </div>
                 </div>
               </div>
@@ -583,7 +578,7 @@
                             </mat-form-field>
                           </div>
                           <div>
-                            <button mat-button matStepperNext>OK</button>
+                            <button mat-button class="btn btn-info" matStepperNext>OK</button>
                           </div>
                         </form>
                       </mat-step>
@@ -593,15 +588,15 @@
                           <h4 class="text-center">
                             EXAMPLE (Test Name)
                           </h4>
-                          <h5>Test description</h5>                          
+                          <h5>Test description</h5>
                           <div>
-                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button class="btn btn-secondary" matStepperPrevious>Back</button>
                             <button mat-button class="btn btn-success" matStepperNext>SUBMIT</button>
                           </div>
                         </form>
                       </mat-step>
                       <mat-step>
-                        <ng-template matStepLabel>Done</ng-template>
+                        <ng-template matStepLabel>Quiz</ng-template>
                         <h4 class="text-center">
                           EXAMPLE (Test Name)
                         </h4>
@@ -614,9 +609,51 @@
                           </mat-radio-button>
                         </mat-radio-group>
                         <div>
-                          <button mat-button matStepperPrevious>Back</button>
-                          <button mat-button (click)="stepper.reset()">Reset</button>
+                          <button mat-button class="btn btn-secondary" matStepperPrevious>Back</button>
+                          <button mat-button class="btn btn-success" matStepperNext>Next</button>
                         </div>
+                      </mat-step>
+                      <mat-step>
+                        <ng-template matStepLabel>Quiz</ng-template>
+                        <h4 class="text-center">
+                          EXAMPLE (Test Name)
+                        </h4>
+                        <label id="questions-radio-group-label">2.Smallest</label>
+                        <mat-radio-group aria-labelledby="questions-radio-group-label" class="questions-radio-group"
+                          [(ngModel)]="selectedOption">
+                          <mat-radio-button class="questions-radio-button" *ngFor="let option of options"
+                            [value]="option">
+                            {{option}}
+                          </mat-radio-button>
+                        </mat-radio-group>
+                        <div>
+                          <button mat-button class="btn btn-secondary" matStepperPrevious>Back</button>
+                          <button mat-button class="btn btn-success" matStepperNext>Complete</button>
+                        </div>
+                      </mat-step>
+                      <mat-step>
+                        <ng-template matStepLabel>Quiz</ng-template>
+                        <h4 class="text-center">
+                          EXAMPLE (Test Name)
+                        </h4>
+                        <h4 class="text-center">
+                          Total points: 2
+                        </h4>
+                        <h5 class="text-center">
+                          Total Questions: 2
+                        </h5>
+                        <h5 class="text-center">
+                          Total Questions Attended: 2
+                        </h5>
+                        <h5 class="text-center">
+                          Total Correct Answers: 2
+                        </h5>
+                        <h5 class="text-center">
+                          Total Wrong Answers: 0
+                        </h5>
+                        <h5 class="text-center">
+                          ((2*1)-(0*1))=2
+                        </h5>
                       </mat-step>
                     </mat-horizontal-stepper>
                   </div>
