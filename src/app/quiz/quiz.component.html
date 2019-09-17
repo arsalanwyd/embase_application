@@ -76,18 +76,9 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-
-                                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Select Subject
-                                      </button>
-                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item"
-                                          *ngFor="let subject of subjects">{{subject.subject}}</a>
-                                      </div>
-
-
-                                      
+                                      <select class="selectpicker">
+                                        <option *ngFor="let subject of subjects">{{subject.subject}}</option>
+                                      </select>
                                       <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal"
                                         data-target="#subselectModal">
                                         <i class="material-icons">add</i>
@@ -171,10 +162,9 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <mat-select placeholder="Select">
-                                        <mat-option *ngFor="let subject of subjects" value="{{subject.subject_id}}">
-                                          {{subject.subject}}</mat-option>
-                                      </mat-select>
+                                      <select class="selectpicker">
+                                        <option *ngFor="let subject of subjects">{{subject.subject}}</option>
+                                      </select>
                                       <mat-form-field>
                                         <textarea matInput placeholder="Question"></textarea>
                                       </mat-form-field>

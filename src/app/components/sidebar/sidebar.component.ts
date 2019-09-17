@@ -19,6 +19,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/certificates', title: 'Certificates',  icon: 'copyright', class: '' },
     { path: '/leave', title: 'Leave',  icon: 'work_off', class: '' },
     { path: '/quiz', title: 'Quiz',  icon: 'help', class: '' },
+    { path: '/club', title: 'Club',  icon: 'list', class: '' },
     // { path: '/test', title: 'Test',  icon: 'content_paste', class: '' },
     // { path: '/userProfile', title: 'user Profile',  icon: 'post_add', class: '' },
     // { path: '/icons', title: 'Icons',  icon: 'bubble_chart', class: '' },
