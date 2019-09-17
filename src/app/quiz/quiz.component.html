@@ -76,14 +76,18 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+
+                                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Select Subject
                                       </button>
                                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <button class="dropdown-item"
-                                          *ngFor="let subject of subjects">{{subject.subject}}</button>
+                                        <a class="dropdown-item"
+                                          *ngFor="let subject of subjects">{{subject.subject}}</a>
                                       </div>
+
+
+                                      
                                       <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal"
                                         data-target="#subselectModal">
                                         <i class="material-icons">add</i>
@@ -143,14 +147,14 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="text-center">1</td>
-                            <td class="text-center">afsfgxfh </td>
-                            <td class="text-center">1</td>
-                            <td class="text-center">32</td>
-                            <td class="text-center">3</td>
-                            <td class="text-center">4</td>
-                            <td class="text-center">arun s</td>
+                          <tr *ngFor="let question of questions; index as i">
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-center">{{question?.question}}</td>
+                            <td class="text-center">{{question?.answer}}</td>
+                            <td class="text-center">{{question?.option_1}}</td>
+                            <td class="text-center">{{question?.option_2}}</td>
+                            <td class="text-center">{{question?.option_3}}</td>
+                            <td class="text-center">{{question?.faculty_name}}</td>
                             <td class="text-center">
                               <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal"
                                 data-target="#viewModal">
@@ -284,23 +288,9 @@
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td class="text-center">1</td>
-                                            <th class="text-left">Malayalam</th>
-                                            <td class="text-center">
-                                              <mat-checkbox labelPosition="before"></mat-checkbox>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td class="text-center">2</td>
-                                            <th class="text-left">General</th>
-                                            <td class="text-center">
-                                              <mat-checkbox labelPosition="before"></mat-checkbox>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td class="text-center">3</td>
-                                            <th class="text-left">English</th>
+                                          <tr *ngFor="let subject of subjects; index as i">
+                                            <td class="text-center">{{i+1}}</td>
+                                            <th class="text-left">{{subject.subject}}</th>
                                             <td class="text-center">
                                               <mat-checkbox labelPosition="before"></mat-checkbox>
                                             </td>
@@ -329,13 +319,13 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="text-center">1</td>
-                            <td class="text-center">Example </td>
-                            <td class="text-center">Exa357</td>
-                            <td class="text-center">Malayalam, General, English</td>
-                            <td class="text-center">10</td>
-                            <td class="text-center">Opened</td>
+                          <tr *ngFor="let test of tests; index as i">
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-center">{{test?.test_name}}</td>
+                            <td class="text-center">{{test?.test_key}}</td>
+                            <td class="text-center">{{test?.subject}}</td>
+                            <td class="text-center">{{test?.total_mark}}</td>
+                            <td class="text-center">{{test?.statusv}}</td>
                             <td class="text-center">
                               <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal"
                                 data-target="#testviewModal">
@@ -391,23 +381,9 @@
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <td class="text-center">1</td>
-                                            <th class="text-left">Malayalam</th>
-                                            <td class="text-center">
-                                              <mat-checkbox labelPosition="before"></mat-checkbox>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td class="text-center">2</td>
-                                            <th class="text-left">General</th>
-                                            <td class="text-center">
-                                              <mat-checkbox labelPosition="before"></mat-checkbox>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td class="text-center">3</td>
-                                            <th class="text-left">English</th>
+                                          <tr *ngFor="let subject of subjects; index as i">
+                                            <td class="text-center">{{i+1}}</td>
+                                            <th class="text-left">{{subject?.subject}}</th>
                                             <td class="text-center">
                                               <mat-checkbox labelPosition="before"></mat-checkbox>
                                             </td>
@@ -461,7 +437,7 @@
                                 <mat-select placeholder="Select Type">
                                   <mat-option value="Student">Student</mat-option>
                                   <mat-option value="Staff">Staff</mat-option>
-                                  <mat-option value="Student">Student</mat-option>
+                                  <mat-option value="Student">All</mat-option>
                                 </mat-select>
                               </mat-form-field>
                             </th>
@@ -480,16 +456,16 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="text-center">1</td>
-                            <td class="text-center">1010</td>
-                            <td class="text-center">arun c</td>
-                            <td class="text-center">1</td>
-                            <td class="text-center">1</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">1</td>
-                            <td class="text-center">0/1</td>
-                            <td class="text-center">0.00</td>
+                          <tr *ngFor="let result of results; index as i">
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-center">{{result?.id}}</td>
+                            <td class="text-center">{{result?.name}}</td>
+                            <td class="text-center">{{result?.total_question}}</td>
+                            <td class="text-center">{{result?.attended}}</td>
+                            <td class="text-center">{{result?.correct}}</td>
+                            <td class="text-center">{{result?.wrong}}</td>
+                            <td class="text-center">{{result?.mark}}/{{result?.total_question}}</td>
+                            <td class="text-center">{{result?.percentage}}</td>
                             <td class="text-center"><button type="button" rel="tooltip" class="btn btn-success"
                                 data-toggle="modal" data-target="#resultviewModal">
                                 <i class="material-icons">remove_red_eye</i>
@@ -678,15 +654,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="text-center">1</td>
-                        <td class="text-center">Exa357</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">0</td>
-                        <td class="text-center">1/1</td>
-                        <td class="text-center">100.00</td>
+                      <tr *ngFor="let report of reports; index as i">
+                        <td class="text-center">{{i+1}}</td>
+                        <td class="text-center">{{report?.test_name}}</td>
+                        <td class="text-center">{{report?.total_question}}</td>
+                        <td class="text-center">{{report?.attended}}</td>
+                        <td class="text-center">{{report?.correct}}</td>
+                        <td class="text-center">{{report?.wrong}}</td>
+                        <td class="text-center">{{report?.total_mark}}/{{report?.total_question}}</td>
+                        <td class="text-center">{{report?.percentage}}</td>
                         <td class="text-center"><button type="button" rel="tooltip" class="btn btn-success"
                             data-toggle="modal" data-target="#reportviewModal">
                             <i class="material-icons">remove_red_eye</i>
