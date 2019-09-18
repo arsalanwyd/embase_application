@@ -4,175 +4,173 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                       <!--  -->
-                       <div class="nav-tabs-navigation">
+                        <!--  -->
+                        <div class="nav-tabs-navigation">
                             <div class="nav-tabs-wrapper">
-                              
+
                                 <ul class="nav nav-tabs" data-tabs="tabs">
                                     <li class="nav-item">
-                                                <a mat-button class="nav-link active" href="#libraryBooks" data-toggle="tab">
-                                                    <i class="material-icons">library_books</i>Library Books
-                                                    <div class="ripple-container"></div>
-                                                </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a mat-button class="nav-link" href="#bookInHand" data-toggle="tab">
-                                            <i class="material-icons">library_books</i>Books In Your Hand 
+                                        <a mat-button class="nav-link active" href="#libraryBooks" data-toggle="tab">
+                                            <i class="material-icons">library_books</i>Library Books
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                      <a mat-button class="nav-link" href="#readList" data-toggle="tab">
-                                          <i class="material-icons">info</i> Book Read List
-                                          <div class="ripple-container"></div>
-                                      </a>
-                                  </li>
+                                        <a mat-button class="nav-link" href="#bookInHand" data-toggle="tab">
+                                            <i class="material-icons">library_books</i>Books In Your Hand
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a mat-button class="nav-link" href="#readList" data-toggle="tab">
+                                            <i class="material-icons">info</i> Book Read List
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <!--  -->
-                        
+
                     </div>
                     <div class="card-body">
-                     <div class="tab-content">
-                                 <div class="tab-pane active" id="libraryBooks">
-                                    <div class="row">
-                                            <div class="col col-md-4">
-                                                
-                                                 <mat-form-field appearance="outline">
-                                                    <mat-label>Search</mat-label>
-                                                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                                                    <mat-icon matSuffix>search</mat-icon>
-                                                    <!-- <mat-hint>Hint</mat-hint> -->
-                                                  </mat-form-field>
-                                     
-                                            </div>      
-                                        </div>          
-                                        <div class="table-responsive">
-                                         <table mat-table [dataSource]="booklist" matSort class="table table-hover">
-                                                      <ng-container matColumnDef="book_no">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Book No </th>
-                                                        <td mat-cell *matCellDef="let element"> {{element.book_no}} </td>
-                                                      </ng-container>
-                                      
-                                                      <!-- Name Column -->
-                                                      <ng-container matColumnDef="book_name">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                                                        <td mat-cell *matCellDef="let element"> {{element.book_name}} </td>
-                                                      </ng-container>
-                                                    
-                                                      <!-- Weight Column -->
-                                                      <ng-container matColumnDef="book_author">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
-                                                        <td mat-cell *matCellDef="let element">{{element.book_author}}  </td>
-                                                      </ng-container>
-                                                      <ng-container matColumnDef="book_category">
-                                                            <thead class=" text-primary">
-                                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>  </thead>
-                                                            <td mat-cell *matCellDef="let element" > {{element.book_category}} </td>
-                                                    </ng-container>
-                                                    <ng-container matColumnDef="status">
-                                                      <thead class=" text-primary">
-                                                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>  </thead>
-                                                      <td mat-cell *matCellDef="let element" > {{element.issued_status}} </td>
-                                                   </ng-container>
-                                                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                                      <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
-                                        
-                                          </table>
-                                          <mat-paginator
-                                          [pageSize]="10"
-                                          [pageSizeOptions]="[10, 25, 50, 100]">
-                                           </mat-paginator>
-                                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="libraryBooks">
+                                <div class="row">
+                                    <div class="col col-md-4">
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Search</mat-label>
+                                            <input matInput (keyup)="applyFilter($event.target.value)"
+                                                placeholder="Filter">
+                                            <mat-icon matSuffix>search</mat-icon>
+                                            <!-- <mat-hint>Hint</mat-hint> -->
+                                        </mat-form-field>
+
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table mat-table [dataSource]="booklist" matSort class="table table-hover">
+                                        <ng-container matColumnDef="book_no">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Book No </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.book_no}} </td>
+                                        </ng-container>
+
+                                        <!-- Name Column -->
+                                        <ng-container matColumnDef="book_name">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                            <td mat-cell *matCellDef="let element"> {{element.book_name}} </td>
+                                        </ng-container>
+
+                                        <!-- Weight Column -->
+                                        <ng-container matColumnDef="book_author">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
+                                            <td mat-cell *matCellDef="let element">{{element.book_author}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="book_category">
+                                            <thead class=" text-primary">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                                            </thead>
+                                            <td mat-cell *matCellDef="let element"> {{element.book_category}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="status">
+                                            <thead class=" text-primary">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                                            </thead>
+                                            <td mat-cell *matCellDef="let element"> {{element.issued_status}} </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                    </table>
+                                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]">
+                                    </mat-paginator>
+                                </div>
 
                             </div>
-                            <div class="tab-pane" id="bookInHand">       
+                            <div class="tab-pane" id="bookInHand">
                                 <div class="table-responsive">
                                     <table class="table table-hover">
-                                    <thead class=" text-danger">
-                                        <th>
-                                            SL.NO
-                                      </th>
-                                      <th>
-                                          Book NO
-                                      </th>
-                                      <th>
-                                          Book Name
-                                      </th>
-                                      <th>
-                                          Issue Date
-                                      </th>
-                                  </thead>
-                                  <tbody>
-                                      <tr *ngFor="let history of dep_transactions; index as i">
-                                          <td>
-                                             
-                                          </td>
-                                          <td>
-                                             
-                                          </td>
-                                          <td>
-                                            
-                                          </td>
-                                          
-                                          <td class="text-danger">
-                                        
-                                          </td>
-                                      </tr>
+                                        <thead class=" text-danger">
+                                            <th>
+                                                SL.NO
+                                            </th>
+                                            <th>
+                                                Book NO
+                                            </th>
+                                            <th>
+                                                Book Name
+                                            </th>
+                                            <th>
+                                                Issue Date
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let history of dep_transactions; index as i">
+                                                <td>
 
-                                  </tbody>
-                                </table>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                                <td>
+
+                                                </td>
+
+                                                <td class="text-danger">
+
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <!--  -->
                             <div class="tab-pane" id="readList">
-                                    <div class="table-responsive">
-                                            <table class="table table-hover">
-                                            <thead class=" text-primary">
-                                                <th>
-                                                    SL.NO
-                                              </th>
-                                              <th>
-                                                  Book NO
-                                              </th>
-                                              <th>
-                                                  Book Name
-                                              </th>
-                                              <th>
-                                                  Issue Date
-                                              </th>
-                                          </thead>
-                                          <tbody>
-                                              <tr *ngFor="let book of readlist; index as i">
-                                                  <td>
-                                                      {{i+1}}
-                                                  </td>
-                                                  <td>
-                                                      {{book?.book_no}}
-                                                  </td>
-                                                  <td>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                SL.NO
+                                            </th>
+                                            <th>
+                                                Book NO
+                                            </th>
+                                            <th>
+                                                Book Name
+                                            </th>
+                                            <th>
+                                                Issue Date
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let book of readlist; index as i">
+                                                <td>
+                                                    {{i+1}}
+                                                </td>
+                                                <td>
+                                                    {{book?.book_no}}
+                                                </td>
+                                                <td>
                                                     {{book?.book_name}}
-                                                  </td>
-                                                  
-                                                  <td>
+                                                </td>
+
+                                                <td>
                                                     {{book?.issue_date}}
-                                                  </td>
-                                              </tr>
-    
-                                          </tbody>
-                                        </table>
-                                        </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                          
-                      </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-          
-    </div>   
-  </div>
-  
-  
-  
+
+    </div>
+</div>

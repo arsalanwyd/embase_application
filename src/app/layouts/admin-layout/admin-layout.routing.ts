@@ -22,6 +22,8 @@ import { AttendanceReportComponent } from 'app/attendance-report/attendance-repo
 import { CertificatesComponent } from 'app/certificates/certificates.component';
 import { QuizComponent } from 'app/quiz/quiz.component';
 import { ClubComponent } from 'app/club/club.component';
+import { StaffBooksComponent } from 'app/staff-books/staff-books.component';
+import { MarkComponent } from 'app/mark/mark.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -80,10 +82,12 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'userProfile',       component: UserProfileComponent },
     { path: 'staff-home',       component: StaffHomeComponent },
     { path: 'students',       component: StudentsComponent },
+    { path: 'mark',       component: MarkComponent },
     { path: 'attendance',       component: AttendanceComponent },
     { path: 'attendance-report',       component: AttendanceReportComponent },
     { path: 'certificates',       component: CertificatesComponent },   
     { path: 'leave',       component: LeaveComponent },
     { path: 'quiz',       component: QuizComponent },
     { path: 'club',       component: ClubComponent },
+    { path: 'staff-books',       component: StaffBooksComponent },
 ];

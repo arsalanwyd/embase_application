@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { StudentService } from 'app/services/student.service';
+
 
 @Component({
   selector: 'app-student-books',
@@ -8,16 +8,16 @@ import { StudentService } from 'app/services/student.service';
   styleUrls: ['./student-books.component.scss']
 })
 export class StudentBooksComponent implements OnInit {
-  displayedColumns: string[] = ['book_no', 'book_name', 'book_author', 'book_category', 'status'];
+ /* displayedColumns: string[] = ['book_no', 'book_name', 'book_author', 'book_category', 'status'];
   booklist: MatTableDataSource<any>;
   bookinhand: any;
   readlist: any;
-  @ViewChild(MatPaginator, {static: true})paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false})sort: MatSort;
-  constructor(private studentservice: StudentService) { }
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  constructor(private studentservice: studentService.StudentService) { }*/
 
   ngOnInit() {
-    this.studentservice.getBookList().subscribe((res: any) => {
+    /*this.studentservice.getBookList().subscribe((res: any) => {
       console.log(res.books);
       this.booklist = new MatTableDataSource(res.books);
       this.booklist.sort = this.sort;
@@ -31,7 +31,7 @@ export class StudentBooksComponent implements OnInit {
   }
   applyFilter(filterValue: string) {
     this.booklist.filter = filterValue.trim().toLowerCase();
-   console.log(this.booklist);
+    console.log(this.booklist);*/
   }
 
 }

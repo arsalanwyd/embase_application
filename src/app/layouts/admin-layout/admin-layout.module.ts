@@ -55,6 +55,8 @@ import { LeaveComponent } from 'app/leave/leave.component';
 import { CertificatesComponent } from 'app/certificates/certificates.component';
 import { QuizComponent } from 'app/quiz/quiz.component';
 import { ClubComponent } from 'app/club/club.component';
+import { StaffBooksComponent } from 'app/staff-books/staff-books.component';
+import { MarkComponent } from 'app/mark/mark.component';
 
 @NgModule({
   imports: [
@@ -116,11 +118,12 @@ import { ClubComponent } from 'app/club/club.component';
     StudentsComponent,
     AttendanceComponent,
     AttendanceReportComponent,
+    MarkComponent,
     CertificatesComponent,
     LeaveComponent,
     QuizComponent,
     ClubComponent,
-    
+    StaffBooksComponent,    
   ]
 })
 
