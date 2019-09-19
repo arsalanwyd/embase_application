@@ -1,0 +1,167 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li class="nav-item">
+                    <a mat-button class="nav-link active" href="#myPaper" data-toggle="tab">
+                      <i class="material-icons">storage</i>My Paper
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a mat-button class="nav-link" href="#paperEntry" data-toggle="tab">
+                      <i class="material-icons">add_box</i> Paper Entry
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+
+              <div class="tab-pane active" id="myPaper">
+                <div class="row">
+                  <div class="col-lg-4 col-sm-6 col-md-4">
+                    <mat-select placeholder="Admission Year ">
+                      <mat-option *ngFor="let year of admsnYear" value="{{year.id}}">{{year.name}}
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="col-lg-4 col-sm-6 col-md-4">
+                    <mat-select placeholder="Select Course ">
+                      <mat-option *ngFor="let course of courses" value="{{course.course_name}}">
+                        {{course.nick}}
+                      </mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="col-lg-4 col-sm-6 col-xs-6">
+                    <mat-select placeholder="Semester ">
+                      <mat-option value="string:1">First Semester</mat-option>
+                      <mat-option value="string:2">Second Semester</mat-option>
+                      <mat-option value="string:3">Third Semester</mat-option>
+                      <mat-option value="string:4">Fourth Semester</mat-option>
+                      <mat-option value="string:5">Fifth Semester</mat-option>
+                      <mat-option value="string:6">Sixth Semester</mat-option>
+                    </mat-select>
+                  </div>
+
+                  <div class="table-responsive">
+                    <div class="box">
+                      <div class="row box-header">
+                      </div>
+                      <div class="box-body table-responsive">
+                        <div class="text-center">
+                          <h3><strong>First Semester B.A Eng</strong></h3>
+                        </div>
+                        <table id="example2" class="table table-bordered table-hover">
+                          <thead>
+                            <tr class="text-center alert-dark">
+                              <th>Sl</th>
+                              <th>AdmNo</th>
+                              <th>Univ Reg No</th>
+                              <th>Name</th>
+                              <th>ENG1B1</th>
+                              <th>ENG1A02</th>
+                              <th>ENGAAC1</th>
+                              <th>MAL1A07</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="text-center">
+                              <td>1</td>
+                              <td>1039</td>
+                              <td>7817</td>
+                              <td>Anvar sadhiq</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr class="text-center">
+                              <td>Sl</td>
+                              <td>AdmNo</td>
+                              <td>Univ Reg No</td>
+                              <td>Name</td>
+                              <td>ENG1B1</td>
+                              <td>ENG1A02</td>
+                              <td>ENGAAC1</td>
+                              <td>MAL1A07</td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="paperEntry">
+                <h4 class="text-center">ENTER PAPER DETAILS</h4>
+                <div class="example-container">
+                  <mat-form-field>
+                    <input matInput placeholder="Paper Code">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Paper Name">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-select placeholder="Admsn Year">
+                      <mat-option *ngFor="let year of admsnYear" value="{{year.id}}">{{year.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-select placeholder="Course">
+                        <mat-option *ngFor="let course of courses" value="{{course?.course_name}}">{{course.nick}}</mat-option>                      
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-select placeholder="Semester">
+                        <mat-option value="Semester1">First Semester</mat-option>
+                        <mat-option value="Semester2">Second Semester</mat-option>
+                        <mat-option value="Semester3">Third Semester</mat-option>
+                        <mat-option value="Semester4">Fourth Semester</mat-option>
+                        <mat-option value="Semester5">Fifth Semester</mat-option>
+                        <mat-option value="Semester6">Sixth Semester</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-select placeholder="Teacher">
+                      <mat-option value="option">Shaheer Test</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <h5 class="text-center"><b>MAXIMUM MARKS</b></h5>
+                  <mat-form-field>
+                    <input matInput placeholder="Internal 1">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Internal 2">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Assignment">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Attendance">
+                  </mat-form-field>
+                  <button class="btn btn-info">ADD PAPER</button>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

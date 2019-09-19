@@ -57,6 +57,7 @@ import { QuizComponent } from 'app/quiz/quiz.component';
 import { ClubComponent } from 'app/club/club.component';
 import { StaffBooksComponent } from 'app/staff-books/staff-books.component';
 import { MarkComponent } from 'app/mark/mark.component';
+import { SyllabusComponent } from 'app/syllabus/syllabus.component';
 
 @NgModule({
   imports: [
@@ -119,6 +120,7 @@ import { MarkComponent } from 'app/mark/mark.component';
     AttendanceComponent,
     AttendanceReportComponent,
     MarkComponent,
+    SyllabusComponent,
     CertificatesComponent,
     LeaveComponent,
     QuizComponent,

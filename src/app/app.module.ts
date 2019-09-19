@@ -62,7 +62,7 @@ import { AuthComponent } from './auth/auth.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthComponent,       
+    AuthComponent,          
   ],
   providers: [
     AuthModule,

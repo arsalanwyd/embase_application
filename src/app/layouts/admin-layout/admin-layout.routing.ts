@@ -24,6 +24,7 @@ import { QuizComponent } from 'app/quiz/quiz.component';
 import { ClubComponent } from 'app/club/club.component';
 import { StaffBooksComponent } from 'app/staff-books/staff-books.component';
 import { MarkComponent } from 'app/mark/mark.component';
+import { SyllabusComponent } from 'app/syllabus/syllabus.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -83,6 +84,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'staff-home',       component: StaffHomeComponent },
     { path: 'students',       component: StudentsComponent },
     { path: 'mark',       component: MarkComponent },
+    { path: 'syllabus',       component: SyllabusComponent },
     { path: 'attendance',       component: AttendanceComponent },
     { path: 'attendance-report',       component: AttendanceReportComponent },
     { path: 'certificates',       component: CertificatesComponent },   
