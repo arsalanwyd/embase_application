@@ -64,39 +64,123 @@
                         <table id="example2" class="table table-bordered table-hover">
                           <thead>
                             <tr class="text-center alert-dark">
-                              <th>Sl</th>
-                              <th>AdmNo</th>
-                              <th>Univ Reg No</th>
-                              <th>Name</th>
-                              <th>ENG1B1</th>
-                              <th>ENG1A02</th>
-                              <th>ENGAAC1</th>
-                              <th>MAL1A07</th>
-
+                              <th>Code</th>
+                              <th>Paper</th>
+                              <th>Teacher</th>
+                              <th>Internal 1</th>
+                              <th>Internal 2</th>
+                              <th>Assignment</th>
+                              <th>Attendance</th>
+                              <th>Status</th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="text-center">
-                              <td>1</td>
-                              <td>1039</td>
-                              <td>7817</td>
-                              <td>Anvar sadhiq</td>
-                              <td>0</td>
-                              <td>0</td>
-                              <td>0</td>
-                              <td>0</td>
+                            <tr *ngFor="let paper of papers" class="text-center">
+                              <td>{{paper?.paper_code}}</td>
+                              <td>{{paper?.paper_name}}</td>
+                              <td>{{paper?.faculty_name}}</td>
+                              <td>{{paper?.internal1}}</td>
+                              <td>{{paper?.internal2}}</td>
+                              <td>{{paper?.assignment}}</td>
+                              <td>{{paper?.attendance}}</td>
+                              <td>{{paper?.statusv}}</td>
+                              <td class="text-center"><button type="button" rel="tooltip" class="btn btn-success"
+                                  data-toggle="modal" data-target="#paperViewModal">
+                                  <i class="material-icons">remove_red_eye</i>
+                                </button>
+                                <div class="modal fade" id="paperViewModal" tabindex="-1" role="dialog"
+                                  aria-labelledby="paperViewModalModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title">ENTER PAPER DETAILS</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="example-container">
+                                          <mat-form-field>
+                                            <input matInput placeholder="Paper Code">
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                            <input matInput placeholder="Paper Name">
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                            <mat-select placeholder="Admsn Year">
+                                              <mat-option *ngFor="let year of admsnYear" value="{{year.id}}">
+                                                {{year.name}}</mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                            <mat-select placeholder="Course">
+                                              <mat-option *ngFor="let course of courses"
+                                                value="{{course?.course_name}}">{{course.nick}}
+                                              </mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                            <mat-select placeholder="Semester">
+                                              <mat-option value="Semester1">First Semester</mat-option>
+                                              <mat-option value="Semester2">Second Semester</mat-option>
+                                              <mat-option value="Semester3">Third Semester</mat-option>
+                                              <mat-option value="Semester4">Fourth Semester</mat-option>
+                                              <mat-option value="Semester5">Fifth Semester</mat-option>
+                                              <mat-option value="Semester6">Sixth Semester</mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                            <mat-select placeholder="Teacher">
+                                              <mat-option value="option">Shaheer Test</mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                          <h5 class="text-center"><b>MAXIMUM MARKS</b></h5>
+                                          <mat-form-field>
+                                            <input matInput placeholder="Internal 1">
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                            <input matInput placeholder="Internal 2">
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                            <input matInput placeholder="Assignment">
+                                          </mat-form-field>
+                                          <mat-form-field>
+                                            <input matInput placeholder="Attendance">
+                                          </mat-form-field>
+                                        <mat-form-field>
+                                          <mat-select placeholder="Status">
+                                            <mat-option *ngFor="let paper of papers" value="paper.status">
+                                                <div [ngSwitch]="paper.status">
+                                                    <div *ngSwitchCase="0">Closed</div>
+                                                    <div *ngSwitchCase="1">Active</div>
+                                                    <div *ngSwitchDefault>Mark Entry</div>
+                                                </div>                                              
+                                            </mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                        <button type="button" class="btn btn-info">Update</button>
+                                        </div>
+
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
                             </tr>
                           </tbody>
                           <tfoot>
                             <tr class="text-center">
-                              <td>Sl</td>
-                              <td>AdmNo</td>
-                              <td>Univ Reg No</td>
-                              <td>Name</td>
-                              <td>ENG1B1</td>
-                              <td>ENG1A02</td>
-                              <td>ENGAAC1</td>
-                              <td>MAL1A07</td>
+                              <td>Code</td>
+                              <td>Paper</td>
+                              <td>Teacder</td>
+                              <td>Internal 1</td>
+                              <td>Internal 2</td>
+                              <td>Assignment</td>
+                              <td>Attendance</td>
+                              <td>Status</td>
+                              <td>Action</td>
                             </tr>
                           </tfoot>
                         </table>
@@ -121,17 +205,18 @@
                   </mat-form-field>
                   <mat-form-field>
                     <mat-select placeholder="Course">
-                        <mat-option *ngFor="let course of courses" value="{{course?.course_name}}">{{course.nick}}</mat-option>                      
+                      <mat-option *ngFor="let course of courses" value="{{course?.course_name}}">{{course.nick}}
+                      </mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field>
                     <mat-select placeholder="Semester">
-                        <mat-option value="Semester1">First Semester</mat-option>
-                        <mat-option value="Semester2">Second Semester</mat-option>
-                        <mat-option value="Semester3">Third Semester</mat-option>
-                        <mat-option value="Semester4">Fourth Semester</mat-option>
-                        <mat-option value="Semester5">Fifth Semester</mat-option>
-                        <mat-option value="Semester6">Sixth Semester</mat-option>
+                      <mat-option value="Semester1">First Semester</mat-option>
+                      <mat-option value="Semester2">Second Semester</mat-option>
+                      <mat-option value="Semester3">Third Semester</mat-option>
+                      <mat-option value="Semester4">Fourth Semester</mat-option>
+                      <mat-option value="Semester5">Fifth Semester</mat-option>
+                      <mat-option value="Semester6">Sixth Semester</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field>
@@ -152,7 +237,7 @@
                   <mat-form-field>
                     <input matInput placeholder="Attendance">
                   </mat-form-field>
-                  <button class="btn btn-info">ADD PAPER</button>
+                  <button type="button" class="btn btn-info">Submit</button>
                 </div>
 
               </div>

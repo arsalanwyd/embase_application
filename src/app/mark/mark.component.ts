@@ -102,6 +102,22 @@ export class MarkComponent implements OnInit {
       std_universityregisternumber: "00",
       total: 0,
       updateLog: "Last Updated by  on 12/12/2018 10:12"
+    },
+    {
+      assignment: 5,
+      attendance: 5,
+      external: 5,
+      internal1: 5,
+      internal2: 5,
+      mark_id: "4038",
+      paper_id: "249",
+      status: "1",
+      std_admissionnumber: "891",
+      std_currentsemester: "1",
+      std_name: "Shaheer",
+      std_universityregisternumber: "001",
+      total: 0,
+      updateLog: "Last Updated by  on 12/09/2018 08:12"
     }
   ]
 

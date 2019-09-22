@@ -49,6 +49,66 @@ export class SyllabusComponent implements OnInit {
       nick: 'B.Sc CS'
     }
   ];
+  paper: any;
+  papers = [
+    {
+      adm_year: '2018-19',
+      assignment: '5',
+      attendance: '5',
+      attendance_status: '1',
+      course_id: '11',
+      external: '',
+      faculty_name: 'Name 2',
+      internal1: '5',
+      internal2: '5',
+      is_selected: false,
+      paper_code: 'testfirst',
+      paper_id: '282',
+      paper_name: 'test first sem',
+      semester: '1',
+      status: '1',
+      statusv: 'Active',
+      user_id: '1003',
+    },
+    {
+      adm_year: '2018-19',
+      assignment: '0',
+      attendance: '0',
+      attendance_status: '1',
+      course_id: '11',
+      external: '',
+      faculty_name: 'Name 1',
+      internal1: '0',
+      internal2: '0',
+      is_selected: false,
+      paper_code: 'testsecond',
+      paper_id: '282',
+      paper_name: 'test first sem',
+      semester: '1',
+      status: '0',
+      statusv: 'Active',
+      user_id: '1003',
+    },
+    {
+      adm_year: '2018-19',
+      assignment: '5',
+      attendance: '0',
+      attendance_status: '1',
+      course_id: '23',
+      external: '',
+      faculty_name: 'Name 3',
+      internal1: '0',
+      internal2: '5',
+      is_selected: false,
+      paper_code: 'testthird',
+      paper_id: '282',
+      paper_name: 'test first sem 2',
+      semester: '1',
+      status: '8',
+      statusv: 'Mark Entry',
+      user_id: '1003',
+    }
+  ];
 
   constructor() { }
 
