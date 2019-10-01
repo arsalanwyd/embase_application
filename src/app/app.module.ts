@@ -38,6 +38,9 @@ import { AuthModule } from './auth/auth.module';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthComponent } from './auth/auth.component';
+import { RemittanceComponent } from './remittance/remittance.component';
+import { RemittanceVerificationComponent } from './remittance-verification/remittance-verification.component';
+import { SuperAttendanceComponent } from './super-attendance/super-attendance.component';
 @NgModule({
   imports: [
     MatDatepickerModule,
@@ -62,7 +65,7 @@ import { AuthComponent } from './auth/auth.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthComponent,          
+    AuthComponent,    
   ],
   providers: [
     AuthModule,

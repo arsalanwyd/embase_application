@@ -25,6 +25,11 @@ import { ClubComponent } from 'app/club/club.component';
 import { StaffBooksComponent } from 'app/staff-books/staff-books.component';
 import { MarkComponent } from 'app/mark/mark.component';
 import { SyllabusComponent } from 'app/syllabus/syllabus.component';
+import { SuperHomeComponent } from 'app/super-home/super-home.component';
+import { SuperStudentsComponent } from 'app/super-students/super-students.component';
+import { SuperAttendanceComponent } from 'app/super-attendance/super-attendance.component';
+import { RemittanceComponent } from 'app/remittance/remittance.component';
+import { RemittanceVerificationComponent } from 'app/remittance-verification/remittance-verification.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -92,4 +97,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'quiz',       component: QuizComponent },
     { path: 'club',       component: ClubComponent },
     { path: 'staff-books',       component: StaffBooksComponent },
+    { path: 'super-home',       component: SuperHomeComponent },
+    { path: 'super-students',       component: SuperStudentsComponent },
+    { path: 'super-attendance',       component: SuperAttendanceComponent },
+    { path: 'remittance',       component: RemittanceComponent },
+    { path: 'remittance-verification',       component: RemittanceVerificationComponent },
 ];

@@ -58,6 +58,11 @@ import { ClubComponent } from 'app/club/club.component';
 import { StaffBooksComponent } from 'app/staff-books/staff-books.component';
 import { MarkComponent } from 'app/mark/mark.component';
 import { SyllabusComponent } from 'app/syllabus/syllabus.component';
+import { SuperHomeComponent } from 'app/super-home/super-home.component';
+import { SuperStudentsComponent } from 'app/super-students/super-students.component';
+import { SuperAttendanceComponent } from 'app/super-attendance/super-attendance.component';
+import { RemittanceComponent } from 'app/remittance/remittance.component';
+import { RemittanceVerificationComponent } from 'app/remittance-verification/remittance-verification.component';
 
 @NgModule({
   imports: [
@@ -125,8 +130,14 @@ import { SyllabusComponent } from 'app/syllabus/syllabus.component';
     LeaveComponent,
     QuizComponent,
     ClubComponent,
-    StaffBooksComponent,    
+    StaffBooksComponent,
+    SuperHomeComponent,
+    SuperStudentsComponent,
+    SuperAttendanceComponent,
+    RemittanceComponent,
+    RemittanceVerificationComponent,
+
   ]
 })
 
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }

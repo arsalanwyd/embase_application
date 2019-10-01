@@ -1,0 +1,357 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-primary ">
+            <div class="nav-tabs-navigation">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="nav-item">
+                  <a mat-button class="nav-link active" href="#hourlyView" data-toggle="tab">
+                    Hourly View
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#monthlyView" data-toggle="tab">
+                    Monthly View
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#semesterView" data-toggle="tab">
+                    Semester View
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#report" data-toggle="tab">
+                    REPORT
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#attendance Entry" data-toggle="tab">
+                    <button class="btn btn-primary btn-fab btn-fab-mini btn-round">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="hourlyView">
+              </div>
+              <div class="tab-pane" id="attendanceEntry">
+              </div>
+              <div class="tab-pane" id="monthlyView">
+              </div>
+              <div class="tab-pane" id="semesterView">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-lg-6">
+                    <mat-form-field>
+                      <mat-label>Select Admission Year</mat-label>
+                      <mat-select>
+                        <mat-option>Admission Year</mat-option>
+                        <mat-option value="2017-18">2017-18</mat-option>
+                        <mat-option value="2018-19">2018-19</mat-option>
+                        <mat-option value="2019-20">2019-20</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h4 class="text-center text-success">2020-21 ODD SEMESTER</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="bg-info text-center">
+                          <tr>
+                            <th>SL No</th>
+                            <th>Month</th>
+                            <th>Working days</th>
+                            <th>Attendance</th>
+                            <th>Percentage</th>
+                            <th>Average</th>
+                          </tr>
+                        </thead>
+                        <tbody class="text-center">
+                          <tr>
+                            <td>1</td>
+                            <td>June</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>100</td>
+                            <td>100</td>
+                          </tr>
+                        </tbody>
+                        <tfoot class="bg-info text-center">
+                          <tr>
+                            <td></td>
+                            <td>Total</td>
+                            <td>5</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h4 class="text-center text-success">2020-21 EVEN SEMESTER</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="bg-info text-center">
+                          <tr>
+                            <th>SL No</th>
+                            <th>Month</th>
+                            <th>Working days</th>
+                            <th>Attendance</th>
+                            <th>Percentage</th>
+                            <th>Average</th>
+                          </tr>
+                        </thead>
+                        <tbody class="text-center">
+                          <tr>
+                            <td>1</td>
+                            <td>November</td>
+                            <td>6</td>
+                            <td>6</td>
+                            <td>100</td>
+                            <td>100</td>
+                          </tr>
+                        </tbody>
+                        <tfoot class="text-center">
+                          <tr class="bg-info">
+                            <td></td>
+                            <td>Total</td>
+                            <td>6</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="report">
+                <div>
+                  <mat-tab-group>
+                    <mat-tab label="Odd Semester">
+                      <mat-form-field>
+                        <mat-label>Select Admission Year</mat-label>
+                        <mat-select>
+                          <mat-option>Admission Year</mat-option>
+                          <mat-option value="2017-18">2017-18</mat-option>
+                          <mat-option value="2018-19">2018-19</mat-option>
+                          <mat-option value="2019-20">2019-20</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead class="text-center">
+                            <tr>
+                              <th>Roll No</th>
+                              <th>Admsn No</th>
+                              <th>Name</th>
+                              <th>
+                                <mat-accordion>
+                                  <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        Course
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <form class="form">
+                                      <input type='checkbox' value='BA Eng' /> BA Eng
+                                      <br>
+                                      <input type='checkbox' value='B.Com' /> B.Com
+                                      <br>
+                                      <input type='checkbox' value='BBA' /> BBA
+                                      <br>
+                                      <button type="button" type="submit" class="btn btn-info">Info</button>
+                                    </form>
+                                  </mat-expansion-panel>
+                                </mat-accordion>
+                              </th>
+                              <th>
+                                <mat-accordion>
+                                  <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        SEM
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <form class="form">
+                                      <input type='checkbox' value='1' /> 1
+                                      <br>
+                                      <input type='checkbox' value='2' /> 2
+                                      <br>
+                                      <input type='checkbox' value='3' /> 3
+                                      <br>
+                                      <button type="button" type="submit" class="btn btn-info">Info</button>
+                                    </form>
+                                  </mat-expansion-panel>
+                                </mat-accordion>
+                              </th>
+                              <th>Status</th>
+                              <th>June(0)</th>
+                              <th>July(0)</th>
+                              <th>August(0)</th>
+                              <th>September(0)</th>
+                              <th>October(0)</th>
+                              <th>Percentage(Student Total/0*100)</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-center">
+                            <tr>
+                              <td>1</td>
+                              <td>650</td>
+                              <td>ANJU N THOMAS</td>
+                              <td>BA Eng</td>
+                              <td>6</td>
+                              <td>Live</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                            </tr>
+                          </tbody>
+                          <tfoot class="text-center">
+                            <tr>
+                              <td>Roll No</td>
+                              <td>Admsn No</td>
+                              <td>Name</td>
+                              <td>Course</td>
+                              <td>Sem</td>
+                              <td>Status</td>
+                              <td>June(0)</td>
+                              <td>July(0)</td>
+                              <td>August(0)</td>
+                              <td>September(0)</td>
+                              <td>October(0)</td>
+                              <td>Percentage(Student Total/0*100)</td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </mat-tab>
+                    <mat-tab label="Even Semester">
+                      <mat-form-field>
+                        <mat-label>Select Admission Year</mat-label>
+                        <mat-select>
+                          <mat-option>Admission Year</mat-option>
+                          <mat-option value="2017-18">2017-18</mat-option>
+                          <mat-option value="2018-19">2018-19</mat-option>
+                          <mat-option value="2019-20">2019-20</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead class="text-center">
+                            <tr>
+                              <th>Roll No</th>
+                              <th>Admsn No</th>
+                              <th>Name</th>
+                              <th>
+                                <mat-accordion>
+                                  <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        Course
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <form class="form">
+                                      <input type='checkbox' value='BA Eng' /> BA Eng
+                                      <br>
+                                      <input type='checkbox' value='B.Com' /> B.Com
+                                      <br>
+                                      <input type='checkbox' value='BBA' /> BBA
+                                      <br>
+                                      <button type="button" type="submit" class="btn btn-info">OK</button>
+                                    </form>
+                                  </mat-expansion-panel>
+                                </mat-accordion>
+                              </th>
+                              <th>
+                                <mat-accordion>
+                                  <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        SEM
+                                      </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <form class="form">
+                                      <input type='checkbox' value='1' /> 1
+                                      <br>
+                                      <input type='checkbox' value='2' /> 2
+                                      <br>
+                                      <input type='checkbox' value='3' /> 3
+                                      <br>
+                                      <button type="button" type="submit" class="btn btn-info">OK</button>
+                                    </form>
+                                  </mat-expansion-panel>
+                                </mat-accordion>
+                              </th>
+                              <th>Status</th>
+                              <th>November(0)</th>
+                              <th>December(0)</th>
+                              <th>January(0)</th>
+                              <th>February(0)</th>
+                              <th>March(0)</th>
+                              <th>Percentage(Student Total/0*100)</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-center">
+                            <tr>
+                              <td>1</td>
+                              <td>650</td>
+                              <td>ANJU N THOMAS</td>
+                              <td>BA Eng</td>
+                              <td>6</td>
+                              <td>Live</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                              <td>0</td>
+                            </tr>
+                          </tbody>
+                          <tfoot class="text-center">
+                            <tr>
+                              <td>Roll No</td>
+                              <td>Admsn No</td>
+                              <td>Name</td>
+                              <td>Course</td>
+                              <td>Sem</td>
+                              <td>Status</td>
+                              <td>November(0)</td>
+                              <td>December(0)</td>
+                              <td>January(0)</td>
+                              <td>February(0)</td>
+                              <td>March(0)</td>
+                              <td>Percentage(Student Total/0*100)</td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </mat-tab>
+                  </mat-tab-group>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
