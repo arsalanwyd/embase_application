@@ -1,3 +1,152 @@
-<p>
-  remittance works!
-</p>
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">
+                  account_balance
+                </i>
+              </div>
+              <h5 class="card-title">BANK</h5>
+              <h3 class="card-title">29930</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">
+                  attach_money
+                </i>
+              </div>
+              <h5 class="card-title">CASH</h5>
+              <h3 class="card-title">659250</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">
+                  school
+                </i>
+              </div>
+              <h5 class="card-title">SCHOLARSHIP</h5>
+              <h3 class="card-title">84930</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">
+                  account_balance_wallet
+                </i>
+              </div>
+              <h5 class="card-title">TOTAL</h5>
+              <h3 class="card-title">29984</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="card card-nav-tabs card-plain">
+          <div class="card-header card-header-danger">
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#remittanceHistory" data-toggle="tab"><i class="material-icons">
+                        history
+                      </i> Remittance History</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#remittanceAdd" data-toggle="tab"><i class="material-icons">
+                        add_circle
+                      </i> Remittance</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="card">
+          <div class="tab-content tab-space">
+            <div class="tab-pane active" id="remittanceHistory">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center">Sl No</th>
+                    <th>Date</th>
+                    <th>Challan No</th>
+                    <th>Admin no</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Ledger</th>
+                    <th>Amount</th>
+                    <th>Mode</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let content of TABLES; index as i">
+                    <td class="text-center">{{i+1}}</td>
+                    <td>{{content.date}}</td>
+                    <td>{{content.challanNo}}</td>
+                    <td>{{content.adminNo}}</td>
+                    <td>{{content.name}}</td>
+                    <td>{{content.course}}</td>
+                    <td>{{content.ledger}}</td>
+                    <td>{{content.amount}}</td>
+                    <td>{{content.mode}}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td class="text-center">Sl No</td>
+                    <td>Date</td>
+                    <td>Challan No</td>
+                    <td>Admin no</td>
+                    <td>Name</td>
+                    <td>Course</td>
+                    <td>Ledger</td>
+                    <td>Amount</td>
+                    <td>Mode</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+  
+            <div class="tab-pane" id="remittanceAdd">
+              <form class="containerForm">
+                <div class="row">
+                  <div class="col-md-10">
+                    <mat-form-field>
+                      <input matInput placeholder="Enter the Admin No" [formControl]="number" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-2">
+                    <div>
+                      <a href="#">
+                        <i class="material-icons">
+                          search
+                        </i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
