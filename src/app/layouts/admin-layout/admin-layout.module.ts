@@ -35,6 +35,7 @@ import {
   MatTabsModule,
   MatExpansionModule,
   MatCheckboxModule,
+  MatDatepickerModule,
 } from '@angular/material';
 import { TokenInterceptor } from 'app/auth/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -63,6 +64,8 @@ import { SuperStudentsComponent } from 'app/super-students/super-students.compon
 import { SuperAttendanceComponent } from 'app/super-attendance/super-attendance.component';
 import { RemittanceComponent } from 'app/remittance/remittance.component';
 import { RemittanceVerificationComponent } from 'app/remittance-verification/remittance-verification.component';
+import { ReceivedReportComponent } from 'app/received-report/received-report.component';
+import { AccountingComponent } from 'app/accounting/accounting.component';
 
 @NgModule({
   imports: [
@@ -92,6 +95,7 @@ import { RemittanceVerificationComponent } from 'app/remittance-verification/rem
     MatTabsModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatDatepickerModule,
 
   ],
   providers: [
@@ -136,6 +140,8 @@ import { RemittanceVerificationComponent } from 'app/remittance-verification/rem
     SuperAttendanceComponent,
     RemittanceComponent,
     RemittanceVerificationComponent,
+    ReceivedReportComponent,
+    AccountingComponent,
 
   ]
 })

@@ -1,0 +1,107 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-info">
+            <div class="nav-tabs-navigation">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="nav-item">
+                  <a mat-button class="nav-link active" href="#receipt" data-toggle="tab">
+                    Receipt
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#payment" data-toggle="tab">
+                    Payment
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#journal" data-toggle="tab">
+                    Journal
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#remittance" data-toggle="tab">
+                    Remittance
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-body">
+
+            <form action="" class="form-inline">
+              <div class="form-group">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="headerpicker" placeholder="Choose a date">
+                  <mat-datepicker-toggle matSuffix [for]="headerpicker"></mat-datepicker-toggle>
+                  <mat-datepicker #headerpicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <h4>Cash Balance:68191</h4>
+            </form>
+            <div class="tab-content">
+
+              <div class="tab-pane active" id="receipt">
+                <div class="row">
+                  <div class="col-md-12">
+                    receipt
+
+                    <!--<mat-form-field>
+                      <input matInput [matDatepicker]="receiptpicker" placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="receiptpicker"></mat-datepicker-toggle>
+                      <mat-datepicker #receiptpicker></mat-datepicker>
+                    </mat-form-field>-->
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="payment">
+                <div class="row">
+                  <div class="col-md-12">
+                    payment
+                    <!--<mat-form-field>
+                      <input matInput [matDatepicker]="paymentpicker" placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="paymentpicker"></mat-datepicker-toggle>
+                      <mat-datepicker #paymentpicker></mat-datepicker>
+                    </mat-form-field>-->
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="journal">
+                <div class="row">
+                  <div class="col-md-12">
+                    journal
+                    <!--<mat-form-field>
+                      <input matInput [matDatepicker]="journalpicker" placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="journalpicker"></mat-datepicker-toggle>
+                      <mat-datepicker #journalpicker></mat-datepicker>
+                    </mat-form-field>-->
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="remittance">
+                <div class="row">
+                  <div class="col-md-12">
+                    remittance
+                    <!--<mat-form-field>
+                      <input matInput [matDatepicker]="remittancepicker" placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="remittancepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #remittancepicker></mat-datepicker>
+                    </mat-form-field>-->
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

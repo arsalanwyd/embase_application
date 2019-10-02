@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./super-students.component.scss']
 })
 export class SuperStudentsComponent implements OnInit {
+  
 
   constructor() { }
 

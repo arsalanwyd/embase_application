@@ -30,6 +30,8 @@ import { SuperStudentsComponent } from 'app/super-students/super-students.compon
 import { SuperAttendanceComponent } from 'app/super-attendance/super-attendance.component';
 import { RemittanceComponent } from 'app/remittance/remittance.component';
 import { RemittanceVerificationComponent } from 'app/remittance-verification/remittance-verification.component';
+import { ReceivedReportComponent } from 'app/received-report/received-report.component';
+import { AccountingComponent } from 'app/accounting/accounting.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -102,4 +104,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'super-attendance',       component: SuperAttendanceComponent },
     { path: 'remittance',       component: RemittanceComponent },
     { path: 'remittance-verification',       component: RemittanceVerificationComponent },
+    { path: 'received-report',       component: ReceivedReportComponent },
+    { path: 'accounting',       component: AccountingComponent },
+
 ];

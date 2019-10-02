@@ -13,7 +13,9 @@ export const ROUTES: RouteInfo[] = [
   { path: '/super-attendance', title: 'Attendance', icon: 'spellcheck', class: '' },
   { path: '/remittance', title: 'Remittance', icon: 'money', class: '' },
   { path: '/remittance-verification', title: 'Remittance Verification', icon: 'verified_user', class: '' },
-
+  { path: '/received-report', title: 'Received Report', icon: 'receipt', class: '' },
+  { path: '/accounting', title: 'Accounting', icon: 'monetization_on', class: '' },
+  
   //    { path: '/dashboard', title: 'Books',  icon: 'collections_bookmark', class: '' },
   //    { path: '/addBooks', title: 'Add Book',  icon: 'post_add', class: '' },
   //  { path: '/issuebook', title: 'Issue Book',  icon: 'content_paste', class: '' },

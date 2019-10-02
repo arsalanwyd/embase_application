@@ -1,0 +1,220 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-info">
+            <div class="nav-tabs-navigation">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="nav-item">
+                  <a mat-button class="nav-link active" href="#paymentReceived" data-toggle="tab">
+                    Payment Received
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#currentPaidBatchReport" data-toggle="tab">
+                    Current Paid Batch Report
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="paymentReceived">
+                <h4 class="text-center text-info">Payment Received</h4>
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="paymentFrompicker" placeholder="FROM">
+                      <mat-datepicker-toggle matSuffix [for]="paymentFrompicker"></mat-datepicker-toggle>
+                      <mat-datepicker #paymentFrompicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="PaymentToicker" placeholder="TO">
+                      <mat-datepicker-toggle matSuffix [for]="PaymentTopicker"></mat-datepicker-toggle>
+                      <mat-datepicker #paymentTopicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <button type="button" class="btn btn-info">submit</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>SL NO</th>
+                            <th>Ledger</th>
+                            <th class="text-right">Amount</th>
+                          </tr>
+
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><a (click)="onTableRowClick($event)">1</a></td>
+                            <td>Cash</td>
+                            <td class="text-right"><a (click)="onTableRowClick($event)">0.00</a></td>
+                          </tr>
+                          <tr *ngIf="openRow">
+                            <td></td>
+                            <td>Cash</td>
+                            <td class="text-right">0.00</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th></th>
+                            <th>Total</th>
+                            <th class="text-right">9610.00</th>
+                          </tr>
+                          <tr>
+                            <th></th>
+                            <th>Challan No</th>
+                            <th class="text-right">9 to 26</th>
+                          </tr>
+                          <tr>
+                            <th></th>
+                            <th>Total Number of Challan</th>
+                            <th class="text-right">18</th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="currentPaidBatchReport">
+                <h4 class="text-center text-info">Current Paid Batch Report</h4>
+                <div class="row">
+                  <div class="col-md-3">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="paymentFromDatepicker" placeholder="FROM">
+                      <mat-datepicker-toggle matSuffix [for]="paymentFromDatepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #paymentFromDatepicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="paymentToDatepicker" placeholder="TO">
+                      <mat-datepicker-toggle matSuffix [for]="paymentToDatepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #paymentToDatepicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field>
+                      <mat-select>
+                        <mat-option>SELECT PROGRAM</mat-option>
+                        <mat-option value="PG">PG</mat-option>
+                        <mat-option value="UG">UG</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <button type="button" class="btn btn-info">submit</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>SL NO</th>
+                            <th>Admsn Year</th>
+                            <th>Ledger</th>
+                            <th class="text-right">Amount</th>
+                          </tr>
+
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>2018-19</td>
+                            <td>Tution Fee</td>
+                            <td class="text-right"><a href="#ledgerModal" data-toggle="modal">220.00</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th></th>
+                            <th>Total</th>
+                            <th></th>
+                            <th class="text-right">220.00</th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="ledgerModal" tabindex="-1" role="dialog"
+                    aria-labelledby="ledgerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="ledgerModalLabel">Tution Fee 2018-19</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>SL NO</th>
+                                  <th>Admsn No</th>
+                                  <th>Name</th>
+                                  <th>Challan No</th>
+                                  <th>Ledger</th>
+                                  <th class="text-right">Amount</th>
+                                </tr>
+
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>1032</td>
+                                  <td>Shifna T K</td>
+                                  <td>24</td>
+                                  <td>Tuition Fee Third Semester</td>
+                                  <td class="text-right">50.00</td>
+                                </tr>
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <th></th>
+                                  <th>Total</th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                  <th class="text-right">220.00</th>
+                                </tr>
+                              </tfoot>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger center-block text-center"
+                            data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

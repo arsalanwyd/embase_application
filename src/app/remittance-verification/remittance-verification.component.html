@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12 col-md-12">
         <div class="card">
-          <div class="card-header card-header-tabs card-header-danger">
+          <div class="card-header card-header-tabs card-header-warning">
             <div class="nav-tabs-navigation">
               <ul class="nav nav-tabs" data-tabs="tabs">
                 <li class="nav-item">
@@ -20,9 +20,9 @@
                 </li>
                 <li class="nav-item">
                   <a mat-button class="nav-link" href="#edit" data-toggle="tab">
-                    <i class="material-icons">
-                      edit
-                    </i>Edit
+                    <button class="btn btn-fab btn-warning btn-fab-mini" data-toggle="modal" data-target="#challanModal">
+                      <i class="material-icons">edit</i>
+                    </button>
                     <div class="ripple-container"></div>
                   </a>
                 </li>
@@ -33,8 +33,7 @@
           <div class="card-body">
             <div class="tab-content">
               <div class="tab-pane active" id="verification">
-                Verification
-                <h4 class="text-center text-info">REMITANCE VERIFICATION</h4>
+                <h4 class="text-center text-info">REMITTANCE VERIFICATION</h4>
                 <div class="table-responsive">
                   <table class="table">
                     <thead>
@@ -65,19 +64,49 @@
                         aria-labelledby="showRemittanceModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title text-center text-info" id="showRemittanceModalLabel">Dr. Ashokan
-                                PK-1001</h5>
+                            <div class="modal-header center-block text-center bg-info">
+                              <h4 class="modal-title">
+                                Dr. Ashokan PK-1001
+                              </h4>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
                             <div class="modal-body">
-                              ...
+                              <h5 class="modal-title text-center text-info">Bank 0 Cash 28010 Scholarship 0 Total 28010
+                              </h5>
+                              <div class="table-responsive">
+                                <table>
+                                  <thead class="text-center">
+                                    <th>Date</th>
+                                    <th>Challan No</th>
+                                    <th>Invoice No</th>
+                                    <th>Admsn No</th>
+                                    <th>Course</th>
+                                    <th>Amount</th>
+                                    <th>Mode</th>
+                                    <th><input type="checkbox"></th>
+                                  </thead>
+                                  <tbody>
+                                    <td class="text-center">26/08/19</td>
+                                    <td class="text-center">20</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-center">660</td>
+                                    <td class="text-center">BCA</td>
+                                    <td class="text-right">9000.00</td>
+                                    <td class="text-center">Cash</td>
+                                    <td><input type="checkbox"></td>
+                                  </tbody>
+                                  <tfoot>
+
+                                  </tfoot>
+                                </table>
+                              </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-danger btn-block btn-flat"
+                                data-dismiss="modal">Cancel</button>
+                              <button type="button" class="btn btn-info btn-block btn-flat">verify</button>
                             </div>
                           </div>
                         </div>
@@ -87,10 +116,10 @@
                       <td></td>
                       <td></td>
                       <td>TOTAL</td>
-                      <td>0</td>
-                      <td>29930</td>
-                      <td>0</td>
-                      <td>29930</td>
+                      <td class="text-right">0</td>
+                      <td class="text-right">29930</td>
+                      <td class="text-right">0</td>
+                      <td class="text-right">29930</td>
                       <td></td>
                     </tfoot>
                   </table>
@@ -98,9 +127,169 @@
               </div>
               <div class="tab-pane" id="history">
                 <h4 class="text-center text-info">VERIFICATION HISTORY</h4>
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker" placeholder="FROM">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="ToDatepicker" placeholder="TO">
+                      <mat-datepicker-toggle matSuffix [for]="ToDatepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #ToDatepicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <button type="button" class="btn btn-info">submit</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Challan No</th>
+                            <th class="text-center">Invoice No</th>
+                            <th class="text-center">Admsn No</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Course</th>
+                            <th class="text-right">Amount</th>
+                            <th class="text-center">Mode</th>
+                            <th class="text-center">Cashier</th>
+                            <th class="text-center">Verified By</th>
+                          </tr>
+
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center">14/09/19</td>
+                            <td class="text-center">26</td>
+                            <td class="text-center">86</td>
+                            <td class="text-center">741</td>
+                            <td class="text-center">SALVA NUSMATH</td>
+                            <td class="text-center">B.B.A</td>
+                            <td class="text-right">20.00</td>
+                            <td class="text-center">Cash</td>
+                            <td class="text-center">Admin</td>
+                            <td class="text-center">Admin</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="text-center">Date</td>
+                            <td class="text-center">Challan No</td>
+                            <td class="text-center">Invoice No</td>
+                            <td class="text-center">Admsn No</td>
+                            <td class="text-center">Name</td>
+                            <td class="text-center">Course</td>
+                            <td class="text-right">Amount</td>
+                            <td class="text-center">Mode</td>
+                            <td class="text-center">Cashier</td>
+                            <td class="text-center">Verified By</td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="tab-pane" id="edit">
-                Edit
+                <div class="modal fade" id="challanModal" tabindex="-1" role="dialog"
+                  aria-labelledby="challanModalLabel" aria-hidden="true" *ngIf="!submitChallan">
+                  <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="challanModalLabel">CHALLAN CORRECTION</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <mat-form-field>
+                          <input matInput placeholder="Challan No.">
+                        </mat-form-field>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-toggle="modal"
+                          data-target="#submitChallanModal" (click)="onSubmitChallan($event)">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="submitChallanModal" tabindex="-1" role="dialog"
+                  aria-labelledby="submitChallanModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header bg-info text-center">
+                        <h5 class="modal-title" id="submitChallanModalLabel">Challan No:20</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Invoice No</th>
+                                <th>Ledger Name</th>
+                                <th class="text-right">Payable Amount</th>
+                                <th class="text-center">Paid Amount</th>
+                                <th class="text-right">Balance</th>
+                                <th class="text-right">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody class="text-center">
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right"></td>
+                                <td>
+                                  <mat-form-field>
+                                    <input matInput placeholder="" value="0.00">
+                                  </mat-form-field>
+                                </td>
+                                <td class="text-right">Balance</td>
+                                <td class="text-right"><button class="btn btn-info btn-fab btn-fab-mini"
+                                    (click)="onConfirm($event)" data-toggle="modal" data-target="#confirmModal">
+                                    <i class="material-icons">done</i>
+                                  </button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog"
+                  aria-labelledby="confirmModalLabel" aria-hidden="true" *ngIf="!confirmYes">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="confirmModalLabel">Confirm your action?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info" (click)="onConfirmYes($event)">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
               </div>
             </div>
           </div>
