@@ -30,70 +30,970 @@
                     <div class="ripple-container"></div>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#journaledit" data-toggle="tab">
+                    <i class="material-icons">edit</i>
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
 
           <div class="card-body">
-
-            <form action="" class="form-inline">
-              <div class="form-group">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <mat-form-field>
                   <input matInput [matDatepicker]="headerpicker" placeholder="Choose a date">
                   <mat-datepicker-toggle matSuffix [for]="headerpicker"></mat-datepicker-toggle>
                   <mat-datepicker #headerpicker></mat-datepicker>
                 </mat-form-field>
               </div>
-              <h4>Cash Balance:68191</h4>
-            </form>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <h4 class="pull-right text-success">Cash Balance : 68191</h4>
+              </div>
+            </div>
             <div class="tab-content">
 
               <div class="tab-pane active" id="receipt">
                 <div class="row">
                   <div class="col-md-12">
-                    receipt
+                    <h5>Receipt Entry</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Ledger</th>
+                            <th>Sub Ledger</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>By</td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Debit">
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td>To</td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Credit">
+                              </mat-form-field>
+                            </td>
+                            <td></td>
+                          </tr>
+                          <tr *ngFor="let field of fieldArray; let i = index">
+                            <td>
+                              TO
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              0
+                            </td>
+                            <td>
+                              <input [(ngModel)]="field.credit" class="form-control" type="text"
+                                name="{{field.credit}}" />
+                            </td>
+                            <td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <button class="btn btn-success" type="button" (click)="addFieldValue()">+</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <mat-form-field>
+                                <textarea matInput placeholder="Details"></textarea>
+                              </mat-form-field>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center"><button type="button"
+                                class="btn btn-info">Submit</button></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="text-danger">Journal View</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Journal No</th>
+                            <th>Date</th>
+                            <th>Sub Ledger</th>
+                            <th>Narration</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>40</td>
+                            <td>21/08/2019</td>
+                            <td>Tuition Fee First Semester</td>
+                            <td>Challan 12,19,15,18,14,17,13,16 </td>
+                            <td>8300</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <td>Journal No</td>
+                          <td>Date</td>
+                          <td>Sub Ledger</td>
+                          <td>Narration</td>
+                          <td>Debit</td>
+                          <td>Credit</td>
+                        </tfoot>
 
-                    <!--<mat-form-field>
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!--<mat-form-field>
                       <input matInput [matDatepicker]="receiptpicker" placeholder="Choose a date">
                       <mat-datepicker-toggle matSuffix [for]="receiptpicker"></mat-datepicker-toggle>
                       <mat-datepicker #receiptpicker></mat-datepicker>
                     </mat-form-field>-->
-                  </div>
-                </div>
+
+
               </div>
               <div class="tab-pane" id="payment">
                 <div class="row">
                   <div class="col-md-12">
-                    payment
-                    <!--<mat-form-field>
-                      <input matInput [matDatepicker]="paymentpicker" placeholder="Choose a date">
-                      <mat-datepicker-toggle matSuffix [for]="paymentpicker"></mat-datepicker-toggle>
-                      <mat-datepicker #paymentpicker></mat-datepicker>
-                    </mat-form-field>-->
+                    <h5>Payment Entry</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Ledger</th>
+                            <th>Sub Ledger</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>To</td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Credit">
+                              </mat-form-field>
+                            </td>
+
+                          </tr>
+                          <tr>
+                            <td>By</td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Debit">
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+                            <td></td>
+                          </tr>
+                          <tr *ngFor="let field of fieldArray; let i = index">
+                            <td>
+                              By
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <input [(ngModel)]="field.debit" class="form-control" type="text"
+                                name="{{field.Debit}}" />
+                            </td>
+                            <td>
+                              0
+                            </td>
+                            <td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <button class="btn btn-success" type="button" (click)="addFieldValue()">+</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <mat-form-field>
+                                <textarea matInput placeholder="Details"></textarea>
+                              </mat-form-field>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center"><button type="button"
+                                class="btn btn-info">Submit</button></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="text-danger">Journal View</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Journal No</th>
+                            <th>Date</th>
+                            <th>Sub Ledger</th>
+                            <th>Narration</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>40</td>
+                            <td>21/08/2019</td>
+                            <td>Tuition Fee First Semester</td>
+                            <td>Challan 12,19,15,18,14,17,13,16 </td>
+                            <td>8300</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <td>Journal No</td>
+                          <td>Date</td>
+                          <td>Sub Ledger</td>
+                          <td>Narration</td>
+                          <td>Debit</td>
+                          <td>Credit</td>
+                        </tfoot>
+
+                      </table>
+                    </div>
+
                   </div>
                 </div>
               </div>
               <div class="tab-pane" id="journal">
                 <div class="row">
                   <div class="col-md-12">
-                    journal
-                    <!--<mat-form-field>
+                    <h5>Journal Entry</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Ledger</th>
+                            <th>Sub Ledger</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>By</td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Debit">
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+
+
+                          </tr>
+                          <tr>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">To</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">By</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Credit">
+                              </mat-form-field>
+                            </td>
+
+                            <td></td>
+                          </tr>
+                          <tr *ngFor="let field of fieldArray; let i = index">
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">To</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">By</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              0
+                            </td>
+                            <td>
+                              <input [(ngModel)]="field.credit" class="form-control" type="text"
+                                name="{{field.Debit}}" />
+                            </td>
+
+                            <td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <button class="btn btn-success" type="button" (click)="addFieldValue()">+</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <mat-form-field>
+                                <textarea matInput placeholder="Details"></textarea>
+                              </mat-form-field>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center"><button type="button"
+                                class="btn btn-info">Submit</button></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="text-danger">Journal View</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Journal No</th>
+                            <th>Date</th>
+                            <th>Sub Ledger</th>
+                            <th>Narration</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>40</td>
+                            <td>21/08/2019</td>
+                            <td>Tuition Fee First Semester</td>
+                            <td>Challan 12,19,15,18,14,17,13,16 </td>
+                            <td>8300</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <td>Journal No</td>
+                          <td>Date</td>
+                          <td>Sub Ledger</td>
+                          <td>Narration</td>
+                          <td>Debit</td>
+                          <td>Credit</td>
+                        </tfoot>
+
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!--<mat-form-field>
                       <input matInput [matDatepicker]="journalpicker" placeholder="Choose a date">
                       <mat-datepicker-toggle matSuffix [for]="journalpicker"></mat-datepicker-toggle>
                       <mat-datepicker #journalpicker></mat-datepicker>
                     </mat-form-field>-->
-                  </div>
-                </div>
-              </div>
               <div class="tab-pane" id="remittance">
                 <div class="row">
                   <div class="col-md-12">
-                    remittance
-                    <!--<mat-form-field>
+                    <h5>Remittance Entry</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>Ledger</th>
+                            <th>Sub Ledger</th>
+                            <th>Amount</th>
+                            <th>Mode</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>21/08/2019</td>
+                            <td>Tution Fee</td>
+                            <td>Tuition Fee Third Semester</td>
+                            <td>220.00</td>
+                            <td>Cash</td>
+                            <td><a (click)="onSelectActionClick($event)">SELECT</a></td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td>Date</td>
+                            <td>Ledger</td>
+                            <td>Sub Ledger</td>
+                            <td>Amount</td>
+                            <td>Mode</td>
+                            <td>Action</td>
+                          </tr>
+                        </tfoot>
+
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="remittancepicker" placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="remittancepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #remittancepicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row" *ngIf="selectAction">
+                  <div class="col-md-12">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Ledger</th>
+                            <th>Sub Ledger</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>By</td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Debit" readonly>
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td>To</td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Credit" readonly>
+                              </mat-form-field>
+                            </td>
+                            <td></td>
+                          </tr>
+                          <tr *ngFor="let field of fieldArray; let i = index">
+                            <td>
+                              TO
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              0
+                            </td>
+                            <td>
+                              <input [(ngModel)]="field.credit" class="form-control" type="text" name="{{field.credit}}"
+                                disabled />
+                            </td>
+                            <td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <button class="btn btn-success" type="button" (click)="addFieldValue()">+</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <mat-form-field>
+                                <textarea matInput placeholder="Details" readonly></textarea>
+                              </mat-form-field>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center"><button type="button"
+                                class="btn btn-info">Submit</button></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="text-danger">Journal View</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Journal No</th>
+                            <th>Date</th>
+                            <th>Sub Ledger</th>
+                            <th>Narration</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>40</td>
+                            <td>21/08/2019</td>
+                            <td>Tuition Fee First Semester</td>
+                            <td>Challan 12,19,15,18,14,17,13,16 </td>
+                            <td>8300</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <td>Journal No</td>
+                          <td>Date</td>
+                          <td>Sub Ledger</td>
+                          <td>Narration</td>
+                          <td>Debit</td>
+                          <td>Credit</td>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<mat-form-field>
                       <input matInput [matDatepicker]="remittancepicker" placeholder="Choose a date">
                       <mat-datepicker-toggle matSuffix [for]="remittancepicker"></mat-datepicker-toggle>
                       <mat-datepicker #remittancepicker></mat-datepicker>
                     </mat-form-field>-->
+
+              <div class="tab-pane" id="journaledit">
+                <h5>Journal Entry Edit</h5>
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field>
+                      <input matInput placeholder="Enter Journal Number">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Ledger</th>
+                            <th>Sub Ledger</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>By</td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Debit">
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+
+
+                          </tr>
+                          <tr>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">To</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">By</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>0</td>
+                            <td>
+                              <mat-form-field>
+                                <input matInput placeholder="Credit">
+                              </mat-form-field>
+                            </td>
+
+                            <td></td>
+                          </tr>
+                          <tr *ngFor="let field of fieldArray; let i = index">
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">To</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">By</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Main Ledger">Main Ledger</mat-option>
+                                  <mat-option value="Cash">Cash</mat-option>
+                                  <mat-option value="Bank">Bank</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field>
+                                <mat-select placeholder="">
+                                  <mat-option value="Exam Fee Sem 1">Exam Fee Sem 1</mat-option>
+                                  <mat-option value="Exam Fee Sem 2">Exam Fee Sem 2</mat-option>
+                                  <mat-option value="Exam Fee Sem 3">Exam Fee Sem 3</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              0
+                            </td>
+                            <td>
+                              <input [(ngModel)]="field.credit" class="form-control" type="text"
+                                name="{{field.Debit}}" />
+                            </td>
+
+                            <td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <button class="btn btn-success" type="button" (click)="addFieldValue()">+</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="6" class="text-center">
+                              <mat-form-field>
+                                <textarea matInput placeholder="Details"></textarea>
+                              </mat-form-field>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="text-center"><button type="button"
+                                class="btn btn-info">Submit</button></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="text-danger">Journal View</h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Journal No</th>
+                            <th>Date</th>
+                            <th>Sub Ledger</th>
+                            <th>Narration</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>40</td>
+                            <td>21/08/2019</td>
+                            <td>Tuition Fee First Semester</td>
+                            <td>Challan 12,19,15,18,14,17,13,16 </td>
+                            <td>8300</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <td>Journal No</td>
+                          <td>Date</td>
+                          <td>Sub Ledger</td>
+                          <td>Narration</td>
+                          <td>Debit</td>
+                          <td>Credit</td>
+                        </tfoot>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
