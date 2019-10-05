@@ -66,6 +66,7 @@ import { RemittanceComponent } from 'app/remittance/remittance.component';
 import { RemittanceVerificationComponent } from 'app/remittance-verification/remittance-verification.component';
 import { ReceivedReportComponent } from 'app/received-report/received-report.component';
 import { AccountingComponent } from 'app/accounting/accounting.component';
+import { AccountsReportComponent } from 'app/accounts-report/accounts-report.component';
 
 @NgModule({
   imports: [
@@ -142,6 +143,7 @@ import { AccountingComponent } from 'app/accounting/accounting.component';
     RemittanceVerificationComponent,
     ReceivedReportComponent,
     AccountingComponent,
+    AccountsReportComponent,
 
   ]
 })
