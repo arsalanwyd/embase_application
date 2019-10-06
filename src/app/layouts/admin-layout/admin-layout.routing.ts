@@ -33,6 +33,7 @@ import { RemittanceVerificationComponent } from 'app/remittance-verification/rem
 import { ReceivedReportComponent } from 'app/received-report/received-report.component';
 import { AccountingComponent } from 'app/accounting/accounting.component';
 import { AccountsReportComponent } from 'app/accounts-report/accounts-report.component';
+import { TransferCertificateComponent } from 'app/transfer-certificate/transfer-certificate.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -108,5 +109,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'received-report',       component: ReceivedReportComponent },
     { path: 'accounting',       component: AccountingComponent },
     { path: 'accounts-report',       component: AccountsReportComponent },
+    { path: 'transfer-certificate',       component: TransferCertificateComponent },
 
 ];

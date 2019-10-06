@@ -1,0 +1,199 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-danger card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">description</i>
+            </div>
+            <p class="card-category">TC Verification</p>
+            <h3 class="card-title">2
+            </h3>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">cloud_download</i>
+            </div>
+            <p class="card-category">TC Download</p>
+            <h3 class="card-title">2
+            </h3>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-info card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">attach_file</i>
+            </div>
+            <p class="card-category">C&B Certificates</p>
+            <h3 class="card-title">8
+            </h3>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">not_interested</i>
+            </div>
+            <p class="card-category">Total Rejected</p>
+            <h3 class="card-title">2
+            </h3>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-success">
+            <div class="nav-tabs-navigation">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="nav-item">
+                  <a mat-button class="nav-link active" href="#application" data-toggle="tab">
+                    Application
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#verification" data-toggle="tab">
+                    Verification
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#download" data-toggle="tab">
+                    Download
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a mat-button class="nav-link" href="#rejected" data-toggle="tab">
+                    Rejected
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="tab-content">
+
+              <div class="tab-pane active" id="application">
+                <div class="row">
+                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    <mat-form-field>
+                      <input matInput placeholder="Enter admission Number">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    <button class="btn btn-info" (click)="onSubmitAdmsnNo($event)">Submit</button>
+                  </div>
+                </div>
+                <div class="row" *ngIf="onSubmit">
+                  <div class="col-md-12">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Adm No</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Adm Year</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>784</td>
+                            <td>FATHIMA FARSANA K T</td>
+                            <td>B.A English</td>
+                            <td>2018-19</td>
+                            <td><button class="btn btn-primary btn-fab btn-fab-mini" data-toggle="modal"
+                                data-target="#transferCertificate">
+                                <i class="material-icons">cloud_download</i>
+                              </button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="transferCertificate" tabindex="-1" role="dialog"
+                      aria-labelledby="transferCertificateLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title bg-success text-center" id="transferCertificateLabel">TRANSFER &
+                              CONDUCT CERTIFICATE</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <p class="login-box-msg">This Transfer Certificate Verified by <span
+                                class="text-capitalize text-blue ng-binding"> Admin Administration Department</span>
+                            </p>
+                          </div>
+                          <div class="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="tab-pane" id="verification">
+                <div class="row">
+                  <div class="col-md-4">
+                    verification
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="download">
+                <div class="row">
+                  <div class="col-md-4">
+                    download
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="rejected">
+                <div class="row">
+                  <div class="col-md-4">
+                    rejected
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/received-report', title: 'Received Report', icon: 'receipt', class: '' },
   { path: '/accounting', title: 'Accounting', icon: 'monetization_on', class: '' },
   { path: '/accounts-report', title: 'Accounts Report', icon: 'report_problem', class: '' },
+  { path: '/transfer-certificate', title: 'Transfer Certificate', icon: 'exit_to_app', class: '' },
 
   //    { path: '/dashboard', title: 'Books',  icon: 'collections_bookmark', class: '' },
   //    { path: '/addBooks', title: 'Add Book',  icon: 'post_add', class: '' },
