@@ -9,7 +9,7 @@ export class AccountingComponent implements OnInit {
   today: number = Date.now();
   time = new Date();
   selectAction = false;
-  private fieldArray: Array<any> = [];
+  public fieldArray: Array<any> = [];
   private newAttribute: any = {};
 
   constructor() { }

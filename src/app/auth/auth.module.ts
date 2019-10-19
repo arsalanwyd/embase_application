@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS, } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-// import { AuthComponent } from './auth.component';
+import { AuthComponent } from './auth.component';
 import { AuthserviceService } from './authservice.service';
 import { RandomGuard } from 'app/guards/random.guard';
 import { TokenInterceptor } from './token.interceptor';
 import { AuthGuard } from 'app/guards/auth.guard';
+import { MatFormFieldModule, MatProgressBarModule } from '@angular/material';
 
 
 @NgModule({
-  // declarations: [AuthComponent],
+  declarations: [AuthComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
     HttpClientModule,
     RouterModule,
   ],

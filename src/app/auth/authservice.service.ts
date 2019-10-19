@@ -10,12 +10,13 @@ import { Book } from 'app/models/book';
 })
 export class AuthserviceService {
   loggedUser: string;
-  readonly rootUrl = 'http://127.0.0.1:8000/api';
+  //readonly rootUrl = 'http://127.0.0.1:8000/api';
+  readonly rootUrl = 'https://new.embase.in/backend/api';
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'JWT_TOKEN';
   constructor(private http: HttpClient) { }
   login(data): Observable<boolean> {
-    return this.http.post<any>(this.rootUrl + `/login`, data)
+    return this.http.post<any>(this.rootUrl + `/specificLogin`, data)
     .pipe(
       tap(token => this.doLoginUser(data.email, token)),
       mapTo(true),

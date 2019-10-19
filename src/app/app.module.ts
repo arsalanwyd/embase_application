@@ -11,6 +11,7 @@ import {
   MatAutocompleteModule,
   MatNativeDateModule,
   MatDatepickerModule,
+  MatProgressBarModule,
 } from '@angular/material';
 
 
@@ -37,7 +38,6 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { AuthModule } from './auth/auth.module';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { AuthGuard } from './guards/auth.guard';
-import { AuthComponent } from './auth/auth.component';
 @NgModule({
   imports: [
     MatDatepickerModule,
@@ -46,6 +46,7 @@ import { AuthComponent } from './auth/auth.component';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatProgressBarModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
@@ -62,7 +63,6 @@ import { AuthComponent } from './auth/auth.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthComponent,
   ],
   providers: [
     AuthModule,

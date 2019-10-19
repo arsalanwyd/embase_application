@@ -35,6 +35,7 @@ id: number;
 
 export class TestComponent implements OnInit {
   //satrt for chips
+  fruits;
   visible = true;
   selectable = true;
   removable = true;

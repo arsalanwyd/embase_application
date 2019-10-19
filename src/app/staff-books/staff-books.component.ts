@@ -9,7 +9,7 @@ import { StaffService } from 'app/services/staff.service';
 })
 export class StaffBooksComponent implements OnInit {
   displayedColumns: string[] = ['book_no', 'book_name', 'book_author', 'book_category', 'status'];
- // booklist: MatTableDataSource<any>;
+  booklist: MatTableDataSource<any>;
   bookinhand: any;
   readlist: any; 
   book: any;
@@ -96,11 +96,11 @@ booksHistory : [
 ];
   @ViewChild(MatPaginator, {static: true})paginator: MatPaginator;
   @ViewChild(MatSort, {static: false})sort: MatSort;
- // constructor(private staffservice: StaffService) { }
+  constructor(private staffservice: StaffService) { }
 
 
   ngOnInit() {
-  /* this.staffservice.getBookList().subscribe((res: any) => {
+   this.staffservice.getBookList().subscribe((res: any) => {
       console.log(res.books);
       this.booklist = new MatTableDataSource(res.books);
       this.booklist.sort = this.sort;
@@ -115,7 +115,7 @@ booksHistory : [
   }
   applyFilter(filterValue: string) {
     this.booklist.filter = filterValue.trim().toLowerCase();
-   console.log(this.booklist);*/
+   console.log(this.booklist);
   }
 
 }

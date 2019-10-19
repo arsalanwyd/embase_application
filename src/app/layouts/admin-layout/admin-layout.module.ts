@@ -17,7 +17,6 @@ import {
   MatButtonModule,
   MatInputModule,
   MatRippleModule,
-  MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule,
   MatIconModule,
@@ -36,6 +35,9 @@ import {
   MatExpansionModule,
   MatCheckboxModule,
   MatDatepickerModule,
+  MatSidenavModule,
+  MatListModule,
+  MatFormFieldModule,
 } from '@angular/material';
 import { TokenInterceptor } from 'app/auth/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -68,6 +70,8 @@ import { ReceivedReportComponent } from 'app/received-report/received-report.com
 import { AccountingComponent } from 'app/accounting/accounting.component';
 import { AccountsReportComponent } from 'app/accounts-report/accounts-report.component';
 import { TransferCertificateComponent } from 'app/transfer-certificate/transfer-certificate.component';
+import { StaffQuizComponent } from 'app/staff-quiz/staff-quiz.component';
+import { StudentBooksComponent } from 'app/staff-books/student-books.component';
 
 @NgModule({
   imports: [
@@ -78,9 +82,9 @@ import { TransferCertificateComponent } from 'app/transfer-certificate/transfer-
     MatButtonModule,
     MatRippleModule,
     HttpClientModule,
-    MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    MatSidenavModule,
     MatAutocompleteModule,
     MatSelectModule,
     MatTooltipModule,
@@ -98,6 +102,8 @@ import { TransferCertificateComponent } from 'app/transfer-certificate/transfer-
     MatExpansionModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatListModule,
+    MatFormFieldModule,
 
   ],
   providers: [
@@ -127,6 +133,7 @@ import { TransferCertificateComponent } from 'app/transfer-certificate/transfer-
     SampleComponent,
     AddBookComponent,
     StaffHomeComponent,
+    StaffQuizComponent,
     StudentsComponent,
     AttendanceComponent,
     AttendanceReportComponent,
@@ -146,6 +153,7 @@ import { TransferCertificateComponent } from 'app/transfer-certificate/transfer-
     AccountingComponent,
     AccountsReportComponent,
     TransferCertificateComponent,
+    StudentBooksComponent,
 
   ]
 })

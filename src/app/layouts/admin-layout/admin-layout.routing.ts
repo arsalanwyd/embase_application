@@ -34,6 +34,7 @@ import { ReceivedReportComponent } from 'app/received-report/received-report.com
 import { AccountingComponent } from 'app/accounting/accounting.component';
 import { AccountsReportComponent } from 'app/accounts-report/accounts-report.component';
 import { TransferCertificateComponent } from 'app/transfer-certificate/transfer-certificate.component';
+import { StaffQuizComponent } from 'app/staff-quiz/staff-quiz.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -91,6 +92,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'userProfile',       component: UserProfileComponent },
     { path: 'staff-home',       component: StaffHomeComponent },
+    { path: 'staff-quiz',       component: StaffQuizComponent },
     { path: 'students',       component: StudentsComponent },
     { path: 'mark',       component: MarkComponent },
     { path: 'syllabus',       component: SyllabusComponent },
