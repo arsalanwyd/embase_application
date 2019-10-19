@@ -8,7 +8,7 @@ import { AuthserviceService } from './authservice.service';
 import { RandomGuard } from 'app/guards/random.guard';
 import { TokenInterceptor } from './token.interceptor';
 import { AuthGuard } from 'app/guards/auth.guard';
-import { MatFormFieldModule, MatProgressBarModule } from '@angular/material';
+import { MatFormFieldModule, MatProgressBarModule, MatInputModule } from '@angular/material';
 
 
 @NgModule({
@@ -20,6 +20,7 @@ import { MatFormFieldModule, MatProgressBarModule } from '@angular/material';
     MatProgressBarModule,
     HttpClientModule,
     RouterModule,
+    MatInputModule,
   ],
   providers: [
     AuthserviceService,

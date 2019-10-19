@@ -422,7 +422,7 @@
                             <td class="text-center">{{test?.total_mark}}</td>
                             <td class="text-center">{{test?.statusv}}</td>
                             <td class="text-center">
-                              <button type="button" rel="tooltip" class="btn btn-success" (click)="onEditTest(test)"
+                              <button type="button" rel="tooltip" class="btn btn-success" (click)="onEditTests(test)"
                                 data-toggle="modal" data-target="#testviewModal">
                                 <i class="material-icons">remove_red_eye</i>
                               </button>
@@ -653,11 +653,11 @@
                 </div>
               </div>
 
-              <div class="tab-pane" id="quiz">
+              <div class="tab-pane active" id="quiz">
 
                 <div class="row" *ngIf="!OK">
 
-                  <div class="col-md-6 col-sm-12" *ngFor="let quiz of quiz_details; index as i">
+                  <div class="col-md-6 col-sm-12" *ngFor="let quiz of quiz_info; index as i">
                     <div class="card">
                       <div class="card-header card-header-primary">
                         <h4 class="card-title text-center">{{quiz?.test_name}}</h4>
@@ -674,28 +674,28 @@
                   </div>
 
                   <!-- <div class="col-md-6 col-sm-12">
-                    <div class="card">
-                      <div class="card-header card-header-primary">
-                        <h4 class="card-title text-center">EXAMPLE (Test 2)</h4>
-                      </div>
-                      <div class="card-body">
-                        <h5>Test description 2 .....</h5>
-                        <h6>Test Duration : 60 seconds</h6>
-                        <div class="text-center">
-                          <button class="btn btn-info" (click)="onOK()">Start</button>
+                      <div class="card">
+                        <div class="card-header card-header-primary">
+                          <h4 class="card-title text-center">EXAMPLE (Test 2)</h4>
+                        </div>
+                        <div class="card-body">
+                          <h5>Test description 2 .....</h5>
+                          <h6>Test Duration : 60 seconds</h6>
+                          <div class="text-center">
+                            <button class="btn btn-info" (click)="onOK()">Start</button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div> -->
+                    </div> -->
 
                 </div>
 
                 <!--<form [formGroup]="quizDetailsForm" (ngSubmit)="onOK()">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Test Key" type="text" formControlName="test_key" #test_key>
-                      </mat-form-field>                      
-                      <button class="btn btn-info" type="submit" [[disabled]="quizDetailsForm.invalid"]="quizDetailsForm.invalid">OK</button>
-                    </form>-->
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Test Key" type="text" formControlName="test_key" #test_key>
+                        </mat-form-field>                      
+                        <button class="btn btn-info" type="submit" [[disabled]="quizDetailsForm.invalid"]="quizDetailsForm.invalid">OK</button>
+                      </form>-->
 
                 <div class="row" *ngIf="OK && !startQuiz">
                   <div class="col-md-12">
@@ -725,7 +725,7 @@
                         <mat-icon mat-list-icon>remove_circle</mat-icon> Negative Mark : {{quiz?.quiz?.is_negative}}
                       </mat-list-item>
                     </mat-list>
-                    <h5>Description: {{quiz?.quiz?.description}}</h5>
+                    <h5 class="description justify-content">Description: {{quiz?.quiz?.description}}</h5>
                     <div class="text-center">
                       <button class="btn btn-success" [disabled]="!quiz?.quiz?.test_status"
                         (click)="onstartTimer($event,quiz?.quiz?.test_time,test_key)">Start
@@ -735,13 +735,13 @@
                 </div>
 
                 <!--<h4 class="text-center">
-                      EXAMPLE (Test Name)
-                    </h4>
-                    <h5>Test description</h5>
-                    <div class="text-center">
-                      <button class="btn btn-success" (click)="onstartTimer($event)">Start
-                        Test</button>
-                    </div>-->
+                        EXAMPLE (Test Name)
+                      </h4>
+                      <h5>Test description</h5>
+                      <div class="text-center">
+                        <button class="btn btn-success" (click)="onstartTimer($event)">Start
+                          Test</button>
+                      </div>-->
 
                 <div class="row" *ngIf="startQuiz && !complete">
                   <div class="col-md-12 bg-info">
@@ -749,6 +749,7 @@
                       <p>Candidate Name: Shaheer</p>
                       <p>Test name: {{quiz?.quiz?.test_name}} </p>
                       <p>{{timeLeft}} Seconds Left....</p>
+
                     </div>
                   </div>
                   <div class="col-md-8 disable-text-selection">
@@ -800,7 +801,7 @@
                       <button type="text" class="btn" (click)="onNext($event)">NEXT</button>
                     </div>
                     <div class="pull-right">
-                      <button type="button" class="btn btn-success" (click)="onEditTest" data-toggle="modal"
+                      <button type="button" class="btn btn-success" (click)="onEditTest()" data-toggle="modal"
                         data-target="#confirmationModal">SUBMIT</button>
                     </div>
                   </div>
@@ -822,7 +823,8 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                          <button type="submit" class="btn btn-primary" (click)="onComplete($event)">Yes</button>
+                          <button type="submit" class="btn btn-primary" [disabled]="emptyCheck"
+                            (click)="onComplete($event)">Yes</button>
                         </div>
                       </div>
                     </div>
@@ -831,8 +833,8 @@
                   <div class="col-md-4 light-color">
                     <div class="card">
                       <!-- <div class="card-header">
-                        <h4 class="card-title text-center">QUESTIONS</h4>
-                      </div> -->
+                          <h4 class="card-title text-center">QUESTIONS</h4>
+                        </div> -->
                       <div class="card-body light-color">
                         <div class="row">
 
@@ -846,38 +848,38 @@
 
                     <div class="row">
                       <div class="col-12 text-right">
-                        NOT Answered <button mat-mini-fab color=""></button> 
+                        NOT Answered <button mat-mini-fab color=""></button>
                       </div>
                       <div class="col-12 text-right">
                         Answered <button mat-mini-fab color="primary"></button>
                       </div>
                       <div class="col-12 text-right">
-                        Marked For Review <button mat-mini-fab color="accent"></button> 
+                        Marked For Review <button mat-mini-fab color="accent"></button>
                       </div>
                       <div class="col-12 text-right">
-                       Saved & Marked For Review <button mat-mini-fab color="warn"></button> 
+                        Saved & Marked For Review <button mat-mini-fab color="warn"></button>
                       </div>
 
                       <!-- <div class="col-12">
-                        <mat-chip-list class="text-center">
-                          <mat-chip class="bg-white" aria-disabled="bg-white">Not Answered</mat-chip>
-                        </mat-chip-list>
-                      </div>
-                      <div class="col-12">
-                        <mat-chip-list class="text-center">
-                          <mat-chip color="primary" selected>Answered</mat-chip>
-                        </mat-chip-list>
-                      </div>
-                      <div class="col-12">
-                        <mat-chip-list class="text-center">
-                          <mat-chip color="accent" selected>Marked For Review</mat-chip>
-                        </mat-chip-list>
-                      </div>
-                      <div class="col-12">
-                        <mat-chip-list class="text-center">
-                          <mat-chip color="warn" selected>Answered & Marked For Review</mat-chip>
-                        </mat-chip-list>
-                      </div> -->
+                          <mat-chip-list class="text-center">
+                            <mat-chip class="bg-white" aria-disabled="bg-white">Not Answered</mat-chip>
+                          </mat-chip-list>
+                        </div>
+                        <div class="col-12">
+                          <mat-chip-list class="text-center">
+                            <mat-chip color="primary" selected>Answered</mat-chip>
+                          </mat-chip-list>
+                        </div>
+                        <div class="col-12">
+                          <mat-chip-list class="text-center">
+                            <mat-chip color="accent" selected>Marked For Review</mat-chip>
+                          </mat-chip-list>
+                        </div>
+                        <div class="col-12">
+                          <mat-chip-list class="text-center">
+                            <mat-chip color="warn" selected>Answered & Marked For Review</mat-chip>
+                          </mat-chip-list>
+                        </div> -->
 
                     </div>
 
@@ -885,123 +887,123 @@
                 </div>
 
                 <!--<mat-drawer-container class="example-container">
-                    <mat-drawer #drawer mode="side" opened>
-                      <div class="row" *ngFor="let que of ques">
-                        <div class="col-md-12">
-                          <button class="btn btn-success btn-round">{{que.questions_id}}</button>
-                        </div>
-                      </div>
-                      <div class="row" *ngFor="let que of ques">
-                        <div class="col-md-12">
-                          <button class="btn btn-success btn-round">{{que.questions_id}}</button>
-                        </div>
-                      </div>
-                      <div class="row" *ngFor="let que of ques">
-                        <div class="col-md-12">
-                          <button class="btn btn-success btn-round">{{que.questions_id}}</button>
-                        </div>
-                      </div>
-                    </mat-drawer>
-                    <mat-drawer-content>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="pull-right">
-                            <p>{{timeLeft}} Seconds Left....</p>
+                      <mat-drawer #drawer mode="side" opened>
+                        <div class="row" *ngFor="let que of ques">
+                          <div class="col-md-12">
+                            <button class="btn btn-success btn-round">{{que.questions_id}}</button>
                           </div>
                         </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-12 disable-text-selection">
-                          <form [formGroup]="quizForm" (ngSubmit)="form(index=0)" #formone="ngForm">
-                            <div class="form-group">
-                              <mat-horizontal-stepper labelPosition="bottom" #stepper>
-                                <mat-step *ngFor="let que of ques; index as i ; first as first ; last as last">
-                                  <ng-template matStepLabel>QUIZ</ng-template>
-                                  <div class="text-danger">
-                                    <h3>Question # {{i+1}} of {{ques.length}}</h3>
-                                  </div>
-                                  <label id="questions-radio-group-label" class="text-primary">{{que.question}}</label>
-                                  <mat-radio-group aria-labelledby="questions-radio-group-label"
-                                    class="questions-radio-group" formControlName="selectedOption" #selectedOption>
-                                    <mat-radio-button class="questions-radio-button" *ngFor="let option of que.options"
-                                      [value]="option" (change)="onOptionClick($event,i)">
-                                      {{option.option}}
-                                    </mat-radio-button>
-                                  </mat-radio-group>
-                                  <div>Your selected answer is : {{selectedOption.value}}</div>
-                                  <mat-chip-list>
-                                    <mat-chip color="primary" selected (click)="drawer.toggle()">Toggle</mat-chip>
-                                  </mat-chip-list>
-                                  <div *ngIf="first">
-                                    <mat-chip-list>
-                                      <mat-chip color="primary" selected (click)="stepper.next()"
-                                        (click)="onNextButtonClicked($event,i)">Next</mat-chip>
-                                    </mat-chip-list>
-                                    <div class="text-center">
-                                      <button type="text" (click)="formone.ngSubmit.emit();" class="btn btn-info"
-                                         (click)="onEditTest"  data-target="#confirmationModal">Complete
-                                        Test</button>
-                                    </div>
-                                  </div>
-
-                                  <div *ngIf="!first && !last">
-                                    <mat-chip-list>
-                                      <mat-chip color="accent" selected (click)="stepper.previous()">Back</mat-chip>
-                                      <mat-chip color="primary" selected (click)="stepper.next()"
-                                        (click)="onNextButtonClicked($event,i,quizForm.selectedOption)">Next
-                                      </mat-chip>
-                                    </mat-chip-list>
-                                    <div class="text-center">
-                                      <button type="text" (click)="formone.ngSubmit.emit();" class="btn btn-info"
-                                         (click)="onEditTest"  data-target="#confirmationModal">Complete
-                                        Test</button>
-                                    </div>
-                                  </div>
-                                  <div *ngIf="last">
-                                    <mat-chip-list>
-                                      <mat-chip color="accent" selected (click)="stepper.previous()">Back</mat-chip>
-                                    </mat-chip-list>
-                                    <div class="text-center">
-                                      <button type="text" (click)="formone.ngSubmit.emit();" class="btn btn-info"
-                                         (click)="onEditTest"  data-target="#confirmationModal">Complete
-                                        Test</button>
-                                    </div>
-                                  </div>
-                                </mat-step>
-                              </mat-horizontal-stepper>
+                        <div class="row" *ngFor="let que of ques">
+                          <div class="col-md-12">
+                            <button class="btn btn-success btn-round">{{que.questions_id}}</button>
+                          </div>
+                        </div>
+                        <div class="row" *ngFor="let que of ques">
+                          <div class="col-md-12">
+                            <button class="btn btn-success btn-round">{{que.questions_id}}</button>
+                          </div>
+                        </div>
+                      </mat-drawer>
+                      <mat-drawer-content>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="pull-right">
+                              <p>{{timeLeft}} Seconds Left....</p>
                             </div>
-                          </form>
-
+                          </div>
+                        </div>
+  
+                        <div class="row">
+                          <div class="col-md-12 disable-text-selection">
+                            <form [formGroup]="quizForm" (ngSubmit)="form(index=0)" #formone="ngForm">
+                              <div class="form-group">
+                                <mat-horizontal-stepper labelPosition="bottom" #stepper>
+                                  <mat-step *ngFor="let que of ques; index as i ; first as first ; last as last">
+                                    <ng-template matStepLabel>QUIZ</ng-template>
+                                    <div class="text-danger">
+                                      <h3>Question # {{i+1}} of {{ques.length}}</h3>
+                                    </div>
+                                    <label id="questions-radio-group-label" class="text-primary">{{que.question}}</label>
+                                    <mat-radio-group aria-labelledby="questions-radio-group-label"
+                                      class="questions-radio-group" formControlName="selectedOption" #selectedOption>
+                                      <mat-radio-button class="questions-radio-button" *ngFor="let option of que.options"
+                                        [value]="option" (change)="onOptionClick($event,i)">
+                                        {{option.option}}
+                                      </mat-radio-button>
+                                    </mat-radio-group>
+                                    <div>Your selected answer is : {{selectedOption.value}}</div>
+                                    <mat-chip-list>
+                                      <mat-chip color="primary" selected (click)="drawer.toggle()">Toggle</mat-chip>
+                                    </mat-chip-list>
+                                    <div *ngIf="first">
+                                      <mat-chip-list>
+                                        <mat-chip color="primary" selected (click)="stepper.next()"
+                                          (click)="onNextButtonClicked($event,i)">Next</mat-chip>
+                                      </mat-chip-list>
+                                      <div class="text-center">
+                                        <button type="text" (click)="formone.ngSubmit.emit();" class="btn btn-info"
+                                           (click)="onEditTest"  data-target="#confirmationModal">Complete
+                                          Test</button>
+                                      </div>
+                                    </div>
+  
+                                    <div *ngIf="!first && !last">
+                                      <mat-chip-list>
+                                        <mat-chip color="accent" selected (click)="stepper.previous()">Back</mat-chip>
+                                        <mat-chip color="primary" selected (click)="stepper.next()"
+                                          (click)="onNextButtonClicked($event,i,quizForm.selectedOption)">Next
+                                        </mat-chip>
+                                      </mat-chip-list>
+                                      <div class="text-center">
+                                        <button type="text" (click)="formone.ngSubmit.emit();" class="btn btn-info"
+                                           (click)="onEditTest"  data-target="#confirmationModal">Complete
+                                          Test</button>
+                                      </div>
+                                    </div>
+                                    <div *ngIf="last">
+                                      <mat-chip-list>
+                                        <mat-chip color="accent" selected (click)="stepper.previous()">Back</mat-chip>
+                                      </mat-chip-list>
+                                      <div class="text-center">
+                                        <button type="text" (click)="formone.ngSubmit.emit();" class="btn btn-info"
+                                           (click)="onEditTest"  data-target="#confirmationModal">Complete
+                                          Test</button>
+                                      </div>
+                                    </div>
+                                  </mat-step>
+                                </mat-horizontal-stepper>
+                              </div>
+                            </form>
+  
+                          </div>
+                        </div>
+                      </mat-drawer-content>
+                    </mat-drawer-container>-->
+                <!-- Modal 
+                  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                    aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header bg-danger">
+                          <h5 class="modal-title" id="confirmationModalLabel">CONFIRMATION</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <h5 class="text-warning">Are you sure You want to complete the test? This Can't be
+                            undone !
+                          </h5>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                          <button type="submit" class="btn btn-primary" (click)="onComplete($event)">Yes</button>
                         </div>
                       </div>
-                    </mat-drawer-content>
-                  </mat-drawer-container>-->
-                <!-- Modal 
-                <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-                  aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header bg-danger">
-                        <h5 class="modal-title" id="confirmationModalLabel">CONFIRMATION</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <h5 class="text-warning">Are you sure You want to complete the test? This Can't be
-                          undone !
-                        </h5>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-primary" (click)="onComplete($event)">Yes</button>
-                      </div>
                     </div>
-                  </div>
-                </div>-->
+                  </div>-->
 
-                <div class="row" *ngIf="complete">
+                <div class="row" *ngIf="endExam">
                   <div class="col-12">
                     <div class="alert alert-danger text-center" role="alert" *ngIf="timerAlert">
                       Your session has timed out!
@@ -1016,15 +1018,15 @@
                         <div class="card-icon">
                           <i class="material-icons">assessment</i>
                         </div>
-                        <h3 class="card-title">49/50</h3>
+                        <h3 class="card-title">{{res?.mark}}/{{res?.mark_per_question*res?.total}}</h3>
                         <h4 class="card-category"> Total Mark</h4>
                       </div>
                       <!-- <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons text-danger">warning</i>
-                                        <a href="#pablo">Get More Space...</a>
-                                    </div>
-                                </div> -->
+                                      <div class="stats">
+                                          <i class="material-icons text-danger">warning</i>
+                                          <a href="#pablo">Get More Space...</a>
+                                      </div>
+                                  </div> -->
                     </div>
                   </div>
 
@@ -1034,14 +1036,14 @@
                         <div class="card-icon">
                           <i class="material-icons">edit</i>
                         </div>
-                        <h3 class="card-title">7/10</h3>
+                        <h3 class="card-title">{{res?.total_true + res?.total_false}}/{{res?.total}}</h3>
                         <p class="card-category">Questions Attended</p>
                       </div>
                       <!-- <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">date_range</i> Last 24 Hours
-                                    </div>
-                                </div> -->
+                                      <div class="stats">
+                                          <i class="material-icons">date_range</i> Last 24 Hours
+                                      </div>
+                                  </div> -->
                     </div>
                   </div>
 
@@ -1052,15 +1054,15 @@
                         <div class="card-icon">
                           <i class="material-icons">check</i>
                         </div>
-                        <h3 class="card-title">3/10</h3>
+                        <h3 class="card-title">{{res?.total_true}}/{{res?.total}}</h3>
                         <p class="card-category">Correct Answers</p>
                       </div>
                       <!-- <div class="card-footer">
-                                        <div class="stats">
-                                            <i class="material-icons text-danger">warning</i>
-                                            <a href="#pablo">Get More Space...</a>
-                                        </div>
-                                    </div> -->
+                                          <div class="stats">
+                                              <i class="material-icons text-danger">warning</i>
+                                              <a href="#pablo">Get More Space...</a>
+                                          </div>
+                                      </div> -->
                     </div>
                   </div>
 
@@ -1070,22 +1072,22 @@
                         <div class="card-icon">
                           <i class="material-icons">close</i>
                         </div>
-                        <h3 class="card-title">3/7</h3>
+                        <h3 class="card-title">{{res?.total_false}}/{{res?.total}}</h3>
                         <p class="card-category">Wrong Answers</p>
                       </div>
                       <!-- <div class="card-footer">
-                                        <div class="stats">
-                                            <i class="material-icons">date_range</i> Last 24 Hours
-                                        </div>
-                                    </div> -->
+                                          <div class="stats">
+                                              <i class="material-icons">date_range</i> Last 24 Hours
+                                          </div>
+                                      </div> -->
                     </div>
                   </div>
 
-                  <!-- <div class="col-md-6 col-sm-6">
-                      <button class="btn btn-primary btn-round" (click)="onBackToTests($event)">
-                          <i class="material-icons">arrow_back</i> Back To Tests
-                        </button>
-                  </div> -->
+                  <div class="col-md-12 col-sm-12 text-center">
+                    <button class="btn btn-primary btn-round" (click)="onBackToTests($event)">
+                      <i class="material-icons">arrow_back</i> Back To Tests
+                    </button>
+                  </div>
 
                 </div>
               </div>
