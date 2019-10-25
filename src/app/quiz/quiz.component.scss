@@ -24,10 +24,16 @@
 .light-color {
   background-color: #d6edff;
 }
-.bg-white{
+.bg-white {
   background-color: white;
 }
-
+.white {
+  color: white;
+  font-weight: bold;
+}
+.bg-test-header {
+  background-color: rgb(74, 75, 75);
+}
 
 /* Reset Select */
 select {

@@ -3,8 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
-            <!--  -->
+          <!-- <div class="card-header card-header-danger">
             <div class="nav-tabs-navigation">
               <div class="nav-tabs-wrapper">
 
@@ -18,10 +17,10 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="card-body">
-            <div class="tab-content">
-              <div class="tab-pane active" id="quiz">
+            <!-- <div class="tab-content">
+              <div class="tab-pane active" id="quiz"> -->
 
                 <div class="row" *ngIf="!OK">
 
@@ -112,12 +111,15 @@
                     </div>-->
 
                 <div class="row" *ngIf="startQuiz && !complete">
-                  <div class="col-md-12 bg-info">
+                  <div class="col-md-12 bg-test-header">
                     <div class="pull-right">
-                      <p>Candidate Name: Shaheer</p>
-                      <p>Test name: {{quiz?.quiz?.test_name}} </p>
+                      <p class="white">Candidate Name: <strong>Shaheer</strong></p>
+                      <p class="white">Test name: {{quiz?.quiz?.test_name}} </p>
                       <!-- <p>{{timeLeft | date:'mm:ss' }} Seconds Left....</p> -->
-                      <p>{{timeLeft}} Seconds Left....</p>
+                      <!-- {{Math.floor(timeLeft / 60)  }}
+                        minute {{timeLeft%60}} seconds -->
+                      <p class="white">{{timeLeft | minuteSeconds}} Time Left....</p>
+                      <!-- <p>{{timeLeft}} Seconds Left....</p> -->
 
                     </div>
                   </div>
@@ -192,7 +194,8 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                          <button type="submit" class="btn btn-primary" [disabled]="emptyCheck" (click)="onComplete($event)">Yes</button>
+                          <button type="submit" class="btn btn-primary" [disabled]="emptyCheck"
+                            (click)="onComplete($event)">Yes</button>
                         </div>
                       </div>
                     </div>
@@ -455,9 +458,9 @@
                     <button class="btn btn-primary btn-round" (click)="onBackToTests($event)">
                       <i class="material-icons">arrow_back</i> Back To Tests
                     </button>
-                  </div>
+                  <!-- </div> -->
 
-                </div>
+                <!-- </div> -->
               </div>
 
 

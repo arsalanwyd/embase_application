@@ -23,7 +23,7 @@ export class QuizComponent implements OnInit {
   currentQuiz: any;
   ansList = [];
   timerAlert = false;
-  timeLeft: number = 1000;
+  timeLeft: number = 100;
   interval;
   complete = false;
   OK = false;
