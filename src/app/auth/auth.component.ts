@@ -46,6 +46,7 @@ export class AuthComponent implements OnInit {
           if (success) {
             this.router.navigate(['/quiz']);
             this.message.showNotification('success', 'Login Successfull');
+            console.log(success);
           } else {
             this.loginfailed = true;
             this.message.showNotification('danger', 'Enter Creadentials Correctly');

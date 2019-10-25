@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl, FormArray } from '@angular/forms';
 import { QuizService } from 'app/services/quiz.service';
 import { timer } from 'rxjs';
+import { MessageService } from 'app/services/message.service';
 declare var $: any
 
 @Component({
@@ -22,6 +23,7 @@ export class StaffQuizComponent implements OnInit {
   ansList = [];
   timerAlert = false;
   timeLeft: number = 1000;
+  timer: number;
   interval;
   complete = false;
   OK = false;
@@ -30,46 +32,46 @@ export class StaffQuizComponent implements OnInit {
   index: number = 0;
   answeredOption = [];
   res: any;
-  emptyCheck: boolean;  
-  quest: string;  
+  emptyCheck: boolean;
+  quest: string;
   isAnswered = false;
   selectedSubject;
   addSubjectForm: FormGroup;
   addQuestionForm: FormGroup;
+  editQuestionForm: FormGroup;
   subjectForm: FormGroup;
-  updateQuestionForm: FormGroup;
-  updateTestForm: FormGroup;
   addTestForm: FormGroup;
+  editTestForm: FormGroup;
+  resultSelectForm: FormGroup;
   quizForm: FormGroup;
   edittable: any;
   edittest: any;
   editresult: any;
   editquiz: any;
+  addedQuestion: boolean;
+  updatedQuestion: boolean;
+  addedTest: boolean;
+  updatedTest: boolean
   questions = [];
-  status: string[] = ['Active', 'Removed', 'On Hold'];
-  subject: any;
-  subjects = [{
-    is_selected: false,
-    subject: "English",
-    subject_id: "3"
-  },
-  {
-    is_selected: false,
-    subject: "General",
-    subject_id: "1"
-  },
-  {
-    is_selected: false,
-    subject: "hindi",
-    subject_id: "4"
-  },
-  {
-    is_selected: false,
-    subject: "Malayalam",
-    subject_id: "2"
-  },
+  statuses = [
+    {
+      id: 1,
+      status: 'Active'
+    },
+    {
+      id: 0,
+      status: 'Removed'
+    },
+    {
+      id: 2,
+      status: 'On Hold'
+    }
   ];
+  subject: any;
+
   que: any;
+  ques: any[];
+
   // quizzes = [
   //   {
   //     test_id: 1,
@@ -94,128 +96,102 @@ export class StaffQuizComponent implements OnInit {
   //     test_status: false
   //   },
   // ];
-  ques = [
-    {
-      answer: 'Sam',
-      option1: 'Shaheer',
-      option2: 'Arsalan',
-      option3: 'Firoz',
-      faculty_id: '1010',
-      faculty_name: 'Shaheer Test',
-      options: [
-        {
-          option: 'Sam',
-        },
-        {
-          option: 'Shaheer',
-        },
-        {
-          option: 'Arsalan',
-        },
-        {
-          option: 'Firoz',
-        },
-      ],
-      question: 'Name',
-      questionStatus: '0',
-      isSelected: false,
-      questions_id: '1',
-      status: '1',
-      subject_id: '3',
-      timestamp: '2019-09-12 11:00:49',
-      user_id: '1010'
-    },
-    {
-      answer: '10',
-      option1: '3',
-      option2: '5',
-      option3: '7',
-      faculty_id: '1010',
-      faculty_name: 'Shaheer Test',
-      options: [
-        {
-          option: '3',
-        },
-        {
-          option: '5',
-        },
-        {
-          option: '7',
-        },
-        {
-          option: '10',
-        },
-      ],
-      question: 'Even',
-      questionStatus: '0',
-      isSelected: false,
-      questions_id: '2',
-      status: '1',
-      subject_id: '3',
-      timestamp: '2019-09-12 11:00:49',
-      user_id: '1010'
-    },
-    {
-      answer: '123',
-      option1: '1',
-      option2: '3',
-      option3: '4',
-      faculty_id: '1010',
-      faculty_name: 'Shaheer Test',
-      options: [{
-        option: '1',
-      },
-      {
-        option: '123',
-      },
-      {
-        option: '3',
-      },
-      {
-        option: '4',
-      },
-      ],
-      question: 'largest',
-      questionStatus: '0',
-      isSelected: false,
-      questions_id: '3',
-      status: '1',
-      subject_id: '3',
-      timestamp: '2019-09-12 11:01:00',
-      user_id: '1010',
-    },
-  ];
+  // ques = [
+  //   {
+  //     answer: 'Sam',
+  //     option1: 'Shaheer',
+  //     option2: 'Arsalan',
+  //     option3: 'Firoz',
+  //     faculty_id: '1010',
+  //     faculty_name: 'Shaheer Test',
+  //     question: 'Name',
+  //     questionStatus: '0',
+  //     is_selected: false,
+  //     questions_id: '1',
+  //     status: '2',
+  //     subject_id: '3',
+  //     timestamp: '2019-09-12 11:00:49',
+  //     user_id: '1010'
+  //   },
+  //   {
+  //     answer: '10',
+  //     option1: '3',
+  //     option2: '5',
+  //     option3: '7',
+  //     faculty_id: '1010',
+  //     faculty_name: 'Shaheer Test',
+  //     question: 'Even',
+  //     questionStatus: '0',
+  //     is_selected: false,
+  //     questions_id: '2',
+  //     status: '1',
+  //     subject_id: '3',
+  //     timestamp: '2019-09-12 11:00:49',
+  //     user_id: '1010'
+  //   },
+  //   {
+  //     answer: '123',
+  //     option1: '1',
+  //     option2: '3',
+  //     option3: '4',
+  //     faculty_id: '1010',
+  //     faculty_name: 'Shaheer Test',
+  //     options: [{
+  //       option: '1',
+  //     },
+  //     {
+  //       option: '123',
+  //     },
+  //     {
+  //       option: '3',
+  //     },
+  //     {
+  //       option: '4',
+  //     },
+  //     ],
+  //     question: 'largest',
+  //     questionStatus: '0',
+  //     _s: false,
+  //     questions_id: '3',
+  //     status: '1',
+  //     subject_id: '3',
+  //     timestamp: '2019-09-12 11:01:00',
+  //     user_id: '1010',
+  //   },
+  // ];
   test: any;
-  tests = [
-    {
-      description: 'example test',
-      is_negative: '0',
-      mark_per_question: '1',
-      status: '1',
-      statusv: 'Opened',
-      subject: 'General, English',
-      test_id: '1',
-      test_key: 'Exa357',
-      test_name: 'Example',
-      test_time: '100',
-      total_mark: 1,
-      total_question: '1'
-    },
-    {
-      description: 'test details',
-      is_negative: '1',
-      mark_per_question: '1',
-      status: '1',
-      statusv: 'Opened',
-      subject: 'General',
-      test_id: '2',
-      test_key: 'tes516',
-      test_name: 'test',
-      test_time: '100',
-      total_mark: 2,
-      total_question: '2'
-    },
-  ];
+  tests: any[];
+
+  // tests = [
+  //   {
+  //     description: 'example test',
+  //     is_negative: '0',
+  //     mark_per_question: '1',
+  //     status: '1',
+  //     statusv: 'Opened',
+  //     subject: 'General, English',
+  //     test_id: '1',
+  //     test_key: 'Exa357',
+  //     test_name: 'Example',
+  //     test_time: '100',
+  //     total_mark: 1,
+  //     total_question: '1'
+  //   },
+  //   {
+  //     description: 'test details',
+  //     is_negative: '1',
+  //     mark_per_question: '1',
+  //     status: '1',
+  //     statusv: 'Opened',
+  //     subject: 'General',
+  //     test_id: '2',
+  //     test_key: 'tes516',
+  //     test_name: 'test',
+  //     test_time: '100',
+  //     total_mark: 2,
+  //     total_question: '2'
+  //   },
+  // ];
   result: any;
   results = [
     {
@@ -355,104 +331,383 @@ export class StaffQuizComponent implements OnInit {
     },
   ];
 
-  constructor(private _formBuilder: FormBuilder, private quizservice: QuizService) { }
+  quiz_subjects: any;
+  add_test: any[];
+  resultSelectedType: any;
+  resultSelectedTest: any;
+  subjects: any[];
+
+  constructor(private _formBuilder: FormBuilder, private quizservice: QuizService, private message: MessageService) { }
 
   ngOnInit() {
+
+    this.resultSelectedType = "All";
+    this.quizservice.getAllTest().subscribe(res => {
+      console.log(res);
+      this.tests = res.quiz_test_details;
+    });
+    this.quizservice.getQuizSubjects().subscribe(res => {
+      console.log(res);
+      this.subjects = res.quiz_subjects;
+      this.selectedSubject = res.quiz_subjects[0];
+      console.log(this.subjects);
+      this.quizservice.getQuestions(this.selectedSubject.subject_id).subscribe(res => {
+        console.log(res);
+        this.ques = res.quiz_questions;
+      });
+    });
+
+
     this.quizservice.getActiveQuiz().subscribe(res => {
       console.log(res);
-      this.quiz_details = res.quiz_details;
+      this.quiz_info = res.quiz_details;
     });
     this.addQuestionForm = this._formBuilder.group({
-      subject_list: ['', Validators.required],
+      subject_id: ['', Validators.required],
       question: ['', Validators.required],
-      option1: ['', Validators.required],
-      option2: ['', Validators.required],
-      option3: [''],
-      option4: [''],
-      qstatus: ['']
+      answer: ['', Validators.required],
+      option_1: ['', Validators.required],
+      option_2: ['',],
+      option_3: ['',],
+    });
+    this.editQuestionForm = this._formBuilder.group({
+      subject_id: ['', Validators.required],
+      question: ['', Validators.required],
+      answer: ['', Validators.required],
+      option_1: ['', Validators.required],
+      option_2: ['',],
+      option_3: ['',],
+      qstatus: [''],
+      questions_id: [''],
     });
     this.addSubjectForm = this._formBuilder.group({
-      subjectName: ['', Validators.required],
+      subject: ['', Validators.required],
     });
-    this.subjectForm = this._formBuilder.group({
+    this.resultSelectForm = this._formBuilder.group({
       select_subject: [''],
     });
     this.addTestForm = this._formBuilder.group({
       test_name: ['', Validators.required],
       mark_per_question: ['', Validators.required],
-      no_of_questions: ['', Validators.required],
-      maximum_mark: ['', Validators.required],
-      maximum_time: ['', Validators.required],
-      wrong_answer_mark: ['', Validators.required],
-      test_details: ['', Validators.required],
-      tstatus: [''],
-      sublist: this._formBuilder.array([])
+      total_question: ['', Validators.required],
+      total_mark: [''],
+      test_time: ['', Validators.required],
+      is_negative: ['', Validators.required],
+      description: ['', Validators.required],
+      status: [''],
+      quiz_subjects: this._formBuilder.array([])
+    });
+    this.editTestForm = this._formBuilder.group({
+      test_name: ['', Validators.required],
+      mark_per_question: ['', Validators.required],
+      total_question: ['', Validators.required],
+      total_mark: [''],
+      test_time: ['', Validators.required],
+      is_negative: ['', Validators.required],
+      description: ['', Validators.required],
+      status: [''],
+      test_id: [''],
+      quiz_subjects: this._formBuilder.array([])
     });
   }
 
-  onEditQuestion(edittable) {
+  onSelectSubject($event) {
+    console.log("subject selected", this.selectedSubject);
+    this.quizservice.getQuestions(this.selectedSubject.subject_id).subscribe(res => {
+      console.log(res);
+      this.ques = res.quiz_questions;
+    });    
+    // this.quizservice.getQuestions(this.selectedSubject).subscribe((data: any) => {
+    //   this.questions=data;
+    //   console.log(this.questions);
+    // });
+  }
+  onAddQueModal() {
     this.addQuestionForm.patchValue({
+      subject_id: this.selectedSubject.subject_id,
+
+    })
+
+  }
+
+  onEditQuestion(edittable) {
+    this.editQuestionForm.patchValue({
+      subject_id: edittable.subject_id,
       question: edittable.question,
-      option1: edittable.answer,
-      option2: edittable.option1,
-      option3: edittable.option2,
-      option4: edittable.option3,
+      answer: edittable.answer,
+      option_1: edittable.option_1,
+      option_2: edittable.option_2,
+      option_3: edittable.option_3,
+      qstatus: edittable.status,
+      questions_id: edittable.questions_id
     })
     this.edittable = edittable;
 
   }
-  onEditTests(edittest) {
-    this.addTestForm.patchValue({
+  onEditTests(edittest, quiz_subjects) {
+    this.editTestForm.patchValue({
+      test_id: edittest.test_id,
       test_name: edittest.test_name,
       mark_per_question: edittest.mark_per_question,
-      no_of_questions: edittest.total_question,
-      maximum_mark: edittest.total_mark,
-      wrong_answer_mark: edittest.is_negative,
-      tstatusv: edittest.statusv,
-      test_details: edittest.description,
+      total_question: edittest.total_question,
+      total_mark: edittest.total_mark,
+      is_negative: edittest.is_negative,
+      status: edittest.status,
+      test_time: edittest.test_time,
+      description: edittest.description,
+    })
+    const checkArray = <FormArray>this.editTestForm.get(quiz_subjects);
+    // console.log(checkArray);
+    // if (checkArray.length != 0) {
+    //   checkArray.clear();
+    // }
+    this.subjects.filter(sub => {
+      if (edittest.subjects.some(subject => subject.id === sub.id)) {
+        checkArray.push(new FormControl({ subject_id: sub.id }));
+        sub.is_selected = true;
+      } else {
+        sub.is_selected = true;
+      }
     })
     this.edittest = edittest;
   }
   onResultView(editresult) {
     this.editresult = editresult;
-
   }
-  onAddTest(){
-    
-  }
-
   onAddSubject() {
     console.log("Add Subject Button Clicked");
+    console.log(this.addSubjectForm);
     $('#subselectModal').modal('hide');
+    if (this.addSubjectForm.invalid) {
+      return;
+    } else {
+      this.quizservice.addSubject(this.addSubjectForm.value)
+        .subscribe(success => {
+          if (success) {
+            // this.message.showNotification('success', 'Subject Added Successfully');
+            console.log(success);
+          } else {
+            // this.message.showNotification('danger', 'Enter Details Correctly');
+          }
+        });
+    }
   }
   onAddQuestion() {
-    console.log("Add Question Button Clicked");
-    this.addQuestionForm.reset();
+    console.log(this.addQuestionForm.value);
+    if (this.addQuestionForm.invalid) {
+      return;
+    } else {
+      this.quizservice.addQuestion(this.addQuestionForm.value)
+        .subscribe(success => {
+          if (success) {
+            this.timer = 4;
+            this.addQuestionForm.reset();
+            this.interval = setInterval(() => {
+              this.timer--;
+              this.addedQuestion = true;
+              if (this.timer < 0) {
+                this.addedQuestion = false;
+                clearInterval(this.interval);
+                console.log("notification timer stopped");
+              }
+            }, 1000);
+            // this.message.showNotification('success', 'Question Added Successfully');
+            // console.log(success);
+          } else {
+            // this.message.showNotification('danger', 'Enter Details Correctly');
+          }
+        });
+      console.log("Add Question Button Clicked");
+    }
   }
   onUpdateQuestion($event) {
-    console.log("Update Question Button Clicked", $event);
+    console.log(this.editQuestionForm.value);
+    if (this.editQuestionForm.invalid) {
+      return;
+    } else {
+      this.quizservice.updateQuestion(this.editQuestionForm.value)
+        .subscribe(success => {
+          console.log(success);
+          if (success) {
+            this.timer = 2;
+            this.interval = setInterval(() => {
+              this.timer--;
+              this.updatedQuestion = true;
+              if (this.timer < 0) {
+                this.updatedQuestion = false;
+                clearInterval(this.interval);
+                console.log("notification timer stopped");
+              }
+            }, 1000);
+            // this.message.showNotification('success', 'Question Updated Successfully');
+            // console.log(success);
+          } else {
+            // this.message.showNotification('danger', 'Enter Details Correctly');
+          }
+        });
+      console.log("Update Question Button Clicked", $event);
+    }
   }
-  updateCheckBoxArray(check, isChecked, key) {
+  updateCheckBoxArray(check, $event, key) {
     const checkArray = <FormArray>this.addTestForm.get(key);
-    if (isChecked) {
+    console.log($event.checked);
+    // console.log(checkArray);
+
+    if ($event.checked) {
       if (checkArray.controls.findIndex(x => x.value == check.id) == -1)
-        checkArray.push(new FormControl({ id: check.id, subject_name: check.subject_name }));
+        checkArray.push(new FormControl({ subject_id: check.subject_id }));
+      check.is_selected = true;
     } else {
       let idx = checkArray.controls.findIndex(x => x.value == check.id);
+      check.is_selected = false;
       checkArray.removeAt(idx);
     }
+    this.quiz_subjects = checkArray.value;
+    console.log(this.quiz_subjects);
     console.log(this.addTestForm.value);
   }
-  selectAll(isChecked, key) {
-    // const checkArray = <FormArray>this.addTestForm.get(key);
-    // if (isChecked) {
-    //   for (var subject of this.subjects) {
-    //     checkArray.push(new FormControl({ id: subject.subject_id, subject_name: subject.subject }));
-    //   }
-    // }
-    // checkArray.reset();
+  selectAll(check, $event, key) {
+    console.log($event.checked);
+    const checkArray = <FormArray>this.addTestForm.get(key);
+    if ($event.checked) {
+      if (checkArray.length != 0) {
+        checkArray.clear();
+      }
+      // checkArray.clear();
+      for (check of this.subjects) {
+        if (checkArray.controls.findIndex(x => x.value == check.id) == -1) {
+          checkArray.push(new FormControl({ subject_id: check.subject_id }));
+          check.is_selected = true;
+        }
+      }
+      console.log(this.addTestForm.value);
+    }
+    else {
+      checkArray.clear();
+      for (check of this.subjects) {
+        check.is_selected = false;
+      }
+    }
+  }
+  onAddTest() {
+    console.log(this.addTestForm.value);
+    if (this.addTestForm.invalid) {
+      return;
+    } else {
+      this.quizservice.addTest(this.addTestForm.value)
+        .subscribe(success => {
+          console.log(success);
+          if (success) {
+            this.timer = 4;
+            this.addTestForm.reset();
+            this.interval = setInterval(() => {
+              this.timer--;
+              this.addedTest = true;
+              if (this.timer < 0) {
+                this.addedTest = false;
+                clearInterval(this.interval);
+                console.log("notification timer stopped");
+              }
+            }, 1000);
+            // this.message.showNotification('success', 'Test Added Successfully');
+            // console.log(success);
+          } else {
+            // this.message.showNotification('danger', 'Enter Test Details Correctly');
+          }
+        });
+      console.log("Add Test Button Clicked");
+    }
 
   }
+  onupdateCheckBoxArray(check, $event, key) {
+    const checkArray = <FormArray>this.editTestForm.get(key);
+    console.log($event.checked);
+    // console.log(checkArray);
+
+    if ($event.checked) {
+      if (checkArray.controls.findIndex(x => x.value == check.id) == -1)
+        checkArray.push(new FormControl({ subject_id: check.subject_id }));
+      check.is_selected = true;
+    } else {
+      let idx = checkArray.controls.findIndex(x => x.value == check.id);
+      check.is_selected = false;
+      checkArray.removeAt(idx);
+    }
+    this.quiz_subjects = checkArray.value;
+    console.log(this.quiz_subjects);
+    console.log(this.editTestForm.value);
+  }
+  onselectAll(check, $event, key) {
+    console.log($event.checked);
+    const checkArray = <FormArray>this.editTestForm.get(key);
+    if ($event.checked) {
+      if (checkArray.length != 0) {
+        checkArray.clear();
+      }
+      // checkArray.clear();
+      for (check of this.subjects) {
+        if (checkArray.controls.findIndex(x => x.value == check.id) == -1) {
+          checkArray.push(new FormControl({ subject_id: check.subject_id }));
+          check.is_selected = true;
+        }
+      }
+      console.log(this.editTestForm.value);
+    }
+    else {
+      checkArray.clear();
+      for (check of this.subjects) {
+        check.is_selected = false;
+      }
+    }
+  }
+
+  onUpdateTest() {
+    console.log(this.editTestForm.value);
+    if (this.editTestForm.invalid) {
+      return;
+    } else {
+      this.quizservice.updateTest(this.editTestForm.value)
+        .subscribe(success => {
+          console.log(success);
+          if (success) {
+            this.timer = 4;
+            this.interval = setInterval(() => {
+              this.timer--;
+              this.updatedTest = true;
+              if (this.timer < 0) {
+                this.updatedTest = false;
+                clearInterval(this.interval);
+                console.log("notification timer stopped");
+              }
+            }, 1000);
+            // this.message.showNotification('success', 'Test Updated Successfully');
+            // console.log(success);
+          } else {
+            // this.message.showNotification('danger', 'Enter Test Details Correctly');
+          }
+        });
+      console.log("Update Question Button Clicked");
+    }
+  }
+
+
+  onResultSelectTest() {
+    console.log("Test selected", this.resultSelectedTest);
+    // this.quizservice.getQuestions(this.selectedSubject).subscribe((data: any) => {
+    //   this.questions=data;
+    //   console.log(this.questions);
+    // });
+  }
+  onResultSelectType() {
+    console.log("Type selected", this.resultSelectedType);
+    // this.quizservice.getQuestions(this.selectedSubject).subscribe((data: any) => {
+    //   this.questions=data;
+    //   console.log(this.questions);
+    // });
+  }
+
+
+
   onOK($event, test_key) {
     this.OK = true;
     this.quizservice.getQuiz(test_key).subscribe((data: any) => {

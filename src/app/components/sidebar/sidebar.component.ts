@@ -25,7 +25,7 @@ export const ROUTES: RouteInfo[] = [
   //  { path: '/issuebook', title: 'Issue Book',  icon: 'content_paste', class: '' },
   //  { path: '/transactions', title: 'Transactions',  icon: 'transfer_within_a_station', class: '' },
   //    { path: '/staff-home', title: 'Staff Home',  icon: 'home', class: '' },
-  //    { path: '/staff-quiz', title: 'Staff Quiz',  icon: 'help_outline', class: '' },
+      { path: '/staff-quiz', title: 'Staff Quiz',  icon: 'help_outline', class: '' },
   // { path: '/students', title: 'Students',  icon: 'group', class: '' },
   //    { path: '/attendance', title: 'Attendance',  icon: 'spellcheck', class: '' },
   //   { path: '/attendance-report', title: 'Attendance Report',  icon: 'report', class: '' },

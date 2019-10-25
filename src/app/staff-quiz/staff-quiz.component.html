@@ -56,14 +56,14 @@
                               <mat-form-field>
                                 <mat-select placeholder="Select" [(value)]="selectedSubject"
                                   (selectionChange)="onSelectSubject($event)">
-                                  <mat-option *ngFor="let subject of subjects" value="{{subject.subject_id}}">
-                                    {{subject.subject}}</mat-option>
+                                  <mat-option *ngFor="let subject of subjects" [value]="subject">
+                                    {{subject?.subject}}</mat-option>
                                 </mat-select>
                               </mat-form-field>
                             </th>
                             <th class="text-center" colspan="2">
-                              <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal"
-                                data-target="#queModal">
+                              <button type="button" rel="tooltip" class="btn btn-success" (click)="onAddQueModal()"
+                                data-toggle="modal" data-target="#queModal">
                                 <i class="material-icons">add</i>
                               </button>
                               <div class="modal fade" id="queModal" tabindex="-1" role="dialog"
@@ -78,96 +78,41 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
+
                                         <div class="select">
-                                          <select class="selectpicker text-center" formControlName="subject_list"
-                                            #subject_list>
-                                            <option *ngFor="let subject of subjects" value={{selectedSubject}}>
+                                          <select class="selectpicker" formControlName="subject_id" #subject_id>
+                                            <option *ngFor="let subject of subjects" value="{{subject.subject_id}}">
                                               {{subject.subject}}
                                             </option>
                                           </select>
                                         </div>
-
-                                        <!-- <select class="selectpicker" formControlName="subjectlist" #subjectlist>
-                                          <option *ngFor="let subject of subjects">{{subject.subject}}</option>
-                                        </select> -->
-                                        <!-- <div>
-                                          <div class="select-box">
-                                            <div class="select-box__current" tabindex="1">
-                                              <div class="select-box__value">
-                                                <input class="select-box__input" type="radio" id="0" value="1"
-                                                  name="Ben" checked="checked" />
-                                                <p class="select-box__input-text">Cream</p>
-                                              </div>
-                                              <div class="select-box__value">
-                                                <input class="select-box__input" type="radio" id="1" value="2"
-                                                  name="Ben" checked="checked" />
-                                                <p class="select-box__input-text">Cheese</p>
-                                              </div>
-                                              <div class="select-box__value">
-                                                <input class="select-box__input" type="radio" id="2" value="3"
-                                                  name="Ben" checked="checked" />
-                                                <p class="select-box__input-text">Milk</p>
-                                              </div>
-                                              <div class="select-box__value">
-                                                <input class="select-box__input" type="radio" id="3" value="4"
-                                                  name="Ben" checked="checked" />
-                                                <p class="select-box__input-text">Honey</p>
-                                              </div>
-                                              <div class="select-box__value">
-                                                <input class="select-box__input" type="radio" id="4" value="5"
-                                                  name="Ben" checked="checked" />
-                                                <p class="select-box__input-text">Toast</p>
-                                              </div><img class="select-box__icon"
-                                                src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon"
-                                                aria-hidden="true" />
-                                            </div>
-                                            <ul class="select-box__list">
-                                              <li>
-                                                <label class="select-box__option" for="0"
-                                                  aria-hidden="aria-hidden">Cream</label>
-                                              </li>
-                                              <li>
-                                                <label class="select-box__option" for="1"
-                                                  aria-hidden="aria-hidden">Cheese</label>
-                                              </li>
-                                              <li>
-                                                <label class="select-box__option" for="2"
-                                                  aria-hidden="aria-hidden">Milk</label>
-                                              </li>
-                                              <li>
-                                                <label class="select-box__option" for="3"
-                                                  aria-hidden="aria-hidden">Honey</label>
-                                              </li>
-                                              <li>
-                                                <label class="select-box__option" for="4"
-                                                  aria-hidden="aria-hidden">Toast</label>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </div> -->
-
                                         <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal"
                                           data-target="#subselectModal">
                                           <i class="material-icons">add</i>
                                         </button>
-
                                         <mat-form-field>
                                           <textarea matInput placeholder="Question" formControlName="question"
                                             #question></textarea>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Option 1 (Answer)" formControlName="option1"
-                                            #option1>
+                                          <input matInput placeholder="Option 1 (Answer)" formControlName="answer"
+                                            #answer>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Option 2" formControlName="option2" #option2>
+                                          <input matInput placeholder="Option 2" formControlName="option_1" #option_1>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Option 3" formControlName="option3" #option3>
+                                          <input matInput placeholder="Option 3" formControlName="option_2" #option_2>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Option 4" formControlName="option4" #option4>
+                                          <input matInput placeholder="Option 4" formControlName="option_3" #option_3>
                                         </mat-form-field>
+                                        <div class="alert alert-success" role="alert" *ngIf="addedQuestion">
+                                          Question Added Successfully !
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -192,8 +137,8 @@
                                     <div class="modal-body">
                                       <form [formGroup]="addSubjectForm" (ngSubmit)="onAddSubject()">
                                         <mat-form-field>
-                                          <input matInput placeholder="Enter Subject Name" formControlName="subjectName"
-                                            #subjectName>
+                                          <input matInput placeholder="Enter Subject Name" formControlName="subject"
+                                            #subject>
                                         </mat-form-field>
                                         <div class="modal-footer">
                                           <button type="submit" [disabled]="addSubjectForm.invalid"
@@ -221,11 +166,11 @@
                         <tbody>
                           <tr *ngFor="let que of ques; index as i">
                             <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{que?.question}}</td>
+                            <td>{{que?.question}}</td>
                             <td class="text-center">{{que?.answer}}</td>
-                            <td class="text-center">{{que?.option1}}</td>
-                            <td class="text-center">{{que?.option2}}</td>
-                            <td class="text-center">{{que?.option3}}</td>
+                            <td class="text-center">{{que?.option_1}}</td>           
+                            <td class="text-center">{{que?.option_2}}</td>
+                            <td class="text-center">{{que?.option_3}}</td>
                             <td class="text-center">{{que?.faculty_name}}</td>
                             <td class="text-center">
                               <button type="button" rel="tooltip" class="btn btn-success" (click)="onEditQuestion(que)"
@@ -236,7 +181,7 @@
                                 aria-labelledby="viewModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
-                                    <form [formGroup]="addQuestionForm" (ngSubmit)="onAddQuestion($event)">
+                                    <form [formGroup]="editQuestionForm" (ngSubmit)="onUpdateQuestion($event)">
                                       <div class="modal-header bg-success">
                                         <h5 class="modal-title" id="queLabel">Questions</h5>
 
@@ -245,45 +190,51 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
-                                        <div class="customSelect">
-                                          <div class="select">
-                                            <select class="selectpicker" formControlName="subject_list" #subject_list>
-                                              <option value="{{selectedSubject}}" *ngFor="let subject of subjects">
-                                                {{subject.subject}}
-                                              </option>
-                                            </select>
-                                          </div>
+
+                                        <div class="select">
+                                          <select class="selectpicker text-center" formControlName="subject_id"
+                                            #subject_id>
+                                            <option *ngFor="let subject of subjects" value="{{subject.subject_id}}">
+                                              {{subject.subject}}
+                                            </option>
+                                          </select>
                                         </div>
                                         <mat-form-field>
                                           <textarea matInput placeholder="Question" formControlName="question"
                                             #question></textarea>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Option 1 (Answer)" formControlName="option1"
-                                            #option1>
+                                          <input matInput placeholder="Option 1 (Answer)" formControlName="answer"
+                                            #answer>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Option 2" formControlName="option2" #option2>
+                                          <input matInput placeholder="Option 2" formControlName="option_1" #option_1>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Option 3" formControlName="option3" #option3>
+                                          <input matInput placeholder="Option 3" formControlName="option_2" #option_2>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Option 4" formControlName="option4" #option4>
+                                          <input matInput placeholder="Option 4" formControlName="option_3" #option_3>
                                         </mat-form-field>
                                         <label id="status-radio-group-label">Status</label>
                                         <mat-radio-group aria-labelledby="status-radio-group-label"
                                           class="questions-radio-group" formControlName="qstatus" #qstatus>
-                                          <mat-radio-button class="questions-radio-button" *ngFor="let stat of status"
-                                            [value]="stat">
-                                            {{stat}}
+                                          <mat-radio-button class="questions-radio-button" *ngFor="let stat of statuses"
+                                            [value]="stat.id">
+                                            {{stat.status}}
                                           </mat-radio-button>
                                         </mat-radio-group>
+                                        <div class="alert alert-success" role="alert" *ngIf="updatedQuestion">
+                                          Question Updated Successfully !
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                           data-dismiss="modal">Close</button>
-                                        <button type="submit" [disabled]="addQuestionForm.invalid"
+                                        <button type="submit" [disabled]="editQuestionForm.invalid"
                                           class="btn btn-primary">Update</button>
                                       </div>
                                     </form>
@@ -337,6 +288,7 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
+
                                         <mat-form-field>
                                           <input matInput placeholder="Test Name" formControlName="test_name"
                                             #test_name>
@@ -347,24 +299,24 @@
                                         </mat-form-field>
                                         <mat-form-field>
                                           <input matInput type="number" placeholder="No of Questions"
-                                            formControlName="no_of_questions" #no_of_questions>
+                                            formControlName="total_question" #total_question>
                                         </mat-form-field>
                                         <mat-form-field>
                                           <input matInput placeholder="Maximum Mark"
-                                            value="{{mark_per_question.value*no_of_questions.value}}" readonly
-                                            formControlName="maximum_mark" #maximum_mark>
+                                            value="{{mark_per_question.value*total_question.value}}" readonly
+                                            formControlName="total_mark" #total_mark>
                                         </mat-form-field>
                                         <mat-form-field>
                                           <input matInput type="number" placeholder="Maximum Time(Seconds)"
-                                            formControlName="maximum_time" #maximum_time>
+                                            formControlName="test_time" #test_time>
                                         </mat-form-field>
                                         <mat-form-field>
                                           <input matInput type="number" placeholder="Wrong Answer Mark"
-                                            formControlName="wrong_answer_mark" #wrong_answer_mark>
+                                            formControlName="is_negative" #is_negative>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <textarea matInput placeholder="Test Details" formControlName="test_details"
-                                            #test_details></textarea>
+                                          <textarea matInput placeholder="Test Details" formControlName="description"
+                                            #description></textarea>
                                         </mat-form-field>
                                         <table class="table">
                                           <thead>
@@ -372,7 +324,7 @@
                                               <th class="text-center">Sl No</th>
                                               <th class="text-right">
                                                 <mat-checkbox labelPosition="before"
-                                                  (change)="selectAll($event.checked,'sublist')">
+                                                  (change)="selectAll(subject, $event, 'quiz_subjects')">
                                                   Subject
                                                 </mat-checkbox>
                                               </th>
@@ -381,15 +333,21 @@
                                           <tbody>
                                             <tr *ngFor="let subject of subjects; index as i">
                                               <td class="text-center">{{i+1}}</td>
-                                              <td class="text-right" formArrayName="sublist">
-                                                <mat-checkbox labelPosition="before"
-                                                  (change)="updateCheckBoxArray(subject, $event.checked, 'sublist')"
+                                              <td class="text-right" formArrayName="quiz_subjects">
+                                                <mat-checkbox labelPosition="before" [checked]="subject.is_selected"
+                                                  (change)="updateCheckBoxArray(subject, $event, 'quiz_subjects')"
                                                   value="subject.subject_id">
                                                   {{subject.subject}}</mat-checkbox>
                                               </td>
                                             </tr>
                                           </tbody>
                                         </table>
+                                        <div class="alert alert-success" role="alert" *ngIf="addedTest">
+                                          Test Added Successfully !
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -419,8 +377,9 @@
                             <td class="text-center">{{test?.test_name}}</td>
                             <td class="text-center">{{test?.test_key}}</td>
                             <td class="text-center">{{test?.subject}}</td>
-                            <td class="text-center">{{test?.total_mark}}</td>
-                            <td class="text-center">{{test?.statusv}}</td>
+                            <td class="text-center">{{test?.total_question*test?.mark_per_question}}</td>
+                            <td class="text-center">OPened</td>
+                            <!-- <td class="text-center">{{test?.statusv}}</td> -->
                             <td class="text-center">
                               <button type="button" rel="tooltip" class="btn btn-success" (click)="onEditTests(test)"
                                 data-toggle="modal" data-target="#testviewModal">
@@ -430,7 +389,7 @@
                                 aria-labelledby="testviewModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
-                                    <form [formGroup]="addTestForm" (ngSubmit)="onAddTest()">
+                                    <form [formGroup]="editTestForm" (ngSubmit)="onUpdateTest()">
                                       <div class="modal-header bg-success">
                                         <h5 class="modal-title" id="queLabel">Test</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -438,6 +397,12 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
+                                        <div class="alert alert-success" role="alert" *ngIf="updatedTest">
+                                          Test updated Successfully !
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
                                         <mat-form-field>
                                           <input matInput placeholder="Test Name" formControlName="test_name"
                                             #test_name>
@@ -447,32 +412,32 @@
                                             formControlName="mark_per_question" #mark_per_question>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="No of Questions"
-                                            formControlName="no_of_questions" #no_of_questions>
+                                          <input matInput placeholder="No of Questions" formControlName="total_question"
+                                            #total_question>
                                         </mat-form-field>
                                         <mat-form-field>
                                           <input matInput placeholder="Maximum Mark" readonly
-                                            formControlName="maximum_mark" #maximum_mark>
+                                            formControlName="total_mark" #total_mark>
                                         </mat-form-field>
                                         <mat-form-field>
                                           <input matInput placeholder="Maximum Time(Seconds)"
-                                            formControlName="maximum_time" #maximum_time>
+                                            formControlName="test_time" #test_time>
                                         </mat-form-field>
                                         <mat-form-field>
-                                          <input matInput placeholder="Wrong Answer Mark"
-                                            formControlName="wrong_answer_mark" #wrong_answer_mark>
+                                          <input matInput placeholder="Wrong Answer Mark" formControlName="is_negative"
+                                            #is_negative>
                                         </mat-form-field>
                                         <label id="status-radio-group-label">Status</label>
                                         <mat-radio-group aria-labelledby="status-radio-group-label"
-                                          class="questions-radio-group">
-                                          <mat-radio-button class="questions-radio-button" *ngFor="let stat of status"
-                                            [value]="stat">
-                                            {{stat}}
+                                          class="questions-radio-group" formControlName="status" #status>
+                                          <mat-radio-button class="questions-radio-button" *ngFor="let stat of statuses"
+                                            [value]="stat.id">
+                                            {{stat.status}}
                                           </mat-radio-button>
                                         </mat-radio-group>
                                         <mat-form-field>
-                                          <textarea matInput placeholder="Test Details" formControlName="test_details"
-                                            #test_details></textarea>
+                                          <textarea matInput placeholder="Test Details" formControlName="description"
+                                            #description></textarea>
                                         </mat-form-field>
                                         <table class="table">
                                           <thead>
@@ -480,7 +445,7 @@
                                               <th class="text-center">Sl No</th>
                                               <th class="text-right">
                                                 <mat-checkbox labelPosition="before"
-                                                  (change)="selectAll($event.checked,'sublist')">
+                                                  (change)="onselectAll(subject, $event, 'quiz_subjects')">
                                                   Subject
                                                 </mat-checkbox>
                                               </th>
@@ -489,9 +454,9 @@
                                           <tbody>
                                             <tr *ngFor="let subject of subjects; index as i">
                                               <td class="text-center">{{i+1}}</td>
-                                              <td class="text-right" formArrayName="sublist">
-                                                <mat-checkbox labelPosition="before"
-                                                  (change)="updateCheckBoxArray(subject, $event.checked, 'sublist')"
+                                              <td class="text-right" formArrayName="quiz_subjects">
+                                                <mat-checkbox labelPosition="before" [checked]="subject.is_selected"
+                                                  (change)="onupdateCheckBoxArray(subject, $event, 'quiz_subjects')"
                                                   value="subject.subject_id">
                                                   {{subject.subject}}</mat-checkbox>
                                               </td>
@@ -502,7 +467,7 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                           data-dismiss="modal">Close</button>
-                                        <button type="submit" [disabled]="addTestForm.invalid"
+                                        <button type="submit" [disabled]="editTestForm.invalid"
                                           class="btn btn-primary">Update</button>
                                       </div>
                                     </form>
@@ -535,19 +500,20 @@
                           <tr>
                             <th class="text-center" colspan="6">
                               <mat-form-field>
-                                <mat-select placeholder="Select Test">
-                                  <mat-option value="Example">Example</mat-option>
-                                  <mat-option value="Example1">Example1</mat-option>
-                                  <mat-option value="Example2">Example2</mat-option>
+                                <mat-select placeholder="Select Test" [(value)]="resultSelectedTest"
+                                  (selectionChange)="onResultSelectTest()">
+                                  <mat-option *ngFor="let result_test of quiz_info" [value]="result_test">
+                                    {{result_test.test_name}}</mat-option>
                                 </mat-select>
                               </mat-form-field>
                             </th>
                             <th class="text-center" colspan="4">
                               <mat-form-field>
-                                <mat-select placeholder="Select Type">
+                                <mat-select placeholder="Select Type" [(value)]="resultSelectedType"
+                                  (selectionChange)="onResultSelectType()">
                                   <mat-option value="Student">Student</mat-option>
                                   <mat-option value="Staff">Staff</mat-option>
-                                  <mat-option value="Student">All</mat-option>
+                                  <mat-option value="All">All</mat-option>
                                 </mat-select>
                               </mat-form-field>
                             </th>
@@ -653,7 +619,7 @@
                 </div>
               </div>
 
-              <div class="tab-pane active" id="quiz">
+              <div class="tab-pane" id="quiz">
 
                 <div class="row" *ngIf="!OK">
 

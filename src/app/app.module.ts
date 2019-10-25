@@ -56,6 +56,7 @@ import { AuthGuard } from './guards/auth.guard';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    AuthModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
