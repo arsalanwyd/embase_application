@@ -38,6 +38,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { AuthModule } from './auth/auth.module';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { AuthGuard } from './guards/auth.guard';
+import { PasswordResetComponent } from './auth/password-reset.component';
 @NgModule({
   imports: [
     MatDatepickerModule,
@@ -64,6 +65,8 @@ import { AuthGuard } from './guards/auth.guard';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    PasswordResetComponent,
+
   ],
   providers: [
     AuthModule,

@@ -73,6 +73,7 @@ import { TransferCertificateComponent } from 'app/transfer-certificate/transfer-
 import { StaffQuizComponent } from 'app/staff-quiz/staff-quiz.component';
 import { StudentBooksComponent } from 'app/staff-books/student-books.component';
 import { MinuteSecondsPipe } from 'app/_helpers/timer-pipe';
+import { UserRegistrationComponent } from 'app/user-registration/user-registration.component';
 
 @NgModule({
   imports: [
@@ -120,6 +121,7 @@ import { MinuteSecondsPipe } from 'app/_helpers/timer-pipe';
     },
   ],
   declarations: [
+    UserRegistrationComponent,
     MinuteSecondsPipe,
     DashboardComponent,
     UserProfileComponent,

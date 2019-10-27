@@ -55,13 +55,14 @@ export class StaffQuizComponent implements OnInit {
   questions = [];
   statuses = [
     {
-      id: 1,
-      status: 'Active'
-    },
-    {
       id: 0,
       status: 'Removed'
     },
+    {
+      id: 1,
+      status: 'Active'
+    },
+
     {
       id: 2,
       status: 'On Hold'
@@ -72,126 +73,9 @@ export class StaffQuizComponent implements OnInit {
   que: any;
   ques: any[];
 
-  // quizzes = [
-  //   {
-  //     test_id: 1,
-  //     test_name: 'test1',
-  //     test_key: 'test12283',
-  //     test_time: 100,
-  //     mark_per_question: 2,
-  //     total_question: 10,
-  //     is_negative: 0,
-  //     description: 'Javatpoint offers you a online test exams or quizzes to start with. You may play online tests on Java, Servlet, JSP, SQL, OCJP, OCWCD, Android, Struts 2 etc. subjects.\r\n\r\nWe provide 100% assurance to clear OCJP and OCWCD Certification exams.\r\nThere are given practice test papers, so login is not required.\r\nYou may promote yourself and get points for each quiz. To do so, start playing belt series quizzes.',
-  //     test_status: false
-  //   },
-  //   {
-  //     test_id: 2,
-  //     test_name: 'test2',
-  //     test_key: 'test252283',
-  //     test_time: 13,
-  //     mark_per_question: 1,
-  //     total_question: 30,
-  //     is_negative: 1,
-  //     description: 'Description 2',
-  //     test_status: false
-  //   },
-  // ];
-  // ques = [
-  //   {
-  //     answer: 'Sam',
-  //     option1: 'Shaheer',
-  //     option2: 'Arsalan',
-  //     option3: 'Firoz',
-  //     faculty_id: '1010',
-  //     faculty_name: 'Shaheer Test',
-  //     question: 'Name',
-  //     questionStatus: '0',
-  //     is_selected: false,
-  //     questions_id: '1',
-  //     status: '2',
-  //     subject_id: '3',
-  //     timestamp: '2019-09-12 11:00:49',
-  //     user_id: '1010'
-  //   },
-  //   {
-  //     answer: '10',
-  //     option1: '3',
-  //     option2: '5',
-  //     option3: '7',
-  //     faculty_id: '1010',
-  //     faculty_name: 'Shaheer Test',
-  //     question: 'Even',
-  //     questionStatus: '0',
-  //     is_selected: false,
-  //     questions_id: '2',
-  //     status: '1',
-  //     subject_id: '3',
-  //     timestamp: '2019-09-12 11:00:49',
-  //     user_id: '1010'
-  //   },
-  //   {
-  //     answer: '123',
-  //     option1: '1',
-  //     option2: '3',
-  //     option3: '4',
-  //     faculty_id: '1010',
-  //     faculty_name: 'Shaheer Test',
-  //     options: [{
-  //       option: '1',
-  //     },
-  //     {
-  //       option: '123',
-  //     },
-  //     {
-  //       option: '3',
-  //     },
-  //     {
-  //       option: '4',
-  //     },
-  //     ],
-  //     question: 'largest',
-  //     questionStatus: '0',
-  //     _s: false,
-  //     questions_id: '3',
-  //     status: '1',
-  //     subject_id: '3',
-  //     timestamp: '2019-09-12 11:01:00',
-  //     user_id: '1010',
-  //   },
-  // ];
   test: any;
   tests: any[];
 
-  // tests = [
-  //   {
-  //     description: 'example test',
-  //     is_negative: '0',
-  //     mark_per_question: '1',
-  //     status: '1',
-  //     statusv: 'Opened',
-  //     subject: 'General, English',
-  //     test_id: '1',
-  //     test_key: 'Exa357',
-  //     test_name: 'Example',
-  //     test_time: '100',
-  //     total_mark: 1,
-  //     total_question: '1'
-  //   },
-  //   {
-  //     description: 'test details',
-  //     is_negative: '1',
-  //     mark_per_question: '1',
-  //     status: '1',
-  //     statusv: 'Opened',
-  //     subject: 'General',
-  //     test_id: '2',
-  //     test_key: 'tes516',
-  //     test_name: 'test',
-  //     test_time: '100',
-  //     total_mark: 2,
-  //     total_question: '2'
-  //   },
-  // ];
   result: any;
   results = [
     {
@@ -377,7 +261,7 @@ export class StaffQuizComponent implements OnInit {
       option_1: ['', Validators.required],
       option_2: ['',],
       option_3: ['',],
-      qstatus: [''],
+      status: [''],
       questions_id: [''],
     });
     this.addSubjectForm = this._formBuilder.group({
@@ -405,6 +289,7 @@ export class StaffQuizComponent implements OnInit {
       test_time: ['', Validators.required],
       is_negative: ['', Validators.required],
       description: ['', Validators.required],
+      number_of_chances: ['', Validators.required],
       status: [''],
       test_id: [''],
       quiz_subjects: this._formBuilder.array([])
@@ -416,7 +301,7 @@ export class StaffQuizComponent implements OnInit {
     this.quizservice.getQuestions(this.selectedSubject.subject_id).subscribe(res => {
       console.log(res);
       this.ques = res.quiz_questions;
-    });    
+    });
     // this.quizservice.getQuestions(this.selectedSubject).subscribe((data: any) => {
     //   this.questions=data;
     //   console.log(this.questions);
@@ -438,13 +323,21 @@ export class StaffQuizComponent implements OnInit {
       option_1: edittable.option_1,
       option_2: edittable.option_2,
       option_3: edittable.option_3,
-      qstatus: edittable.status,
+      status: edittable.status,
       questions_id: edittable.questions_id
     })
     this.edittable = edittable;
 
   }
+  testModal(check, quiz_subjects) {
+    const checkArray = <FormArray>this.addTestForm.get(quiz_subjects);
+    console.log(checkArray);
+    for (check of this.subjects) {
+      check.is_selected = false;
+    }
+  }
   onEditTests(edittest, quiz_subjects) {
+    this.edittest = edittest;
     this.editTestForm.patchValue({
       test_id: edittest.test_id,
       test_name: edittest.test_name,
@@ -453,6 +346,7 @@ export class StaffQuizComponent implements OnInit {
       total_mark: edittest.total_mark,
       is_negative: edittest.is_negative,
       status: edittest.status,
+      number_of_chances: edittest.number_of_chances,
       test_time: edittest.test_time,
       description: edittest.description,
     })
@@ -461,22 +355,46 @@ export class StaffQuizComponent implements OnInit {
     // if (checkArray.length != 0) {
     //   checkArray.clear();
     // }
+    console.log(checkArray);
+    console.log(this.subjects);
     this.subjects.filter(sub => {
-      if (edittest.subjects.some(subject => subject.id === sub.id)) {
-        checkArray.push(new FormControl({ subject_id: sub.id }));
+      if (edittest.subjects.some(subject => subject.id === sub.subject_id)) {
+        checkArray.push(new FormControl({ subject_id: sub.subject_id }));
         sub.is_selected = true;
       } else {
-        sub.is_selected = true;
+        sub.is_selected = false;
       }
     })
-    this.edittest = edittest;
+    console.log(checkArray);
   }
   onResultView(editresult) {
     this.editresult = editresult;
   }
+  getSubjects() {
+    this.quizservice.getQuizSubjects().subscribe(res => {
+      console.log(res);
+      this.subjects = res.quiz_subjects;
+      // this.selectedSubject = res.quiz_subjects[0];
+      console.log(this.subjects);
+    });
+
+  }
+  getQues() {
+    this.quizservice.getQuestions(this.selectedSubject.subject_id).subscribe(res => {
+      console.log(res);
+      this.ques = res.quiz_questions;
+    });
+  }
+  getTest() {
+    this.quizservice.getAllTest().subscribe(res => {
+      console.log(res);
+      this.tests = res.quiz_test_details;
+    });
+  }
+
   onAddSubject() {
     console.log("Add Subject Button Clicked");
-    console.log(this.addSubjectForm);
+    console.log(this.addSubjectForm.value);
     $('#subselectModal').modal('hide');
     if (this.addSubjectForm.invalid) {
       return;
@@ -486,6 +404,7 @@ export class StaffQuizComponent implements OnInit {
           if (success) {
             // this.message.showNotification('success', 'Subject Added Successfully');
             console.log(success);
+            this.getSubjects();
           } else {
             // this.message.showNotification('danger', 'Enter Details Correctly');
           }
@@ -502,6 +421,8 @@ export class StaffQuizComponent implements OnInit {
           if (success) {
             this.timer = 4;
             this.addQuestionForm.reset();
+            console.log('on add' + this.selectedSubject.subject_id)
+            this.getQues();
             this.interval = setInterval(() => {
               this.timer--;
               this.addedQuestion = true;
@@ -520,34 +441,90 @@ export class StaffQuizComponent implements OnInit {
       console.log("Add Question Button Clicked");
     }
   }
-  onUpdateQuestion($event) {
+  // onUpdateQuestion() {
+  //   console.log(this.editQuestionForm.value);
+  //   if (this.editQuestionForm.invalid) {
+  //     return;
+  //   } else {
+  //     this.quizservice.updateQuestion(this.editQuestionForm.value)
+  //       .subscribe(success => {
+  //         if (success) {
+  //           this.message.showNotification('success', 'Question Added Successfully');
+  //           console.log(success);
+  //           console.log('ON update'+this.selectedSubject.subject_id)
+
+  //           this.getQues();                        
+  //         } else {
+  //           this.message.showNotification('danger', 'Enter Details Correctly');
+  //         }
+  //       });
+  //     console.log("Update Question Button Clicked");
+  //   }
+  // }
+  onUpdateQuestion() {
     console.log(this.editQuestionForm.value);
     if (this.editQuestionForm.invalid) {
       return;
     } else {
       this.quizservice.updateQuestion(this.editQuestionForm.value)
         .subscribe(success => {
-          console.log(success);
           if (success) {
-            this.timer = 2;
+            this.timer = 4;
+            // this.getQues();
             this.interval = setInterval(() => {
               this.timer--;
               this.updatedQuestion = true;
               if (this.timer < 0) {
                 this.updatedQuestion = false;
                 clearInterval(this.interval);
+                // this.getQues();
                 console.log("notification timer stopped");
               }
             }, 1000);
-            // this.message.showNotification('success', 'Question Updated Successfully');
+            // this.message.showNotification('success', 'Question Added Successfully');
             // console.log(success);
           } else {
             // this.message.showNotification('danger', 'Enter Details Correctly');
           }
         });
-      console.log("Update Question Button Clicked", $event);
+      console.log("Update Question Button Clicked");
     }
   }
+  // onUpdateQuestion($event) {
+  //   console.log(this.editQuestionForm.value);
+  //   if (this.editQuestionForm.invalid) {
+  //     return;
+  //   } else {
+  //     this.quizservice.updateQuestion(this.editQuestionForm.value)
+  //       .subscribe(success => {
+  //         console.log(success);
+  //         // this.getQues();
+  //         if (success) {
+  //           // this.timer = 4;
+  //           // // this.getQues();
+  //           // this.interval = setInterval(() => {
+  //           //   this.timer--;
+  //           //   // this.getQues();
+  //           //   this.updatedQuestion = true;
+  //           //   if (this.timer < 0) {
+  //           //     this.updatedQuestion = false;
+  //           //     clearInterval(this.interval);
+  //           //     console.log("notification timer stopped");
+  //           //   }
+  //           // }, 1000);
+  //           $('#confirmationModal').modal('hide');
+  //           this.message.showNotification('success', 'Question Updated Successfully');
+  //           this.getQues();
+  //           // console.log(success);            
+  //         } else {
+  //           // this.message.showNotification('danger', 'Enter Details Correctly');
+  //         }
+  //       });
+  //     console.log("Update Question Button Clicked", $event);
+  //     // this.getQues();      
+  //   }
+  //   // this.getQues();      
+  // }
   updateCheckBoxArray(check, $event, key) {
     const checkArray = <FormArray>this.addTestForm.get(key);
     console.log($event.checked);
@@ -557,6 +534,7 @@ export class StaffQuizComponent implements OnInit {
       if (checkArray.controls.findIndex(x => x.value == check.id) == -1)
         checkArray.push(new FormControl({ subject_id: check.subject_id }));
       check.is_selected = true;
+      console.log(check);
     } else {
       let idx = checkArray.controls.findIndex(x => x.value == check.id);
       check.is_selected = false;
@@ -589,7 +567,7 @@ export class StaffQuizComponent implements OnInit {
       }
     }
   }
-  onAddTest() {
+  onAddTest(check, quiz_subjects) {
     console.log(this.addTestForm.value);
     if (this.addTestForm.invalid) {
       return;
@@ -600,6 +578,8 @@ export class StaffQuizComponent implements OnInit {
           if (success) {
             this.timer = 4;
             this.addTestForm.reset();
+            this.testModal(check, quiz_subjects);
+            this.getTest();
             this.interval = setInterval(() => {
               this.timer--;
               this.addedTest = true;
@@ -669,10 +649,13 @@ export class StaffQuizComponent implements OnInit {
       this.quizservice.updateTest(this.editTestForm.value)
         .subscribe(success => {
           console.log(success);
+          // this.getTest();
           if (success) {
             this.timer = 4;
+            // this.getTest();
             this.interval = setInterval(() => {
               this.timer--;
+              // this.getTest();
               this.updatedTest = true;
               if (this.timer < 0) {
                 this.updatedTest = false;
@@ -682,11 +665,13 @@ export class StaffQuizComponent implements OnInit {
             }, 1000);
             // this.message.showNotification('success', 'Test Updated Successfully');
             // console.log(success);
+            // this.getTest();
           } else {
-            // this.message.showNotification('danger', 'Enter Test Details Correctly');
+            this.message.showNotification('danger', 'Enter Test Details Correctly');
           }
         });
-      console.log("Update Question Button Clicked");
+      console.log("Update Test Button Clicked");
+      // this.getTest();
     }
   }
 

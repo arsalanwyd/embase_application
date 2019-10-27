@@ -14,15 +14,21 @@ declare var $: any;
 })
 export class AuthComponent implements OnInit {
   loginform: FormGroup;
+  resetform: FormGroup;
   submitted = false;
   loginfailed = false;
+  forget = false;
+
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authservice: AuthserviceService,
     private message: MessageService) { }
 
   ngOnInit() {
+    this.resetform = this.formBuilder.group({
+      email: ['', Validators.required]
+    })
     this.loginform = this.formBuilder.group({
-      userid: ['', Validators.required],
+      // userid: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       user_type: '2'
@@ -35,7 +41,7 @@ export class AuthComponent implements OnInit {
   // }
   // get f() { return this.loginform.controls }
   onSubmit() {
-    
+
     console.log(this.loginform);
     if (this.loginform.invalid) {
       return;
@@ -72,6 +78,25 @@ export class AuthComponent implements OnInit {
   onReset() {
     this.submitted = false;
     this.loginform.reset();
+  }
+  onResetRequest() {
+    console.log(this.resetform.value);
+    if (this.resetform.invalid) {
+      return;
+    } else {
+      this.submitted = true;
+      this.authservice.requestPasswordReset(this.resetform.value).subscribe(res => {
+        console.log(res);
+        this.message.showNotification('success', res.message);
+        this.forget = false;
+        this.submitted = false;
+      },
+        _error => {
+          console.log(_error);
+          this.submitted = false;
+          this.message.showNotification('danger', _error.error.message);
+        })
+    }
   }
 
 

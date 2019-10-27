@@ -1,7 +1,7 @@
 <div class="main-content ">
   <div class="container main-div">
     <!-- <button class="btn btn-primary" onclick="showNotification('top','right')">Top Right Notification</button> -->
-    <div class="col-md-6">
+    <div class="col-md-6" [hidden]="forget">
       <div class="card">
         <div class="card-header card-header-icon card-header-rose">
           <div class="card-icon">
@@ -12,11 +12,11 @@
         <div class="card-body">
           <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
             <div class="row form-div">
-              <div class="col-md-10 ">
+              <!-- <div class="col-md-10 ">
                 <mat-form-field class="example-full-width">
                   <input matInput placeholder="User ID" formControlName="userid" #userid autocomplete="off">
                 </mat-form-field>
-              </div>
+              </div> -->
               <div class="col-md-10">
                 <mat-form-field class="example-full-width">
                   <input matInput placeholder="Email_address" type="email" formControlName="email" #email
@@ -34,14 +34,54 @@
               <div class="col text-center">
                 <button mat-raised-button type="submit" class="btn btn-primary">
                   Login</button>
-                <!-- <a href="#" class="link"> Forgot password..?</a> -->
+                <a class="link" href="javascript:void(0)" (click)="forget=!forget"> Forgot password..?</a>
               </div>
             </div>
           </form>
 
           <mat-progress-bar mode="indeterminate" *ngIf="submitted"></mat-progress-bar>
+
+
+
+
         </div>
       </div>
     </div>
+    <!-- Forgot Password -->
+    <div class="col-md-6" [hidden]="!forget">
+      <div class="card">
+        <div class="card-header card-header-icon card-header-rose">
+          <div class="card-icon">
+            <i class="material-icons">lock</i>
+          </div>
+          <h4 class="card-title">Reset Password</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="resetform" (ngSubmit)="onResetRequest()">
+            <div class="row form-div">
+
+              <div class="col-md-10">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Enter Registered Email" formControlName="email" #email>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col text-center">
+                <button mat-raised-button type="submit" class="btn btn-primary">
+
+                  Reset</button>
+                <a class="link" href="javascript:void(0)" (click)="forget=!forget"> Login instead..? </a>
+
+              </div>
+              <mat-progress-bar *ngIf="submitted" mode="indeterminate"></mat-progress-bar>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!--  -->
   </div>
 </div>

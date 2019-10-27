@@ -1,0 +1,40 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-text card-header-primary">
+            <div class="card-text">
+              <h4 class="card-title">User Registrartion</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="registrationform" (ngSubmit)="onSubmit()">
+              <div class="col-md-9">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="User Name" type="text" formControlName="name" #name>
+                </mat-form-field>
+              </div>
+              <div class="col-md-9">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="E-mail" type="email" formControlName="email" #email>
+                </mat-form-field>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-success btn-round">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

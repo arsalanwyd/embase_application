@@ -7,8 +7,13 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthComponent } from './auth/auth.component';
 import { RandomGuard } from './guards/random.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { PasswordResetComponent } from './auth/password-reset.component';
 
 const routes: Routes = [
+  {
+    path: 'password-reset',
+    component: PasswordResetComponent,
+  },
   {
     path: 'auth',
     component: AuthComponent,
@@ -34,7 +39,7 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-       useHash: false
+       useHash: true
     })
   ],
   exports: [
