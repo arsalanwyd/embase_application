@@ -1,0 +1,276 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <!--  -->
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li class="nav-item">
+                    <a mat-button class="nav-link active" href="#result" data-toggle="tab">
+                      <i class="material-icons">grade</i>Result
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a mat-button class="nav-link" href="#report" data-toggle="tab">
+                      <i class="material-icons">report</i>Report
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="card-body">
+            <div class="tab-content">
+
+              <div class="tab-pane active" id="result">
+                <div class="row">
+                  <div class="col-sd-12 col-md-12">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th class="text-center" colspan="6">
+                              <mat-form-field>
+                                <mat-select placeholder="Select Test" [(value)]="resultSelectedTest"
+                                  (selectionChange)="onResultSelectTest()">
+                                  <mat-option *ngFor="let result_test of quiz_info" [value]="result_test">
+                                    {{result_test.test_name}}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </th>
+                            <th class="text-center" colspan="4">
+                              <mat-form-field>
+                                <mat-select placeholder="Select Type" [(value)]="resultSelectedType"
+                                  (selectionChange)="onResultSelectType()">
+                                  <mat-option value="Student">Student</mat-option>
+                                  <mat-option value="Staff">Staff</mat-option>
+                                  <mat-option value="All">All</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </th>
+                          </tr>
+                          <tr>
+                            <th class="text-center">Sl No.</th>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Questions</th>
+                            <th class="text-center">Attended</th>
+                            <th class="text-center">Correct</th>
+                            <th class="text-center">Wrong</th>
+                            <th class="text-center">Point</th>
+                            <th class="text-center">%</th>
+                            <th class="text-center">View</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let result of results; index as i">
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-center">{{result?.id}}</td>
+                            <td class="text-center">{{result?.name}}</td>
+                            <td class="text-center">{{result?.total_question}}</td>
+                            <td class="text-center">{{result?.attended}}</td>
+                            <td class="text-center">{{result?.correct}}</td>
+                            <td class="text-center">{{result?.wrong}}</td>
+                            <td class="text-center">{{result?.mark}}/{{result?.total_question}}</td>
+                            <td class="text-center">{{result?.percentage}}</td>
+                            <td class="text-center"><button type="button" rel="tooltip" class="btn btn-success"
+                                (click)="onResultView(result)" data-toggle="modal" data-target="#resultviewModal">
+                                <i class="material-icons">remove_red_eye</i>
+                              </button>
+                              <div class="modal fade" id="resultviewModal" tabindex="-1" role="dialog"
+                                aria-labelledby="resultviewModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title">Example (Test Name)</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <div class="table-responsive">
+                                        <table class="table">
+                                          <thead>
+                                            <tr>
+                                              <th class="text-center">Sl No</th>
+                                              <th class="text-center">Questions</th>
+                                              <th class="text-center">Answer</th>
+                                              <th class="text-center">Selected</th>
+                                              <th class="text-center">?</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr *ngFor="let dresult of editresult?.detailed_results ; index as i">
+                                              <td class="text-center">{{i+1}}</td>
+                                              <td class="text-center">{{dresult?.question}}</td>
+                                              <td class="text-center">{{dresult?.answer}}</td>
+                                              <td class="text-center">{{dresult?.std_answer}}</td>
+                                              <td class="text-center"><i
+                                                  class="material-icons">{{dresult?.is_true === '1' ? 'check' : 'close'}}</i>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                          <tfoot>
+                                            <tr>
+                                              <td class="text-center">Sl No</td>
+                                              <td class="text-center">Questions</td>
+                                              <td class="text-center">Answer</td>
+                                              <td class="text-center">Selected</td>
+                                              <td class="text-center">?</td>
+                                            </tr>
+                                          </tfoot>
+                                        </table>
+                                      </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <td class="text-center">Sl No.</td>
+                          <td class="text-center">ID</td>
+                          <td class="text-center">Name</td>
+                          <td class="text-center">Questions</td>
+                          <td class="text-center">Attended</td>
+                          <td class="text-center">Correct</td>
+                          <td class="text-center">Wrong</td>
+                          <td class="text-center">Point</td>
+                          <td class="text-center">%</td>
+                          <td class="text-center">View</td>
+                        </tfoot>
+                      </table>
+                    </div>
+                    <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                          </mat-paginator> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="report">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="text-center">Sl No</th>
+                        <th class="text-center">Test Name</th>
+                        <th class="text-center">Questions</th>
+                        <th class="text-center">Attended</th>
+                        <th class="text-center">Correct</th>
+                        <th class="text-center">Wrong</th>
+                        <th class="text-center">Point</th>
+                        <th class="text-center">%</th>
+                        <th class="text-center">View</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let report of reports; index as i">
+                        <td class="text-center">{{i+1}}</td>
+                        <td class="text-center">{{report?.test_name}}</td>
+                        <td class="text-center">{{report?.total_question}}</td>
+                        <td class="text-center">{{report?.attended}}</td>
+                        <td class="text-center">{{report?.correct}}</td>
+                        <td class="text-center">{{report?.wrong}}</td>
+                        <td class="text-center">{{report?.total_mark}}/{{report?.total_question}}</td>
+                        <td class="text-center">{{report?.percentage}}</td>
+                        <td class="text-center"><button type="button" rel="tooltip" class="btn btn-success"
+                            data-toggle="modal" data-target="#reportviewModal">
+                            <i class="material-icons">remove_red_eye</i>
+                          </button>
+                          <div class="modal fade" id="reportviewModal" tabindex="-1" role="dialog"
+                            aria-labelledby="reportviewModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Example (Test Name)</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="table-responsive">
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th class="text-center">Sl No</th>
+                                          <th class="text-center">Question</th>
+                                          <th class="text-center">Answer</th>
+                                          <th class="text-center">Selected</th>
+                                          <th class="text-center">?</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td class="text-center">1</td>
+                                          <td class="text-center">largest</td>
+                                          <td class="text-center">4</td>
+                                          <td class="text-center">3</td>
+                                          <td class="text-center"><i class="material-icons">close</i></td>
+                                        </tr>
+                                        <tr>
+                                          <td class="text-center">2</td>
+                                          <td class="text-center">smallest</td>
+                                          <td class="text-center">1</td>
+                                          <td class="text-center">3</td>
+                                          <td class="text-center"><i class="material-icons">close</i></td>
+                                        </tr>
+                                      </tbody>
+                                      <tfoot>
+                                        <tr>
+                                          <td class="text-center">Sl No</td>
+                                          <td class="text-center">Question</td>
+                                          <td class="text-center">Answer</td>
+                                          <td class="text-center">Selected</td>
+                                          <td class="text-center">?</td>
+                                        </tr>
+                                      </tfoot>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td class="text-center">Sl No</td>
+                        <td class="text-center">Test Name</td>
+                        <td class="text-center">Questions</td>
+                        <td class="text-center">Attended</td>
+                        <td class="text-center">Correct</td>
+                        <td class="text-center">Wrong</td>
+                        <td class="text-center">Point</td>
+                        <td class="text-center">%</td>
+                        <td class="text-center">View</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

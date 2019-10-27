@@ -48,16 +48,14 @@ export class AuthComponent implements OnInit {
     } else {
       this.submitted = true;
       this.authservice.login(this.loginform.value)
-        .subscribe(success => {
-          if (success) {
-            this.router.navigate(['/quiz']);
-            this.message.showNotification('success', 'Login Successfull');
-            console.log(success);
-          } else {
+        .subscribe(data => {
+          this.router.navigate(['/settings']);
+          // this.router.navigate(['/quiz']);
+        },
+        error =>{
             this.loginfailed = true;
             this.message.showNotification('danger', 'Enter Creadentials Correctly');
             this.onReset();
-          }
         });
     }
     //  success auth
@@ -77,7 +75,7 @@ export class AuthComponent implements OnInit {
 
   onReset() {
     this.submitted = false;
-    this.loginform.reset();
+    // this.loginform.reset();
   }
   onResetRequest() {
     console.log(this.resetform.value);

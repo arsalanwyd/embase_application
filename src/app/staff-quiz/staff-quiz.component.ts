@@ -26,7 +26,6 @@ export class StaffQuizComponent implements OnInit {
   timer: number;
   interval;
   complete = false;
-  OK = false;
   startQuiz = false;
   selectedOption: any;
   index: number = 0;
@@ -46,7 +45,6 @@ export class StaffQuizComponent implements OnInit {
   quizForm: FormGroup;
   edittable: any;
   edittest: any;
-  editresult: any;
   editquiz: any;
   addedQuestion: boolean;
   updatedQuestion: boolean;
@@ -76,156 +74,15 @@ export class StaffQuizComponent implements OnInit {
   test: any;
   tests: any[];
 
-  result: any;
-  results = [
-    {
-      attended: '2',
-      correct: '2',
-      exam_id: '9',
-      id: '1010',
-      mark: '2',
-      name: 'Shaheer Test (Staff)',
-      percentage: 100,
-      test_id: '2',
-      test_name: 'test',
-      total_mark: 2,
-      total_question: '2',
-
-      detailed_results: [
-        {
-          answer: '4',
-          exam_id: '9',
-          is_true: '1',
-          question: 'large',
-          question_id: '3',
-          std_answer: '4',
-        }, {
-          answer: '1',
-          exam_id: '9',
-          is_true: '1',
-          question: 'small',
-          question_id: '4',
-          std_answer: '1'
-        }
-      ],
-      wrong: '0',
-    },
-    {
-      attended: '0',
-      correct: '0',
-      exam_id: '8',
-      id: '1010',
-      mark: '0',
-      name: 'Shaheer Test (Staff)',
-      percentage: 0,
-      test_id: '2',
-      test_name: 'test',
-      total_mark: 2,
-      total_question: '2',
-      detailed_results: [
-        {
-          answer: '4',
-          exam_id: '8',
-          is_true: '2',
-          question: 'large',
-          question_id: '3',
-          std_answer: null
-        },
-        {
-          answer: '1',
-          exam_id: '8',
-          is_true: '2',
-          question: 'small',
-          question_id: '4',
-          std_answer: null
-        }
-      ],
-      wrong: '0'
-    },
-    {
-      attended: '2',
-      correct: '1',
-      exam_id: '4',
-      id: '1010',
-      mark: '0',
-      name: 'Shaheer Test (Staff)',
-      percentage: 0,
-      test_id: '2',
-      test_name: 'test',
-      total_mark: 2,
-      total_question: '2',
-      detailed_results: [
-        {
-          answer: '4',
-          exam_id: '7',
-          is_true: '1',
-          question: 'large',
-          question_id: '3',
-          std_answer: '4'
-        },
-        {
-          answer: '1',
-          exam_id: '4',
-          is_true: '0',
-          question: 'small',
-          question_id: '4',
-          std_answer: '4'
-        }
-      ],
-      wrong: '1'
-    }
-  ];
-  report: any;
-  reports = [
-    {
-      attended: '2',
-      correct: '2',
-      exam_id: '9',
-      mark: '2',
-      percentage: 100,
-      test_id: '2',
-      test_name: 'test',
-      total_mark: 2,
-      total_question: '2',
-      wrong: '0'
-    },
-    {
-      attended: '0',
-      correct: '0',
-      exam_id: '8',
-      mark: '0',
-      percentage: 0,
-      test_id: '2',
-      test_name: 'test',
-      total_mark: 2,
-      total_question: '2',
-      wrong: '0'
-    },
-    {
-      attended: '2',
-      correct: '2',
-      exam_id: '7',
-      mark: '2',
-      percentage: 100,
-      test_id: '2',
-      test_name: 'test',
-      total_mark: 2,
-      total_question: '2',
-      wrong: '0'
-    },
-  ];
 
   quiz_subjects: any;
   add_test: any[];
-  resultSelectedType: any;
-  resultSelectedTest: any;
   subjects: any[];
 
   constructor(private _formBuilder: FormBuilder, private quizservice: QuizService, private message: MessageService) { }
 
   ngOnInit() {
 
-    this.resultSelectedType = "All";
     this.quizservice.getAllTest().subscribe(res => {
       console.log(res);
       this.tests = res.quiz_test_details;
@@ -367,9 +224,6 @@ export class StaffQuizComponent implements OnInit {
     })
     console.log(checkArray);
   }
-  onResultView(editresult) {
-    this.editresult = editresult;
-  }
   getSubjects() {
     this.quizservice.getQuizSubjects().subscribe(res => {
       console.log(res);
@@ -421,7 +275,7 @@ export class StaffQuizComponent implements OnInit {
           if (success) {
             this.timer = 4;
             this.addQuestionForm.reset();
-            console.log('on add' + this.selectedSubject.subject_id)
+            // console.log('on add' + this.selectedSubject.subject_id)
             this.getQues();
             this.interval = setInterval(() => {
               this.timer--;
@@ -578,7 +432,8 @@ export class StaffQuizComponent implements OnInit {
           if (success) {
             this.timer = 4;
             this.addTestForm.reset();
-            this.testModal(check, quiz_subjects);
+            // $event.checked = false
+            // this.testModal(check, quiz_subjects);
             this.getTest();
             this.interval = setInterval(() => {
               this.timer--;
@@ -676,37 +531,6 @@ export class StaffQuizComponent implements OnInit {
   }
 
 
-  onResultSelectTest() {
-    console.log("Test selected", this.resultSelectedTest);
-    // this.quizservice.getQuestions(this.selectedSubject).subscribe((data: any) => {
-    //   this.questions=data;
-    //   console.log(this.questions);
-    // });
-  }
-  onResultSelectType() {
-    console.log("Type selected", this.resultSelectedType);
-    // this.quizservice.getQuestions(this.selectedSubject).subscribe((data: any) => {
-    //   this.questions=data;
-    //   console.log(this.questions);
-    // });
-  }
-
-
-
-  onOK($event, test_key) {
-    this.OK = true;
-    this.quizservice.getQuiz(test_key).subscribe((data: any) => {
-      this.quiz = data;
-      // console.log(data);
-    });
-    console.log("OK Button Pressed", $event);
-    this.currentQuiz = test_key;
-    // console.log(this.currentQuiz);
-  }
-  onGoBack($event) {
-    this.OK = false;
-    console.log("Go Back Pressed");
-  }
 
 
   dateAsYYYYMMDDHHNNSS(date): string {
@@ -724,125 +548,6 @@ export class StaffQuizComponent implements OnInit {
   }
 
 
-
-  onstartTimer($event, test_time, test_key) {
-    this.startExam = true;
-    this.startQuiz = true;
-    const curTime = this.dateAsYYYYMMDDHHNNSS(new Date());
-    console.log(curTime);
-    this.quiz.quiz['start_time'] = curTime;
-    console.log("Timer started", $event);
-    this.timeLeft = test_time;
-    this.interval = setInterval(() => {
-      this.timeLeft--;
-      if (this.timeLeft < 0) {
-        clearInterval(this.interval);
-        console.log("timerstopped");
-        if (this.emptyCheck === true) {
-          this.res =
-            {
-              mark: 0,
-              total: this.quiz.quiz.total_question,
-              total_true: 0,
-              total_false: 0,
-              mark_per_question: 0
-            }
-          // console.log(this.res);
-
-        }
-        console.log("Completed", $event);
-        this.quiz.quiz['std_admissionnumber'] = 1018;
-        this.quiz.quiz['user_type'] = 2;
-        this.quizservice.submitQuiz(this.quiz).subscribe(res => {
-          // console.log(res);
-          this.res = res;
-        }, error => {
-          console.log(error.error.message);
-        });
-        if (this.complete === false) {
-          this.startExam = false;
-          this.endExam = true;
-          this.complete = true;
-          this.timerAlert = true;
-          // console.log(this.quiz);
-        }
-      }
-
-    }, 1000);
-
-  }
-  onOptionClick($event) {
-    this.quiz.quiz_details[this.index].is_selected = true;
-    console.log("Option Clicked", $event);
-    this.answeredOption[this.index] = $event.value;
-    // console.log(this.answeredOption);
-  }
-  onSaveAndNextButtonClicked($event) {
-
-    if (this.quiz.quiz_details[this.index].is_selected === true) {
-      this.quiz.quiz_details[this.index].status = '1';
-      this.ansList[this.index] = new Array(this.answeredOption[this.index], this.quiz.quiz_details[this.index].status);
-      this.quiz.quiz_details[this.index].std_answer = this.answeredOption[this.index];
-      this.index++;
-    }
-    console.log("Submitted Option", $event);
-    // console.log(this.ansList);
-  }
-  onSaveButtonClicked($event) {
-    if (this.quiz.quiz_details[this.index].is_selected === true) {
-      this.quiz.quiz_details[this.index].status = '1';
-      this.ansList[this.index] = new Array(this.answeredOption[this.index], this.quiz.quiz_details[this.index].status);
-      this.quiz.quiz_details[this.index].std_answer = this.answeredOption[this.index];
-    }
-    // console.log(this.ansList);
-  }
-  onMarkForReviewAndNextButtonClicked($event) {
-    if (this.quiz.quiz_details[this.index].is_selected === true) {
-      this.quiz.quiz_details[this.index].status = '2';
-      this.ansList[this.index] = new Array(this.answeredOption[this.index], this.quiz.quiz_details[this.index].status);
-      this.quiz.quiz_details[this.index].std_answer = this.answeredOption[this.index];
-      this.index++;
-    }
-    // console.log(this.ansList);
-  }
-  onMarkForReviewButtonClicked($event) {
-    if (this.quiz.quiz_details[this.index].is_selected === true) {
-      this.quiz.quiz_details[this.index].status = '2';
-      this.ansList[this.index] = new Array(this.answeredOption[this.index], this.quiz.quiz_details[this.index].status);
-      this.quiz.quiz_details[this.index].std_answer = this.answeredOption[this.index];
-    }
-    // console.log(this.ansList);
-  }
-  onSaveAndMarkForReviewButtonClicked($event) {
-    if (this.quiz.quiz_details[this.index].is_selected === true) {
-      this.quiz.quiz_details[this.index].status = '3';
-      this.ansList[this.index] = new Array(this.answeredOption[this.index], this.quiz.quiz_details[this.index].status);
-      this.quiz.quiz_details[this.index].std_answer = this.answeredOption[this.index];
-      this.index++;
-    }
-    // console.log(this.ansList);
-  }
-  onSaveAndMarkForReviewLastButtonClicked($event) {
-    if (this.quiz.quiz_details[this.index].is_selected === true) {
-      this.quiz.quiz_details[this.index].status = '3';
-      this.ansList[this.index] = new Array(this.answeredOption[this.index], this.quiz.quiz_details[this.index].status);
-      this.quiz.quiz_details[this.index].std_answer = this.answeredOption[this.index];
-    }
-    // console.log(this.ansList);
-  }
-
-  onNext($event) {
-    this.index++;
-    console.log("ON NEXT", $event);
-  }
-  onPrev($event) {
-    this.index--;
-    console.log("ON PREV", $event);
-  }
-  onLoadQuestion($event, i) {
-    console.log("on Load question Button Clicked", $event);
-    this.index = i;
-  }
   onEditTest() {
     if (Array.isArray(this.ansList) && this.ansList.length) {
       this.emptyCheck = false;
@@ -853,33 +558,6 @@ export class StaffQuizComponent implements OnInit {
       // console.log(this.emptyCheck)
     }
   }
-  onComplete($event) {
-    clearInterval(this.interval);
-    console.log("timerstopped");
-    this.startExam = false;
-    this.endExam = true;
-    this.complete = true;
-    $('#confirmationModal').modal('hide');
-    this.quiz.quiz['std_admissionnumber'] = 1018;
-    this.quiz.quiz['user_type'] = 2;
-    // console.log(this.quiz);
-    this.quizservice.submitQuiz(this.quiz).subscribe(res => {
-      console.log(res);
-      this.res = res;
-    }, error => {
-      console.log(error.error.message);
-    });
-    console.log("Completed", $event);
-  }
-  onBackToTests($event) {
-    this.OK = false;
-    this.complete = false;
-    this.startQuiz = false;
-    this.endExam = false;
-    this.timerAlert = false;
-    this.ansList = [];
-    this.answeredOption = [];
-    this.index = 0
-  }
+
 
 }

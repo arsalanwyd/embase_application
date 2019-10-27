@@ -1,7 +1,7 @@
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, mapTo, tap } from 'rxjs/operators';
+import { catchError, mapTo, tap, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Tokens } from '../models/tokens';
 import { Book } from 'app/models/book';
@@ -11,21 +11,21 @@ import { Book } from 'app/models/book';
 export class AuthserviceService {
   loggedUser: string;
   //readonly rootUrl = 'http://127.0.0.1:8000/api';
-  readonly rootUrl = 'https://new.embase.in/backend/api';
+  // readonly rootUrl = 'https://new.embase.in/backend/api';
+  readonly rootUrl = window.location.origin + '/backend/api';
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'JWT_TOKEN';
   constructor(private http: HttpClient) { }
-  register(data){
+  register(data) {
     return this.http.post<any>(this.rootUrl + `/registerUser`, data)
   }
-  login(data): Observable<boolean> {
+  login(data) {
     return this.http.post<any>(this.rootUrl + `/QuizLogin`, data)
-      .pipe(
-        tap(token => this.doLoginUser(data.email, token)),
-        mapTo(true),
-        catchError(error => {
-          return of(false);
-        }));
+      .pipe(map(data => {
+        this.doLoginUser(data.user.email, data)
+        return data;
+      }))
+
   }
   validateResetToken(token) {
     return this.http.get<any>(this.rootUrl + '/password/find/' + token)

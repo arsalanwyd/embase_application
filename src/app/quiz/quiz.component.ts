@@ -219,15 +219,15 @@ export class QuizComponent implements OnInit {
     });
     console.log("Completed", $event);
   }
-  onBackToTests($event) {
+  onBackToTests($event) { 
+    this.ansList = [];
+    this.answeredOption = [];
     this.OK = false;
     this.complete = false;
     this.startQuiz = false;
     this.endExam = false;
-    this.timerAlert = false;
-    this.ansList = [];
-    this.answeredOption = [];
-    this.index = 0
+    this.timerAlert = false;   
+    this.index = 0;
   }
 
 }

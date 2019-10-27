@@ -32,10 +32,12 @@ export class UserRegistrationComponent implements OnInit {
           if (success) {            
             console.log(success);
             this.message.showNotification('success', 'User Registered Successfully ');
-          } else {            
+          }
+        },
+          error=> {            
             this.message.showNotification('danger', 'Something Went Wrong ');
           }
-        });
+        );
     }
   }
 

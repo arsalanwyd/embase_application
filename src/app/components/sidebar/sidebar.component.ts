@@ -11,14 +11,27 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   { path: '/nnnnnnn', title: 'Dashboard', icon: 'dashboard', class: '' },
+  { path: '/settings', title: 'Settings', icon: 'settings_applications', class: '' },
+  { path: '/user-registration', title: 'User Registration',  icon: 'person_add', class: '' },
   { path: '/quiz', title: 'Mock Test', icon: 'help', class: '' },
-  { path: '/nnnnv', title: 'Main Test', icon: 'assignment', class: '' },
-  { path: '/vvvv', title: 'Create Test', icon: 'note_add', class: '' },
-  { path: '/ccc', title: 'Result', icon: 'assessment', class: '' },
-  { path: '/cc', title: 'My Query', icon: 'message', class: '' },
-  { path: '/xx', title: 'Downloads', icon: 'save_alt', class: '' },
+  { path: '/sfs', title: 'Main Test', icon: 'assignment', class: '' },
+  // { path: '/staff-report', title: 'Reports', icon: 'assessment', class: '' },  
+  { path: '/dfnd', title: 'Reports', icon: 'assessment', class: '' },
+  { path: '/cc', title: 'QMS', icon: 'question_answer', class: '' },
   { path: '/zz', title: 'Materials', icon: 'file_copy', class: '' },
-  { path: '/aa', title: 'Books', icon: 'book', class: '' },         
+  { path: '/aa', title: 'Books', icon: 'book', class: '' },
+
+
+
+  // { path: '/nnnnnnn', title: 'Dashboard', icon: 'dashboard', class: '' },
+  // { path: '/quiz', title: 'Mock Test', icon: 'help', class: '' },
+  // { path: '/nnnnv', title: 'Main Test', icon: 'assignment', class: '' },
+  // // { path: '/vvvv', title: 'Create Test', icon: 'note_add', class: '' },
+  // { path: '/ccc', title: 'Result', icon: 'assessment', class: '' },
+  // { path: '/cc', title: 'My Query', icon: 'message', class: '' },
+  // { path: '/xx', title: 'Downloads', icon: 'save_alt', class: '' },
+  // { path: '/zz', title: 'Materials', icon: 'file_copy', class: '' },
+  // { path: '/aa', title: 'Books', icon: 'book', class: '' },         
 
 
   //{ path: '/super-home', title: 'Home', icon: 'home', class: '' },
@@ -36,8 +49,6 @@ export const ROUTES: RouteInfo[] = [
   //  { path: '/issuebook', title: 'Issue Book',  icon: 'content_paste', class: '' },
   //  { path: '/transactions', title: 'Transactions',  icon: 'transfer_within_a_station', class: '' },
   //    { path: '/staff-home', title: 'Staff Home',  icon: 'home', class: '' },
-  // { path: '/user-registration', title: 'User Registration',  icon: 'person_add', class: '' },
-      // { path: '/staff-quiz', title: 'Staff Quiz',  icon: 'help_outline', class: '' },
   // { path: '/students', title: 'Students',  icon: 'group', class: '' },
   //    { path: '/attendance', title: 'Attendance',  icon: 'spellcheck', class: '' },
   //   { path: '/attendance-report', title: 'Attendance Report',  icon: 'report', class: '' },
@@ -45,7 +56,7 @@ export const ROUTES: RouteInfo[] = [
   //   { path: '/syllabus', title: 'Syllabus',  icon: 'bookmarks', class: '' },
   //   { path: '/certificates', title: 'Certificates',  icon: 'copyright', class: '' },
   //   { path: '/leave', title: 'Leave',  icon: 'work_off', class: '' },
- 
+
   //   { path: '/club', title: 'Club',  icon: 'list', class: '' },
   //  { path: '/staff-books', title: 'Library',  icon: 'library_books', class: '' },
   // { path: '/test', title: 'Test',  icon: 'content_paste', class: '' },
@@ -75,14 +86,14 @@ export class SidebarComponent implements OnInit {
     }
     return true;
   };
-  logout(){
+  logout() {
     this.authservice.logout().subscribe(success => {
-      if (success){
+      if (success) {
         this.router.navigate((['/auth']));
       }
-      else{
+      else {
         alert("Something Went Wrong");
-        this.router.navigate((['/auth']));        
+        this.router.navigate((['/auth']));
       }
     });
   }

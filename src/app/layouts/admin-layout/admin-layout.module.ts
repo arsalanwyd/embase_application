@@ -74,6 +74,8 @@ import { StaffQuizComponent } from 'app/staff-quiz/staff-quiz.component';
 import { StudentBooksComponent } from 'app/staff-books/student-books.component';
 import { MinuteSecondsPipe } from 'app/_helpers/timer-pipe';
 import { UserRegistrationComponent } from 'app/user-registration/user-registration.component';
+import { StaffTestComponent } from 'app/staff-test/staff-test.component';
+import { StaffReportComponent } from 'app/staff-report/staff-report.component';
 
 @NgModule({
   imports: [
@@ -121,6 +123,8 @@ import { UserRegistrationComponent } from 'app/user-registration/user-registrati
     },
   ],
   declarations: [
+    StaffReportComponent,
+    StaffTestComponent,
     UserRegistrationComponent,
     MinuteSecondsPipe,
     DashboardComponent,

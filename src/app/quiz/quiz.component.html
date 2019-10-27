@@ -74,7 +74,7 @@
                     General Instructions
                   </h4>
                   <mat-list-item role="listitem">
-                    <mat-icon mat-list-icon>note</mat-icon> Test Name: {{quiz?.quiz?.test_name}}
+                    <mat-icon mat-list-icon>note</mat-icon> {{quiz?.quiz?.test_name}}
                   </mat-list-item>
                   <mat-list-item role="listitem">
                     <mat-icon mat-list-icon>timer</mat-icon> Test Duration :
@@ -114,14 +114,14 @@
 
             <div class="row" *ngIf="startQuiz && !complete">
               <div class="col-md-12 bg-test-header">
-                <div class="pull-right">
-                  <p class="white">Candidate Name: <strong>Shaheer</strong></p>
-                  <p class="white">Test name: {{quiz?.quiz?.test_name}} </p>
-                  <!-- <p>{{timeLeft | date:'mm:ss' }} Seconds Left....</p> -->
+                <div>
+                  <h3 class="white text-center">Test name: {{quiz?.quiz?.test_name}} </h3>
+                  <!-- <h4 class="white pull-right">Candidate Name: <strong>Shaheer</strong></h4> -->
+                  <!-- <h4>{{timeLeft | date:'mm:ss' }} Seconds Left....</h4> -->
                   <!-- {{Math.floor(timeLeft / 60)  }}
                         minute {{timeLeft%60}} seconds -->
-                  <p class="white">{{timeLeft | minuteSeconds}} Time Left....</p>
-                  <!-- <p>{{timeLeft}} Seconds Left....</p> -->
+                  <h4 class="white pull-right">{{timeLeft | minuteSeconds}} Time Left....</h4>
+                  <!-- <h4>{{timeLeft}} Seconds Left....</h4> -->
 
                 </div>
               </div>

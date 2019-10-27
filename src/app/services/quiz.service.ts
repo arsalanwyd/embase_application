@@ -6,7 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class QuizService {
   // readonly rootUrl = 'http://127.0.0.1:8000/api';
-  readonly rootUrl = 'https://new.embase.in/backend/api';
+  // readonly rootUrl = 'https://new.embase.in/backend/api';
+  readonly rootUrl = window.location.origin + '/backend/api';
   constructor(private http: HttpClient) { }
   getQuizSubjects() {
     return this.http.get<any>(this.rootUrl + '/get-quiz-subjects')
